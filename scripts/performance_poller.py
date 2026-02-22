@@ -252,7 +252,7 @@ def _recompute_submolt_perf(sheet, performance_rows: list[dict]):
                 break
 
         if target:
-            ws.update(f"A{target}:I{target}", [new_row])
+            ws.update(range_name=f"A{target}:I{target}", values=[new_row])
         else:
             ws.append_row(new_row, value_input_option="USER_ENTERED")
 

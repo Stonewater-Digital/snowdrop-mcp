@@ -297,7 +297,7 @@ def _update_performance(sheet, data: dict, ts: str) -> dict:
 
     if target_row:
         # Update in place (columns A-G = 1-7)
-        ws.update(f"A{target_row}:G{target_row}", [new_row])
+        ws.update(range_name=f"A{target_row}:G{target_row}", values=[new_row])
     else:
         ws.append_row(new_row, value_input_option="USER_ENTERED")
 
@@ -344,7 +344,7 @@ def _update_submolt_perf(sheet, data: dict, ts: str) -> dict:
             break
 
     if target_row:
-        ws.update(f"A{target_row}:I{target_row}", [new_row])
+        ws.update(range_name=f"A{target_row}:I{target_row}", values=[new_row])
     else:
         ws.append_row(new_row, value_input_option="USER_ENTERED")
 
