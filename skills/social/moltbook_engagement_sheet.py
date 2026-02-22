@@ -27,7 +27,10 @@ TOOL_META = {
         "Actions: 'log_post' (append post to POST LOG), 'get_submolt_list' (read SUBMOLT DIRECTORY "
         "for strategy routing), 'get_stats' (aggregate performance data), 'daily_report' (compile "
         "daily stats from POST LOG, suitable for Slack), 'update_weekly_actual' (fill in this "
-        "week's actual post count in WEEKLY FORECAST). Designed to run cheaply with Gemini Flash Lite."
+        "week's actual post count in WEEKLY FORECAST), 'update_performance' (upsert post upvotes/"
+        "comments into POST PERFORMANCE tab — called by the performance poller), 'update_submolt_perf' "
+        "(upsert per-submolt aggregate stats into SUBMOLT PERFORMANCE tab — called by the poller). "
+        "Designed to run cheaply with Gemini Flash Lite."
     ),
 }
 
@@ -92,6 +95,10 @@ def moltbook_engagement_sheet(action: str, data: dict = None) -> dict:
             return _update_weekly_actual(sheet, data, ts)
         elif action == "log_daily_report":
             return _log_daily_report(sheet, data, ts)
+        elif action == "update_performance":
+            return _update_performance(sheet, data, ts)
+        elif action == "update_submolt_perf":
+            return _update_submolt_perf(sheet, data, ts)
         else:
             return {
                 "status": "error",
@@ -257,5 +264,97 @@ def _log_daily_report(sheet, data: dict, ts: str) -> dict:
     return {
         "status": "ok",
         "data": {"logged": True, "date": today},
+        "timestamp": ts,
+    }
+
+
+def _update_performance(sheet, data: dict, ts: str) -> dict:
+    """Upsert a post's upvotes/comments into POST PERFORMANCE tab.
+
+    data keys: post_id, submolt, title, upvotes, comments, roi_score, date_polled
+    POST PERFORMANCE columns: A=Post ID, B=Submolt, C=Title, D=Upvotes, E=Comments, F=ROI Score, G=Date Polled
+    """
+    ws = sheet.worksheet(TAB_PERFORMANCE)
+    all_values = ws.get_all_values()
+
+    post_id = str(data.get("post_id", ""))
+    new_row = [
+        post_id,
+        data.get("submolt", ""),
+        (data.get("title", "") or "")[:100],
+        data.get("upvotes", 0),
+        data.get("comments", 0),
+        data.get("roi_score", 0),
+        data.get("date_polled", datetime.now(timezone.utc).strftime("%Y-%m-%d")),
+    ]
+
+    # Find existing row by post_id (col A = index 0), skip header row
+    target_row = None
+    for i, row in enumerate(all_values[1:], start=2):
+        if row and str(row[0]) == post_id:
+            target_row = i
+            break
+
+    if target_row:
+        # Update in place (columns A-G = 1-7)
+        ws.update(f"A{target_row}:G{target_row}", [new_row])
+    else:
+        ws.append_row(new_row, value_input_option="USER_ENTERED")
+
+    return {
+        "status": "ok",
+        "data": {
+            "upserted": True,
+            "post_id": post_id,
+            "action": "updated" if target_row else "appended",
+        },
+        "timestamp": ts,
+    }
+
+
+def _update_submolt_perf(sheet, data: dict, ts: str) -> dict:
+    """Upsert per-submolt aggregate stats into SUBMOLT PERFORMANCE tab.
+
+    data keys: submolt, posts_made, total_upvotes, total_comments,
+               avg_upvotes, avg_comments, best_post, roi_grade
+    SUBMOLT PERFORMANCE columns: A=Submolt, B=Posts Made, C=Total Upvotes,
+                                  D=Total Comments, E=Avg Upvotes, F=Avg Comments,
+                                  G=Best Post, H=ROI Grade, I=Last Updated
+    """
+    ws = sheet.worksheet(TAB_SUBMOLT_PERF)
+    all_values = ws.get_all_values()
+
+    submolt = str(data.get("submolt", ""))
+    new_row = [
+        submolt,
+        data.get("posts_made", 0),
+        data.get("total_upvotes", 0),
+        data.get("total_comments", 0),
+        round(float(data.get("avg_upvotes", 0)), 2),
+        round(float(data.get("avg_comments", 0)), 2),
+        data.get("best_post", ""),
+        data.get("roi_grade", "F"),
+        datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+    ]
+
+    target_row = None
+    for i, row in enumerate(all_values[1:], start=2):
+        if row and str(row[0]).lower() == submolt.lower():
+            target_row = i
+            break
+
+    if target_row:
+        ws.update(f"A{target_row}:I{target_row}", [new_row])
+    else:
+        ws.append_row(new_row, value_input_option="USER_ENTERED")
+
+    return {
+        "status": "ok",
+        "data": {
+            "upserted": True,
+            "submolt": submolt,
+            "roi_grade": data.get("roi_grade", "F"),
+            "action": "updated" if target_row else "appended",
+        },
         "timestamp": ts,
     }

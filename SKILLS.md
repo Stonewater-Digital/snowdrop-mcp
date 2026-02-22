@@ -166,6 +166,71 @@ Use the portfolio_stress_test skill to run a 2008 GFC scenario.
 
 ---
 
+## Engagement Infrastructure Skills
+
+Snowdrop's autonomous Moltbook engagement system — posting content, tracking performance,
+and feeding a live MBA-friendly dashboard. Built on the Google A2A Protocol for agent observability.
+
+| Skill | Description |
+|-------|-------------|
+| `moltbook_engagement_sheet` | Read/write the Moltbook Engagement Google Sheet command center. Actions: `log_post`, `get_submolt_list`, `get_stats`, `daily_report`, `update_weekly_actual`, `log_daily_report`, `update_performance` (poller upserts upvotes/comments), `update_submolt_perf` (poller upserts per-submolt aggregates). |
+| `slack_post` | Post text messages to the Snowdrop Slack channel (`SLACK_BOT_TOKEN` + `SLACK_CHANNEL_ID`). Used for daily engagement reports and milestone alerts. |
+| `moltbook_post_performance` | Fetch live upvotes and comments for Moltbook posts by `post_id`. ROI score = upvotes×2 + comments×5. Spot-check any post in real time. Optional `write_to_sheet=True` upserts results. |
+| `performance_poller_control` | Observe and control the Performance Poller A2A subagent. Actions: `status` (last run, posts polled, errors), `trigger` (run immediately via subprocess), `read_card` (return A2A agent card JSON), `read_log` (structured recent log lines). |
+| `context7_docs` | Fetch live, version-specific library documentation via Context7 MCP. Call before writing code that uses any third-party library (gspread, FastMCP, requests, anthropic, etc.). Requires `CONTEXT7_API_KEY` (free at [context7.com/dashboard](https://context7.com/dashboard)). |
+| `google_dev_docs` | Search Google's official developer docs (GCP, Firestore, Cloud Run, BigQuery, Vertex AI, Firebase, Maps). Authoritative, current documentation for any Google API. Requires `GOOGLE_KNOWLEDGE_API_KEY` (GCP Console → APIs & Services → Credentials). |
+
+### Performance Poller Subagent (A2A Protocol)
+
+The Performance Poller is an autonomous subagent (`scripts/performance_poller.py`) running every
+2 hours on snowdrop-node via cron. It polls the Moltbook API for upvotes and comments on every
+logged post, then:
+1. Upserts results into the **POST PERFORMANCE** tab
+2. Recomputes **SUBMOLT PERFORMANCE** aggregates with ROI grades
+3. Updates **WEEKLY FORECAST** engagement_actual column
+4. Logs structured JSON entries (with `run_id` UUID for A2A traceability)
+
+**ROI Grades** (by avg upvotes/post):
+- **A** = avg ≥ 5 → double down, post 6×/day in this submolt
+- **B** = avg ≥ 2 → working, maintain current pace
+- **C** = avg ≥ 0.5 → some traction, experiment with topics
+- **D** = avg > 0 → minimal traction, try a different angle
+- **F** = avg = 0 → pause after 20+ posts, reallocate to better submolts
+
+**A2A agent card** (served by Fly.io):
+```
+https://snowdrop-mcp.fly.dev/.well-known/agent-performance-poller.json
+```
+
+**Snowdrop can interact with the poller from any MCP client:**
+```python
+performance_poller_control(action="status")        # last run, posts polled, errors
+performance_poller_control(action="read_log", limit=20)   # recent structured log
+performance_poller_control(action="trigger")       # run immediately (don't wait 2h)
+performance_poller_control(action="read_card")     # A2A agent card JSON
+```
+
+**State file:** `state/poller_state.json` on snowdrop-node
+**Log file:** `/tmp/performance_poller.log` on snowdrop-node
+**Crontab:** `0 */2 * * * /home/snowdrop/snowdrop-core/venv/bin/python /home/snowdrop/snowdrop-mcp/scripts/performance_poller.py >> /tmp/performance_poller.log 2>&1`
+
+### Dashboard Tab
+
+The **DASHBOARD** tab in the Moltbook Engagement Sheet is formula-driven — no manual refresh needed.
+Add it with: `python scripts/add_dashboard_tab.py`
+
+Key KPIs visible at a glance:
+- Posts Today / This Week / All Time
+- Upvotes and Comments (populated by Performance Poller every 2h)
+- Engagement Rate (% posts with ≥1 upvote)
+- % of Weekly Target with On Track / Behind / At Risk status
+- Strategy Distribution (7 posting strategies)
+- Top 10 Submolts by avg upvotes (QUERY from SUBMOLT PERFORMANCE)
+- Year Forecast Progress toward 10,000-post target
+- Estimated token spend at $0.0002/post (Gemini Flash Lite)
+
+---
+
 ## Contributing
 
 Want to add a skill? See [CONTRIBUTING.md](CONTRIBUTING.md) or open a Discussion.

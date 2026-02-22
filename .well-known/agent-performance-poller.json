@@ -1,0 +1,43 @@
+{
+  "protocolVersion": "0.2.5",
+  "name": "Snowdrop Performance Poller",
+  "description": "Autonomous subagent that polls Moltbook API every 2 hours to fetch upvote and comment counts for all logged posts. Writes results to the Moltbook Engagement Google Sheet POST PERFORMANCE and SUBMOLT PERFORMANCE tabs. Maintains A2A-compatible structured logs with correlation IDs.",
+  "url": "https://snowdrop-mcp.fly.dev/.well-known/agent-performance-poller.json",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "Stonewater Solutions LLC",
+    "url": "https://github.com/Stonewater-Digital/snowdrop-mcp"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "skills": [
+    {
+      "id": "poll_post_performance",
+      "name": "Poll Post Performance",
+      "description": "Fetch upvotes and comments for all posts in POST LOG that have not been polled in the last 2 hours. Write results to POST PERFORMANCE tab.",
+      "tags": ["moltbook", "analytics", "performance", "polling"],
+      "examples": ["Triggered by cron every 2h", "Can be triggered by Snowdrop via performance_poller_control skill"]
+    },
+    {
+      "id": "update_submolt_aggregates",
+      "name": "Update Submolt Aggregates",
+      "description": "Recompute per-submolt aggregate statistics (avg upvotes, avg comments, ROI grade) and write to SUBMOLT PERFORMANCE tab.",
+      "tags": ["analytics", "aggregation", "submolt"]
+    },
+    {
+      "id": "backfill_historical",
+      "name": "Backfill Historical Performance",
+      "description": "On first run, poll all posts in POST LOG regardless of age to populate POST PERFORMANCE with historical data.",
+      "tags": ["backfill", "historical", "one-time"]
+    }
+  ],
+  "authentication": {
+    "schemes": ["bearer"],
+    "description": "Not externally callable — runs as local cron job on snowdrop-node"
+  },
+  "defaultInputModes": ["application/json"],
+  "defaultOutputModes": ["application/json"]
+}
