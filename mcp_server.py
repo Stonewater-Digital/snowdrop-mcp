@@ -16,6 +16,7 @@ import functools
 import importlib.util
 import inspect
 import logging
+import os
 import sys
 from pathlib import Path
 from types import ModuleType
@@ -213,7 +214,8 @@ def main() -> None:
             ", ".join(sorted(discovered.keys())),
         )
 
-    mcp.run()
+    port = int(os.environ.get("PORT", 8000))
+    mcp.run(transport="streamable-http", host="0.0.0.0", port=port)
 
 
 # ---------------------------------------------------------------------------
