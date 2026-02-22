@@ -35,8 +35,10 @@ SHEET_ID = "1dpOdvas07uS4sB80BAS_nG8eDNbHdgzpDsVdf6C-tbI"
 # ── Auth ──────────────────────────────────────────────────────────────────────
 def get_client():
     sa_json = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON", "")
-    if sa_json:
+    if sa_json and sa_json.strip().startswith("{"):
         return gspread.service_account_from_dict(json.loads(sa_json))
+    if sa_json and Path(sa_json).exists():
+        return gspread.service_account(filename=sa_json)
     creds_path = os.environ.get("GCP_SERVICE_ACCOUNT_FILE", "")
     if creds_path and Path(creds_path).exists():
         return gspread.service_account(filename=creds_path)

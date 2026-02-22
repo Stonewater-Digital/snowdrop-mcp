@@ -44,13 +44,17 @@ TAB_INSTRUCTIONS = "INSTRUCTIONS"
 
 
 def _get_client():
-    """Return authenticated gspread client using GOOGLE_SERVICE_ACCOUNT_JSON."""
+    """Return authenticated gspread client. Supports JSON string or file path."""
     import gspread
     sa_json = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON", "")
-    if sa_json:
+    if sa_json and sa_json.strip().startswith("{"):
+        # Env var contains actual JSON content
         creds_dict = json.loads(sa_json)
         return gspread.service_account_from_dict(creds_dict)
-    # Fallback: file path for local dev
+    if sa_json and os.path.exists(sa_json):
+        # Env var is a file path
+        return gspread.service_account(filename=sa_json)
+    # Fallback: GCP_SERVICE_ACCOUNT_FILE
     creds_path = os.environ.get("GCP_SERVICE_ACCOUNT_FILE", "")
     if creds_path and os.path.exists(creds_path):
         return gspread.service_account(filename=creds_path)
