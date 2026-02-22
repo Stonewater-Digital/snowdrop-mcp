@@ -1,0 +1,1 @@
+"""Snowdrop forecasting skills package."""

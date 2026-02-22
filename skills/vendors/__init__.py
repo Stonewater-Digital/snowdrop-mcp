@@ -1,0 +1,1 @@
+"""Snowdrop vendors skills."""

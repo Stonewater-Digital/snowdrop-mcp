@@ -1,0 +1,1 @@
+"""Mercury banking skill modules."""
