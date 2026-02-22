@@ -302,7 +302,79 @@ def run(dry_run: bool = False) -> None:
                 elif dry_run:
                     log.info(f"  [DRY RUN] Would check/star @{stargazer}'s repos")
 
-    # ── 5. Wrap up ────────────────────────────────────────────────────────────
+    # ── 5. Proactive original content (if post budget remains) ───────────────
+    # When reactive scan finds nothing, Snowdrop generates and posts original content.
+    if posts_this_run < MAX_POSTS_PER_RUN:
+        can_post, reason = _check_rate_limit(state)
+        if can_post:
+            log.info("Post budget remains — attempting proactive original content...")
+            moltbook_submolt_discover = _import_skill("skills.social.moltbook_submolt_discover", "moltbook_submolt_discover")
+            financial_content_draft = _import_skill("skills.social.financial_content_draft", "financial_content_draft")
+
+            if moltbook_submolt_discover and financial_content_draft and moltbook_post:
+                disc_result = moltbook_submolt_discover(top_n=3, filter_posted=True)
+                submolts_found = disc_result.get("data", {}).get("top_submolts", []) if disc_result.get("status") == "ok" else []
+                log.info(f"  Submolt discovery: {len(submolts_found)} candidates")
+
+                # Pick topics that rotate to keep content fresh
+                PROACTIVE_TOPICS = [
+                    ("MiCA token classification: ART vs EMT vs Utility Token — the decision tree", "explainer"),
+                    ("FinCEN BOIR requirements for LLCs in 2026 — what changed and what you still owe", "how-to"),
+                    ("FIFO vs LIFO vs Average Cost: which cost basis method actually saves you money", "explainer"),
+                    ("Regulation Best Interest (Reg BI): how it constrains AI trading recommendations", "explainer"),
+                    ("TON vs Solana for agent micropayments: latency, fees, and settlement reality", "commentary"),
+                    ("SEBI FPI categories: why Category I matters for cross-border agent investing", "explainer"),
+                    ("DeFi AMM mechanics: why impermanent loss is worse than your model thinks", "explainer"),
+                    ("SEC Form PF: what hedge fund advisers actually file and why it matters to agents", "explainer"),
+                    ("GST on cross-border digital services: India's OIDAR rules for SaaS and AI APIs", "how-to"),
+                    ("Smart contract audit red flags: reentrancy, delegatecall abuse, and missing access controls", "checklist"),
+                ]
+                # Rotate by day-of-hour to avoid posting same topic repeatedly
+                topic_idx = datetime.now(timezone.utc).hour % len(PROACTIVE_TOPICS)
+                topic, content_type = PROACTIVE_TOPICS[topic_idx]
+
+                target_submolt = submolts_found[0]["name"] if submolts_found else "finance"
+                log.info(f"  Proactive topic: '{topic[:60]}...' → r/{target_submolt}")
+
+                draft_result = financial_content_draft(
+                    topic=topic,
+                    content_type=content_type,
+                    target_platform="moltbook",
+                    length="medium",
+                )
+
+                if draft_result.get("status") == "ok":
+                    draft = draft_result["data"]["content"]
+                    model_used = draft_result["data"].get("model", "unknown")
+                    log.info(f"  Proactive draft ({len(draft.split())} words, model={model_used}): {draft[:80]}...")
+
+                    if dry_run:
+                        log.info(f"  [DRY RUN] Would post proactive content to r/{target_submolt}")
+                        posts_this_run += 1
+                    else:
+                        post_result = moltbook_post(
+                            submolt_name=target_submolt,
+                            title=topic[:80],
+                            content=draft,
+                        )
+                        if post_result.get("status") == "ok":
+                            post_id = post_result["data"].get("post_id", "unknown")
+                            log.info(f"  ✓ Proactive post! ID={post_id} to r/{target_submolt}")
+                            state = _record_post(state, target_submolt, post_id)
+                            posts_this_run += 1
+                        else:
+                            err = post_result.get("data", {}).get("message", str(post_result))
+                            log.warning(f"  ✗ Proactive post failed: {err}")
+                else:
+                    log.warning(f"  financial_content_draft failed: {draft_result.get('data', {}).get('message')}")
+            else:
+                log.warning("  Proactive skills unavailable — skipping")
+        else:
+            log.info(f"  Proactive skipped: {reason}")
+    else:
+        log.info("Post budget exhausted — skipping proactive content")
+
+    # ── 6. Wrap up ────────────────────────────────────────────────────────────
     state["last_run"] = datetime.now(timezone.utc).isoformat()
     if not dry_run:
         _save_state(state)
