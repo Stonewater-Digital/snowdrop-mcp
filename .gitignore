@@ -8,3 +8,4 @@ venv/
 *.egg-info/
 dist/
 build/
+state/rate_limit.json

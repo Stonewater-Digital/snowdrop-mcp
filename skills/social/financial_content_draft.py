@@ -90,7 +90,7 @@ Write the content now. Be genuinely useful. Don't pad."""
                 "X-Title": "Snowdrop MCP",
             },
             json={
-                "model": "anthropic/claude-haiku-4-5",
+                "model": os.environ.get("ENGAGEMENT_MODEL", "anthropic/claude-haiku-4-5"),
                 "messages": [
                     {"role": "system", "content": SYSTEM_PROMPT},
                     {"role": "user", "content": user_prompt},

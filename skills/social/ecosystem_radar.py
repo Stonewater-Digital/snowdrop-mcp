@@ -133,7 +133,7 @@ Be direct and specific. No fluff."""
                 headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json",
                          "HTTP-Referer": "https://snowdrop-mcp.fly.dev"},
                 json={
-                    "model": "anthropic/claude-haiku-4-5",
+                    "model": os.environ.get("ENGAGEMENT_MODEL", "anthropic/claude-haiku-4-5"),
                     "messages": [{"role": "user", "content": summary_input}],
                     "max_tokens": 300, "temperature": 0.5,
                 },
