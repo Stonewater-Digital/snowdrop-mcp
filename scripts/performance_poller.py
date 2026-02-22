@@ -155,23 +155,50 @@ def _read_polled_ids(sheet) -> dict[str, str]:
     }
 
 
-def _upsert_performance(sheet, post_id: str, submolt: str, title: str,
-                         upvotes: int, comments: int, roi_score: int, date_polled: str):
-    """Upsert a row in POST PERFORMANCE. Column order: A-G."""
+def _upsert_performance_batch(sheet, records: list[dict], existing_vals: list):
+    """Batch-upsert POST PERFORMANCE rows. existing_vals is pre-fetched all_values.
+
+    Builds updates list (row-index, new_row) for existing posts and a separate
+    append list for new posts. Issues one batch_update + one append_rows call.
+    """
     ws = sheet.worksheet("POST PERFORMANCE")
-    all_vals = ws.get_all_values()
-    new_row = [post_id, submolt, title[:100], upvotes, comments, roi_score, date_polled]
 
-    target = None
-    for i, row in enumerate(all_vals[1:], start=2):
-        if row and str(row[0]) == post_id:
-            target = i
-            break
+    # Build index: post_id → row number (1-based for Sheets, row 1 = header)
+    id_to_row: dict[str, int] = {}
+    for i, row in enumerate(existing_vals[1:], start=2):
+        if row and row[0]:
+            id_to_row[str(row[0])] = i
 
-    if target:
-        ws.update(f"A{target}:G{target}", [new_row])
-    else:
-        ws.append_row(new_row, value_input_option="USER_ENTERED")
+    updates = []    # [{range, values}] for batch_update
+    appends = []    # rows to append
+
+    for r in records:
+        post_id = str(r["post_id"])
+        new_row = [
+            post_id,
+            r.get("submolt", ""),
+            (r.get("title", "") or "")[:100],
+            r.get("upvotes", 0),
+            r.get("comments", 0),
+            r.get("roi_score", 0),
+            r.get("date_polled", ""),
+        ]
+        if post_id in id_to_row:
+            row_num = id_to_row[post_id]
+            updates.append({
+                "range": f"A{row_num}:G{row_num}",
+                "values": [new_row],
+            })
+        else:
+            appends.append(new_row)
+            # Reserve a virtual row number for subsequent records in this batch
+            next_row = len(existing_vals) + len(appends)
+            id_to_row[post_id] = next_row
+
+    if updates:
+        ws.batch_update(updates, value_input_option="USER_ENTERED")
+    if appends:
+        ws.append_rows(appends, value_input_option="USER_ENTERED")
 
 
 def _recompute_submolt_perf(sheet, performance_rows: list[dict]):
@@ -272,12 +299,20 @@ def main():
         _log(run_id, "error", stage="read_post_log", error=str(e))
         return
 
-    # Read already-polled posts
+    # Read POST PERFORMANCE once (used for both polled_map and batch upsert)
     try:
-        polled_map = _read_polled_ids(sheet)
+        ws_perf = sheet.worksheet("POST PERFORMANCE")
+        perf_all_vals = ws_perf.get_all_values()
+        # Build polled_map from existing data (col A=Post ID, col G=Date Polled)
+        polled_map: dict[str, str] = {}
+        for row in perf_all_vals[1:]:
+            if len(row) >= 1 and row[0]:
+                date_col = row[6] if len(row) > 6 else ""
+                polled_map[str(row[0])] = date_col
     except Exception as e:
         _log(run_id, "warning", stage="read_polled_ids", error=str(e))
         polled_map = {}
+        perf_all_vals = [["Post ID", "Submolt", "Title", "Upvotes", "Comments", "ROI Score", "Date Polled"]]
 
     # Determine which posts to poll this run
     now = datetime.now(timezone.utc)
@@ -299,6 +334,8 @@ def main():
     polled_results = []
     date_polled = now.strftime("%Y-%m-%d")
 
+    # Collect all metrics, then do a single batch upsert
+    to_upsert = []
     for p in to_poll:
         pid = p["post_id"]
         metrics = _fetch_post_metrics(pid)
@@ -313,27 +350,33 @@ def main():
         submolt = metrics.get("submolt") or p.get("submolt", "")
         title = metrics.get("title") or p.get("title", "")
 
-        try:
-            _upsert_performance(sheet, pid, submolt, title, upvotes, comments, roi_score, date_polled)
-        except Exception as e:
-            errors.append({"post_id": pid, "error": str(e)})
-            _log(run_id, "upsert_error", post_id=pid, error=str(e))
-            continue
-
-        polled_results.append({
+        record = {
             "post_id": pid,
             "submolt": submolt,
+            "title": title,
             "upvotes": upvotes,
             "comments": comments,
             "roi_score": roi_score,
-        })
+            "date_polled": date_polled,
+        }
+        to_upsert.append(record)
+        polled_results.append(record)
         _log(run_id, "polled", post_id=pid, submolt=submolt, upvotes=upvotes, comments=comments, roi=roi_score)
-        time.sleep(0.3)  # gentle rate limiting
+        time.sleep(0.3)  # gentle Moltbook API rate limiting
+
+    # Single batch write to POST PERFORMANCE (only 1 read + 1-2 writes total)
+    if to_upsert:
+        try:
+            _upsert_performance_batch(sheet, to_upsert, perf_all_vals)
+            _log(run_id, "batch_upsert_ok", count=len(to_upsert))
+        except Exception as e:
+            errors.append({"stage": "batch_upsert", "error": str(e)})
+            _log(run_id, "error", stage="batch_upsert", error=str(e))
 
     # Recompute SUBMOLT PERFORMANCE from full POST PERFORMANCE data
     if polled_results:
         try:
-            # Read full POST PERFORMANCE for accurate aggregation
+            # Re-read to get full accurate data including this run's writes
             ws_perf = sheet.worksheet("POST PERFORMANCE")
             all_perf = ws_perf.get_all_records()
             full_perf = [
