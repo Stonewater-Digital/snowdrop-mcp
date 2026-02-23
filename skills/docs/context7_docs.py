@@ -86,6 +86,7 @@ def _call_context7(method: str, params: dict, api_key: str) -> dict:
         json={"jsonrpc": "2.0", "id": 1, "method": method, "params": params},
         headers={
             "Content-Type": "application/json",
+            "Accept": "application/json, text/event-stream",
             "Authorization": f"Bearer {api_key}",
         },
         timeout=20,
