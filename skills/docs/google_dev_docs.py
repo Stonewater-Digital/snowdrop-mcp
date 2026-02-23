@@ -95,7 +95,19 @@ def google_dev_docs(query: str, fetch_full: bool = False) -> dict:
                 "timestamp": ts,
             }
 
-        chunks = search_data.get("result", {}).get("results", [])
+        # Results are in result.content[0].text as a JSON string: {"results": [...]}
+        import json as _json
+        raw_content = search_data.get("result", {}).get("content", [])
+        chunks = []
+        for item in raw_content:
+            text = item.get("text", "")
+            if text:
+                try:
+                    parsed = _json.loads(text)
+                    chunks = parsed.get("results", [])
+                except Exception:
+                    pass
+                break
 
         # Step 2: optionally fetch full document for top result
         full_doc = None
