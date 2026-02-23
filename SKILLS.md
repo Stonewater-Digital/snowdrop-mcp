@@ -116,6 +116,7 @@ Use the portfolio_stress_test skill to run a 2008 GFC scenario.
 | **Crowd Economics** | Crowdfunding economics, token distribution, bonding curves |
 | **Crypto** | Crypto asset management, portfolio tracking, tax lots |
 | **Crypto Auth** | Wallet authentication, signature verification |
+| **Data Ingestion** | Data ingestion pipelines, synthetic market data |
 | **Data Quality** | Data validation, completeness checks, lineage tracking |
 | **Deals** | Deal pipeline management, term sheet analysis |
 | **Debt** | Debt scheduling, amortization, covenant tracking |
@@ -138,7 +139,7 @@ Use the portfolio_stress_test skill to run a 2008 GFC scenario.
 | **Franchise** | Franchise economics, royalty tracking, FDD analysis |
 | **Fund Accounting** | NAV calculation, fund administration, investor allocations |
 | **Fund Admin** | Subscription/redemption processing, waterfall distribution |
-| **FX** | Currency conversion, FX exposure, hedging ratios |
+| **FX** | Currency conversion, FX exposure, USD/JPY carry trade models |
 | **FX Trading** | FX order management, execution analytics |
 | **Gateway** | API gateway logic, rate limiting, routing |
 | **Ghost Ledger** | Google Sheets-based fund accounting ledger (Snowdrop's core) |
@@ -157,7 +158,7 @@ Use the portfolio_stress_test skill to run a 2008 GFC scenario.
 | **Market Data** | Price feeds, OHLCV, market depth, volatility surfaces |
 | **Memory** | Agent memory storage and retrieval |
 | **Mercury** | Mercury business banking API integration |
-| **MLPs** | Master Limited Partnership accounting and analysis |
+| **MLPs** | Master Limited Partnership accounting, Distributable Cash Flow (DCF) |
 | **Muni Finance** | Municipal bond analysis, CUSIP lookup, tax-exempt yield |
 | **Network** | Network topology analysis, peer connections |
 | **NLG** | Natural language generation for financial reports |
@@ -181,7 +182,7 @@ Use the portfolio_stress_test skill to run a 2008 GFC scenario.
 | **Project Finance** | Infrastructure finance, DSCR, waterfall modeling |
 | **Prompts** | Prompt engineering, template management |
 | **Public Finance** | Government accounting, GASB, municipal budgeting |
-| **Quant** | Quantitative analysis, factor models, backtesting |
+| **Quant** | Quantitative analysis, merger spread implied probability |
 | **Ralph Wiggum** | Self-correction loop — Snowdrop's internal QA system |
 | **Readiness** | Operational readiness assessment, go-live checklists |
 | **Real Estate** | Property analysis, valuation, lease abstraction |
