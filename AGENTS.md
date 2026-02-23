@@ -49,6 +49,53 @@ def your_skill_name(param_one: str) -> dict:
 
 3. The MCP server auto-discovers all skills on startup — no registration needed.
 
+## Premium Skill Policy
+
+Every new skill must be assigned a tier at creation time. Use this decision framework:
+
+### How to assign tier
+
+**Free** if the skill:
+- Is a utility or infrastructure helper (retry logic, logging, formatting)
+- Supports community/goodwill operations
+- Is a basic public API wrapper with no IP moat
+- Supports Snowdrop's own internal operations (engagement daemon, poller)
+
+**Premium** if the skill:
+- Implements regulatory compliance logic (SEC, CFTC, MiCA, AMF, ASIC, FSA, etc.)
+- Does financial modeling with proprietary scoring (CLO, NAV, waterfall, stress test)
+- Provides a competitive advantage if copied by a competitor
+- Generates structured legal or investor documents
+- Does KYC/AML, chain analysis, or smart contract auditing
+- Powers a white-label or enterprise feature
+
+### How to add a premium skill
+
+1. Write the full implementation in `snowdrop-core/skills/premium/{category}/{skill}.py`
+   - Same TOOL_META["name"] as the stub
+   - Full logic, imports, helper functions
+   - TOOL_META does NOT need "tier" in the private file (it's implicit)
+
+2. Run `python scripts/build_public_stubs.py` in `snowdrop-core`. This auto-generates the stub in `snowdrop-mcp`. Never edit the stub manually.
+
+3. Commit both repos and add an entry to `SKILLS.md` with the "(Premium)" marker.
+
+## Talking About Snowdrop's Skill Tiers
+
+When engaging on Moltbook, LinkedIn, or with developers:
+
+DO: Lead with free tools. Snowdrop has 545+ skills — many available to any MCP client right now with no signup. These are the story.
+
+DO: Use the word "freemium" if asked about business model. It's accurate and familiar.
+
+DO: If someone directly asks whether all tools are free: be honest. "We have a free tier with core utilities and a premium tier for advanced compliance and financial analytics — launching soon at snowdrop.ai."
+
+DO NOT: Volunteer "there's a paywall." Let users discover the premium tools naturally when they call one and get a payment_required response. The response itself explains how to subscribe.
+
+DO NOT: Describe premium skills as "locked" or "restricted" in marketing contexts. Describe them as "enterprise-grade" or "part of the premium suite."
+
+DO NOT: Lie or pretend all skills are free. If pressed, Snowdrop is transparent.
+
 ## Rules
 
 - No hardcoded secrets. Use `os.environ.get("VAR_NAME")`.

@@ -7,10 +7,31 @@ Snowdrop's complete MCP skill catalog — every Python function registered with 
 ## Table of Contents
 
 - [How Skills Work](#how-skills-work)
+- [Tier System](#tier-system)
 - [Full Catalog](#full-catalog)
 - [Engagement Infrastructure Skills](#engagement-infrastructure-skills)
 - [Documentation Skills](#documentation-skills)
 - [Contributing](#contributing)
+
+## Tier System
+
+Snowdrop MCP is freemium. Skills are either **Free** (open access) or **Premium** (subscribers only).
+There is no middle ground — Premium means the implementation code is private.
+
+| Tier | Access | IP Protection |
+|------|--------|---------------|
+| Free | All MCP clients | Code public on GitHub |
+| Premium | Subscribers only (coming soon) | Code in private repo, public stub returns `payment_required` |
+
+### Current Premium (Crown Jewels — Phase 1)
+All compliance/* except gdpr_fin_data_scrub, india_gst_tax_calculator, brazil_pix_settlement_logic.
+Plus: agentic_white_label_portal, smart_contract_vulnerability_scan, latency_optimized_order_routing,
+private_key_shard_manager, hardware_wallet_handshake.
+
+Premium skills appear in tools/list with "(Premium — subscribe at https://snowdrop.ai)" in their
+description. Calling them returns {"status": "payment_required", ...} on the public server.
+
+Subscribe: https://snowdrop.ai (launching soon)
 
 ## How Skills Work
 
