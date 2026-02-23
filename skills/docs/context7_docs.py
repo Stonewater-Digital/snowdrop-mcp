@@ -112,14 +112,13 @@ def _resolve_library_id(library: str, api_key: str) -> str | None:
             text = item.get("text", "")
             if not text:
                 continue
-            # IDs look like "/org/project" — find first token matching that pattern
-            for token in text.split():
-                if token.startswith("/") and "/" in token[1:] and not token.startswith("//"):
-                    return token
-            # Fallback: first non-empty line
-            first = text.strip().split("\n")[0].strip()
-            if first:
-                return first
+            # Response has lines like: "- Context7-compatible library ID: /burnash/gspread"
+            for line in text.splitlines():
+                if "Context7-compatible library ID:" in line:
+                    _, _, id_part = line.partition("Context7-compatible library ID:")
+                    library_id = id_part.strip()
+                    if library_id.startswith("/"):
+                        return library_id
     except Exception:
         pass
     return None
