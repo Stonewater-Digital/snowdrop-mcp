@@ -1,8 +1,16 @@
 # Snowdrop Skill Catalog
 
-> 667 skills across 150+ categories. All free. All open.
+> 667+ skills across 150+ categories. All free. All open.
 
-These are the tools Snowdrop uses to operate. Every skill is exposed via MCP and callable from any compatible client.
+Snowdrop's complete MCP skill catalog — every Python function registered with FastMCP and callable from any MCP-compatible client (Claude Code, Cursor, custom agents). Skills span financial compliance, blockchain analytics, fund accounting, engagement automation, real-time documentation lookup, and more. Each skill follows the standard `TOOL_META` + structured-return pattern.
+
+## Table of Contents
+
+- [How Skills Work](#how-skills-work)
+- [Full Catalog](#full-catalog)
+- [Engagement Infrastructure Skills](#engagement-infrastructure-skills)
+- [Documentation Skills](#documentation-skills)
+- [Contributing](#contributing)
 
 ## How Skills Work
 
@@ -177,8 +185,8 @@ and feeding a live MBA-friendly dashboard. Built on the Google A2A Protocol for 
 | `slack_post` | Post text messages to the Snowdrop Slack channel (`SLACK_BOT_TOKEN` + `SLACK_CHANNEL_ID`). Used for daily engagement reports and milestone alerts. |
 | `moltbook_post_performance` | Fetch live upvotes and comments for Moltbook posts by `post_id`. ROI score = upvotes×2 + comments×5. Spot-check any post in real time. Optional `write_to_sheet=True` upserts results. |
 | `performance_poller_control` | Observe and control the Performance Poller A2A subagent. Actions: `status` (last run, posts polled, errors), `trigger` (run immediately via subprocess), `read_card` (return A2A agent card JSON), `read_log` (structured recent log lines). |
-| `context7_docs` | Fetch live, version-specific library documentation via Context7 MCP. Call before writing code that uses any third-party library (gspread, FastMCP, requests, anthropic, etc.). Requires `CONTEXT7_API_KEY` (free at [context7.com/dashboard](https://context7.com/dashboard)). |
-| `google_dev_docs` | Search Google's official developer docs (GCP, Firestore, Cloud Run, BigQuery, Vertex AI, Firebase, Maps). Authoritative, current documentation for any Google API. Requires `GOOGLE_KNOWLEDGE_API_KEY` (GCP Console → APIs & Services → Credentials). |
+| `context7_docs` | Fetch live, version-specific library documentation via Context7 MCP. Call before writing code that uses any third-party library (gspread, FastMCP, requests, anthropic, etc.). Requires `CONTEXT7_API_KEY`. See **Documentation Skills** section below. |
+| `google_dev_docs` | Search Google's official developer docs (GCP, Firestore, Cloud Run, BigQuery, Vertex AI, Firebase, Maps). Requires `GOOGLE_DEVELOPER_KNOWLEDGE_API_KEY`. See **Documentation Skills** section below. |
 
 ### Performance Poller Subagent (A2A Protocol)
 
@@ -228,6 +236,49 @@ Key KPIs visible at a glance:
 - Top 10 Submolts by avg upvotes (QUERY from SUBMOLT PERFORMANCE)
 - Year Forecast Progress toward 10,000-post target
 - Estimated token spend at $0.0002/post (Gemini Flash Lite)
+
+---
+
+## Documentation Skills
+
+Snowdrop and all her subagents must call these skills **before writing code** that uses any
+third-party library or Google API. They return current, version-specific documentation so code
+is written against today's APIs, not training data from 18 months ago.
+
+| Skill | File | Description |
+|-------|------|-------------|
+| `context7_docs` | `skills/docs/context7_docs.py` | Live library docs via Context7 MCP (HTTP). Resolves library name → Context7 ID → fetches version-specific docs. Covers gspread, FastMCP, requests, anthropic, httpx, and thousands more. |
+| `google_dev_docs` | `skills/docs/google_dev_docs.py` | Authoritative Google developer docs via Google Developer Knowledge MCP. Covers all GCP services (Cloud Run, BigQuery, Vertex AI, Pub/Sub, Secret Manager, Firestore), Firebase, Android, Maps, and all Google APIs. Re-indexed within 24h of upstream changes. |
+
+### Usage (for AI coding agents reading this)
+
+```python
+# Before using gspread: fetch current docs
+context7_docs(library="gspread", topic="service account authentication")
+# → returns /burnash/gspread docs with code examples
+
+# Before using Cloud Run: fetch Google's official docs
+google_dev_docs(query="Cloud Run deploy Python container environment variables")
+# → returns 5 authoritative doc chunks from docs.cloud.google.com
+
+# fetch_full=True gets the complete page for the top result
+google_dev_docs(query="Vertex AI streaming Gemini Python SDK", fetch_full=True)
+```
+
+### Setup / Env Vars
+
+| Var | How to get it |
+|-----|--------------|
+| `CONTEXT7_API_KEY` | Free at [context7.com/dashboard](https://context7.com/dashboard) |
+| `GOOGLE_DEVELOPER_KNOWLEDGE_API_KEY` | GCP Console → APIs & Services → Credentials → Create API key → restrict to "Developer Knowledge API". Must first enable: `gcloud services enable developerknowledge.googleapis.com` |
+
+### Technical Details
+
+- **Context7 endpoint**: `https://mcp.context7.com/mcp` — JSON-RPC 2.0, `Authorization: Bearer {key}`
+- **Google Dev Knowledge endpoint**: `https://developerknowledge.googleapis.com/mcp` — JSON-RPC 2.0, `X-Goog-Api-Key: {key}`
+- Both use `Accept: application/json, text/event-stream` (MCP streamable-HTTP transport)
+- Context7 tools: `resolve-library-id` (libraryName + query) → `query-docs` (libraryId + query)
+- Google tools: `search_documents` (query) → optionally `get_document` (name from parent field)
 
 ---
 
