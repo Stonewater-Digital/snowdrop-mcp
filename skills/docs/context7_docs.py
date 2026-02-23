@@ -103,7 +103,7 @@ def _resolve_library_id(library: str, api_key: str) -> str | None:
     """
     result = _call_context7(
         "tools/call",
-        {"name": "resolve-library-id", "arguments": {"query": library}},
+        {"name": "resolve-library-id", "arguments": {"libraryName": library, "query": library}},
         api_key,
     )
     try:
