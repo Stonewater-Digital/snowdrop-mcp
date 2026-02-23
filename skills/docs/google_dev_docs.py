@@ -1,14 +1,22 @@
 """
-Google Developer Docs skill — search and fetch official Google developer documentation.
+Google Developer Knowledge MCP skill — search Google's official developer docs.
 
-Wraps the Google Developer Knowledge REST API to give Snowdrop and her subagents
-access to authoritative, current documentation for all Google Cloud Platform products,
-Firebase, Android, Google Maps, and all Google APIs.
+Announced February 4, 2026. Remote hosted MCP server at:
+  https://developerknowledge.googleapis.com/mcp
 
-Coverage: GCP (Firestore, Pub/Sub, Cloud Run, BigQuery, Vertex AI), Firebase,
-Android, Google Maps, and all Google APIs.
+Covers: Firebase, Google Cloud (Cloud Run, BigQuery, Vertex AI, Pub/Sub, etc.),
+Android, Chrome, Maps, TensorFlow, Ads, YouTube, Home, Fuchsia, Apigee, and all
+Web platform docs. Documentation is re-indexed within 24 hours of upstream changes.
 
-Requires: GOOGLE_KNOWLEDGE_API_KEY (GCP Console → APIs & Services → Credentials)
+Auth: GOOGLE_DEVELOPER_KNOWLEDGE_API_KEY env var
+  → GCP Console: enable the Developer Knowledge API at
+    https://console.cloud.google.com/start/api?id=developerknowledge.googleapis.com
+  → Then Credentials → Create API key → restrict to "Developer Knowledge API"
+
+Tools exposed by the server:
+  - search_documents: natural-language search, returns chunked snippets
+  - get_document: full page content for a document (by `parent` ID from search)
+  - batch_get_documents: up to 20 full pages in one call
 """
 import os
 import requests
@@ -17,124 +25,126 @@ from datetime import datetime, timezone
 TOOL_META = {
     "name": "google_dev_docs",
     "description": (
-        "Search and fetch Google's official developer documentation. Covers all GCP services "
-        "(Firestore, Pub/Sub, Cloud Run, BigQuery, Vertex AI, Secret Manager), Firebase, Android, "
-        "Google Maps, and all Google APIs. Returns authoritative, current docs for implementation "
-        "guidance. Use when writing code that calls any Google API. "
-        "Requires GOOGLE_KNOWLEDGE_API_KEY env var (GCP Console → APIs & Services → Credentials, "
-        "restrict to Developer Knowledge API)."
+        "Search Google's official developer documentation via the Developer Knowledge MCP API. "
+        "Covers Firebase, all Google Cloud services (Cloud Run, BigQuery, Vertex AI, Pub/Sub, "
+        "Firestore, Secret Manager, etc.), Android, Chrome, Google Maps, TensorFlow, and all "
+        "Google APIs. Returns authoritative doc snippets re-indexed within 24h of upstream changes. "
+        "Set fetch_full=True to get the complete page content for the top result. "
+        "Requires GOOGLE_DEVELOPER_KNOWLEDGE_API_KEY env var."
     ),
 }
 
-KNOWLEDGE_BASE_URL = "https://developerknowledge.googleapis.com/v1"
+_ENDPOINT = "https://developerknowledge.googleapis.com/mcp"
 
 
-def google_dev_docs(query: str, fetch_full: bool = False, max_results: int = 5) -> dict:
+def google_dev_docs(query: str, fetch_full: bool = False) -> dict:
     """
     Search Google's official developer documentation.
 
     Args:
-        query: Search query (e.g. 'Cloud Run deploy Python', 'Firestore transactions')
-        fetch_full: If True, fetch the full content of the top result (default False for brevity)
-        max_results: Number of search results to return (default 5)
+        query: Natural language query (e.g. 'Cloud Run deploy Python container',
+               'Firestore transaction Python SDK', 'Vertex AI streaming responses')
+        fetch_full: If True, fetch the complete page for the top result (can be large)
     """
     ts = datetime.now(timezone.utc).isoformat()
-    api_key = os.environ.get("GOOGLE_KNOWLEDGE_API_KEY", "")
+    api_key = os.environ.get("GOOGLE_DEVELOPER_KNOWLEDGE_API_KEY", "")
 
     if not api_key:
-        # Graceful fallback — still useful even without the specialized API
         return {
             "status": "error",
             "data": {
-                "message": "GOOGLE_KNOWLEDGE_API_KEY not set. Create one in GCP Console → APIs & Services → Credentials.",
-                "fallback": _fallback_search(query),
+                "message": (
+                    "GOOGLE_DEVELOPER_KNOWLEDGE_API_KEY not set. "
+                    "Enable API at https://console.cloud.google.com/start/api?id=developerknowledge.googleapis.com "
+                    "then create an API key restricted to 'Developer Knowledge API'."
+                ),
             },
             "timestamp": ts,
         }
 
-    try:
-        results = _search_documents(query, api_key, max_results)
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json, text/event-stream",
+        "X-Goog-Api-Key": api_key,
+    }
 
-        full_content = None
-        if fetch_full and results:
-            top_doc_id = results[0].get("name", "")
-            if top_doc_id:
-                full_content = _get_document(top_doc_id, api_key)
+    try:
+        # Step 1: search_documents
+        search_resp = requests.post(
+            _ENDPOINT,
+            json={
+                "jsonrpc": "2.0",
+                "id": 1,
+                "method": "tools/call",
+                "params": {
+                    "name": "search_documents",
+                    "arguments": {"query": query},
+                },
+            },
+            headers=headers,
+            timeout=20,
+        )
+        search_resp.raise_for_status()
+        search_data = search_resp.json()
+
+        # Handle JSON-RPC error
+        if "error" in search_data:
+            return {
+                "status": "error",
+                "data": {"message": search_data["error"].get("message", str(search_data["error"]))},
+                "timestamp": ts,
+            }
+
+        chunks = search_data.get("result", {}).get("results", [])
+
+        # Step 2: optionally fetch full document for top result
+        full_doc = None
+        if fetch_full and chunks:
+            top_parent = chunks[0].get("parent", "")
+            if top_parent:
+                doc_resp = requests.post(
+                    _ENDPOINT,
+                    json={
+                        "jsonrpc": "2.0",
+                        "id": 2,
+                        "method": "tools/call",
+                        "params": {
+                            "name": "get_document",
+                            "arguments": {"name": top_parent},
+                        },
+                    },
+                    headers=headers,
+                    timeout=30,
+                )
+                if doc_resp.ok:
+                    full_doc = doc_resp.json().get("result", {})
 
         return {
             "status": "ok",
             "data": {
                 "query": query,
-                "results": results,
-                "full_content": full_content,
-                "result_count": len(results),
+                "chunks": chunks,
+                "chunk_count": len(chunks),
+                "full_document": full_doc,
             },
             "timestamp": ts,
         }
 
     except requests.HTTPError as e:
-        if e.response is not None and e.response.status_code == 403:
-            return {
-                "status": "error",
-                "data": {
-                    "message": "API key unauthorized. Ensure Developer Knowledge API is enabled in GCP Console.",
-                    "fallback": _fallback_search(query),
-                },
-                "timestamp": ts,
-            }
+        status_code = e.response.status_code if e.response is not None else None
+        msg = str(e)
+        if status_code == 403:
+            msg = "403 Forbidden — check API key is valid and restricted to Developer Knowledge API."
+        elif status_code == 400:
+            msg = f"400 Bad Request — {e.response.text[:300]}"
         return {
             "status": "error",
-            "data": {"message": str(e), "fallback": _fallback_search(query)},
+            "data": {"message": msg},
             "timestamp": ts,
         }
     except Exception as e:
         return {
             "status": "error",
-            "data": {"message": str(e), "fallback": _fallback_search(query)},
+            "data": {"message": str(e)},
             "timestamp": ts,
         }
-
-
-def _search_documents(query: str, api_key: str, max_results: int) -> list[dict]:
-    """Search the Google Developer Knowledge API."""
-    resp = requests.get(
-        f"{KNOWLEDGE_BASE_URL}/documents:search",
-        params={
-            "query": query,
-            "pageSize": max_results,
-            "key": api_key,
-        },
-        timeout=15,
-    )
-    resp.raise_for_status()
-    data = resp.json()
-
-    results = []
-    for item in data.get("documents", []):
-        results.append({
-            "name": item.get("name", ""),
-            "title": item.get("title", ""),
-            "snippet": item.get("snippet", item.get("description", ""))[:500],
-            "url": item.get("url", item.get("link", "")),
-            "product": item.get("product", ""),
-        })
-    return results
-
-
-def _get_document(doc_name: str, api_key: str) -> str:
-    """Fetch full content of a document by its resource name."""
-    resp = requests.get(
-        f"{KNOWLEDGE_BASE_URL}/{doc_name}",
-        params={"key": api_key},
-        timeout=20,
-    )
-    resp.raise_for_status()
-    data = resp.json()
-    return data.get("content", data.get("body", str(data)))[:8000]
-
-
-def _fallback_search(query: str) -> str:
-    """Return a helpful Google search URL when the API isn't available."""
-    import urllib.parse
-    encoded = urllib.parse.quote(f"site:cloud.google.com OR site:firebase.google.com {query}")
-    return f"Manual search: https://www.google.com/search?q={encoded}"
