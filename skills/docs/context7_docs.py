@@ -1,16 +1,13 @@
 """
 Context7 Docs skill — fetch up-to-date library documentation via Context7 MCP.
 
-Context7 (upstash/context7-mcp) provides current, version-specific documentation
-for any open-source library. Snowdrop and her subagents call this before writing
-code that uses any third-party library to ensure modern API patterns.
+Context7 provides current, version-specific documentation for any open-source library.
+HTTP server at https://mcp.context7.com/mcp — no npx/Node required.
 
 Free API key: https://context7.com/dashboard
 """
-import json
 import os
-import subprocess
-import sys
+import requests
 from datetime import datetime, timezone
 
 TOOL_META = {
@@ -47,7 +44,7 @@ def context7_docs(library: str, topic: str = "", tokens: int = 5000) -> dict:
         }
 
     try:
-        # Step 1: Resolve library name to Context7 ID via JSON-RPC over npx subprocess
+        # Step 1: Resolve library name to Context7 ID
         library_id = _resolve_library_id(library, api_key)
         if not library_id:
             return {
@@ -79,56 +76,22 @@ def context7_docs(library: str, topic: str = "", tokens: int = 5000) -> dict:
         }
 
 
+_ENDPOINT = "https://mcp.context7.com/mcp"
+
+
 def _call_context7(method: str, params: dict, api_key: str) -> dict:
-    """Send a JSON-RPC call to Context7 via npx subprocess (stdio transport)."""
-    rpc_request = {
-        "jsonrpc": "2.0",
-        "id": 1,
-        "method": method,
-        "params": params,
-    }
-
-    env = os.environ.copy()
-    env["CONTEXT7_API_KEY"] = api_key
-
-    # Try HTTP endpoint first (faster, no npx startup)
-    try:
-        import requests as req_lib
-        resp = req_lib.post(
-            "https://mcp.context7.com/mcp",
-            json=rpc_request,
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {api_key}",
-            },
-            timeout=20,
-        )
-        resp.raise_for_status()
-        return resp.json()
-    except Exception:
-        pass
-
-    # Fallback: subprocess stdio JSON-RPC via npx
-    proc = subprocess.run(
-        ["npx", "-y", "@upstash/context7-mcp@latest"],
-        input=json.dumps(rpc_request),
-        capture_output=True,
-        text=True,
-        timeout=30,
-        env=env,
+    """Send a JSON-RPC call to Context7 HTTP MCP server."""
+    resp = requests.post(
+        _ENDPOINT,
+        json={"jsonrpc": "2.0", "id": 1, "method": method, "params": params},
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {api_key}",
+        },
+        timeout=20,
     )
-    if proc.returncode != 0 and proc.stderr:
-        raise RuntimeError(f"Context7 npx error: {proc.stderr[:500]}")
-
-    for line in proc.stdout.splitlines():
-        line = line.strip()
-        if line.startswith("{"):
-            try:
-                return json.loads(line)
-            except json.JSONDecodeError:
-                continue
-
-    raise RuntimeError("No valid JSON-RPC response from Context7")
+    resp.raise_for_status()
+    return resp.json()
 
 
 def _resolve_library_id(library: str, api_key: str) -> str | None:
