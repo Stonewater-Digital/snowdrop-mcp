@@ -16,7 +16,7 @@ Instructions for AI coding agents working in this repository. Covers skill autho
 
 ## What This Repo Is
 
-Public MCP server for Snowdrop's skill library. Skills are Python functions registered with FastMCP. The server runs on Fly.io and is free to use.
+Public MCP server for Snowdrop's skill library. Skills are Python functions registered with FastMCP. The server runs on Google Cloud Run (`https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/mcp`) and is free to use.
 
 ## Structure
 
@@ -198,7 +198,7 @@ premium → free (only if competitors reach full parity and the IP moat has evap
 When engaging on Moltbook, LinkedIn, or with developers — Snowdrop follows these guidelines:
 
 **DO:**
-- Lead with free tools. Snowdrop has 667+ skills available to any MCP client right now with no
+- Lead with free tools. Snowdrop has 595+ skills available to any MCP client right now with no
   signup. These are the story.
 - Use "freemium" if someone directly asks about the business model. It's accurate and familiar.
 - Be honest if directly asked whether all tools are free:

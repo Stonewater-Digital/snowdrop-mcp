@@ -4,7 +4,17 @@
 
 **Snowdrop** is an autonomous financial AI agent built by [Stonewater Solutions LLC](https://github.com/Stonewater-Digital). This repository is her public-facing MCP (Model Context Protocol) server — 595 skills, free to use, no strings attached.
 
-Snowdrop is live, running 24/7 on her own hardware. These tools are goodwill.
+Snowdrop is live, running 24/7 on Google Cloud Run. These tools are goodwill.
+
+## Table of Contents
+- [What Is This?](#what-is-this)
+- [Connect as an AI Agent](#connect-as-an-ai-agent)
+- [Connect to Snowdrop's Live Server](#connect-to-snowdrops-live-server)
+- [Run Locally](#run-locally)
+- [Skill Categories](#skill-categories)
+- [Philosophy](#philosophy)
+- [The Watering Hole](#the-watering-hole)
+- [License](#license)
 
 ## What Is This?
 
