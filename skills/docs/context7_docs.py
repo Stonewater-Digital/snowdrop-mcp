@@ -96,51 +96,49 @@ def _call_context7(method: str, params: dict, api_key: str) -> dict:
 
 
 def _resolve_library_id(library: str, api_key: str) -> str | None:
-    """Return the Context7 library ID for a given library name."""
+    """Return the Context7 library ID for a given library name.
+
+    Context7 tool: resolve-library-id, arg: query (natural-language library name).
+    IDs look like '/python/gspread' or '/upstash/redis'.
+    """
     result = _call_context7(
         "tools/call",
-        {
-            "name": "resolve-library-id",
-            "arguments": {"libraryName": library},
-        },
+        {"name": "resolve-library-id", "arguments": {"query": library}},
         api_key,
     )
-    # Response content is in result["result"]["content"][0]["text"]
     try:
         content = result.get("result", {}).get("content", [])
         for item in content:
             text = item.get("text", "")
-            if text and "/" in text:
-                # Context7 IDs look like "/python/gspread" or "/upstash/redis"
-                for token in text.split():
-                    if token.startswith("/") and "/" in token[1:]:
-                        return token
-            # Try to find any library-id-like string
-            if text:
-                return text.strip().split("\n")[0].strip()
+            if not text:
+                continue
+            # IDs look like "/org/project" — find first token matching that pattern
+            for token in text.split():
+                if token.startswith("/") and "/" in token[1:] and not token.startswith("//"):
+                    return token
+            # Fallback: first non-empty line
+            first = text.strip().split("\n")[0].strip()
+            if first:
+                return first
     except Exception:
         pass
     return None
 
 
 def _get_library_docs(library_id: str, topic: str, tokens: int, api_key: str) -> str:
-    """Fetch docs text for a resolved Context7 library ID."""
-    args = {"context7CompatibleLibraryID": library_id, "tokens": tokens}
-    if topic:
-        args["topic"] = topic
+    """Fetch docs text for a resolved Context7 library ID.
 
+    Context7 tool: query-docs, args: libraryId + query (topic/question).
+    """
+    query = topic or f"usage examples and API reference for {library_id}"
     result = _call_context7(
         "tools/call",
-        {"name": "get-library-docs", "arguments": args},
+        {"name": "query-docs", "arguments": {"libraryId": library_id, "query": query}},
         api_key,
     )
     try:
         content = result.get("result", {}).get("content", [])
-        parts = []
-        for item in content:
-            text = item.get("text", "")
-            if text:
-                parts.append(text)
+        parts = [item.get("text", "") for item in content if item.get("text")]
         return "\n\n".join(parts) if parts else "No documentation returned."
     except Exception as e:
         raise RuntimeError(f"Failed to parse Context7 docs response: {e}") from e
