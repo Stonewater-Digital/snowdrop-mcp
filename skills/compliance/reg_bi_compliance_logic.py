@@ -8,7 +8,8 @@ AUTO-GENERATED STUB — do not edit manually.
 Source of truth: snowdrop-core/skills/premium/compliance/reg_bi_compliance_logic.py
 Regenerate: python scripts/build_public_stubs.py
 """
-from __future__ import annotations # defers annotation evaluation — never NameError
+from __future__ import annotations  # defers annotation evaluation (PEP 563)
+from typing import Any, Optional, Union  # FastMCP resolves annotations via get_type_hints()
 
 from skills._paywall import paywall_response
 

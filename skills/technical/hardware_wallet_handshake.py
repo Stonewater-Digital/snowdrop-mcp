@@ -8,7 +8,8 @@ AUTO-GENERATED STUB — do not edit manually.
 Source of truth: snowdrop-core/skills/premium/technical/hardware_wallet_handshake.py
 Regenerate: python scripts/build_public_stubs.py
 """
-from __future__ import annotations # defers annotation evaluation — never NameError
+from __future__ import annotations  # defers annotation evaluation (PEP 563)
+from typing import Any, Optional, Union  # FastMCP resolves annotations via get_type_hints()
 
 from skills._paywall import paywall_response
 
@@ -19,6 +20,6 @@ TOOL_META = {
 }
 
 
-def hardware_wallet_handshake(transaction: dict[str, Any], threshold_usd: float = DEFAULT_THRESHOLD_USD) -> dict[str, Any]:
+def hardware_wallet_handshake(transaction: dict[str, Any], threshold_usd: float = 5000.0) -> dict[str, Any]:
     """Premium skill — subscribe to access full implementation."""
     return paywall_response("hardware_wallet_handshake")
