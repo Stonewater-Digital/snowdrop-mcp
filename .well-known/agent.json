@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0",
+  "name": "Snowdrop",
+  "displayName": "Snowdrop MCP — Financial & Infrastructure Skills",
+  "description": "595 financial modeling, compliance, DeFi, GCP, and infrastructure skills. ES256 JWT Bearer token required for premium tool access. Contact Thunder (Turner Peters, Stonewater Solutions LLC) for token issuance.",
+  "url": "https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app",
+  "version": "2.0.0",
+  "provider": {
+    "organization": "Stonewater Solutions LLC",
+    "url": "https://snowdrop.ai"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": false,
+    "multiTurn": true
+  },
+  "authentication": {
+    "schemes": ["Bearer"],
+    "description": "ES256 JWT signed by Snowdrop Core. Scope: 'premium:all' for full access, 'premium:skill:{tool_name}' for single-tool access. Token issuance is manual — contact provider.",
+    "tokenEndpoint": null,
+    "scopes": ["premium:all", "premium:skill:{tool_name}"]
+  },
+  "defaultInputModes": ["application/json"],
+  "defaultOutputModes": ["application/json"],
+  "skills": [
+    {
+      "id": "mcp_tools",
+      "name": "MCP Tool Access",
+      "description": "Access all 595 Snowdrop skills via the MCP tools/call protocol. Use tools/list to enumerate available skills.",
+      "tags": [
+        "financial-modeling", "compliance", "defi", "gcp", "firebase",
+        "infrastructure", "accounting", "risk", "real-estate", "crypto"
+      ],
+      "examples": [
+        "Calculate IRR for a set of cash flows",
+        "Run MiCA asset classification on a token",
+        "Perform Altman Z-Score bankruptcy analysis",
+        "Send a Firebase Cloud Messaging notification",
+        "Query a BigQuery dataset"
+      ]
+    }
+  ],
+  "documentationUrl": "https://github.com/Stonewater-Digital/snowdrop-core",
+  "iconUrl": null,
+  "termsOfServiceUrl": null,
+  "privacyPolicyUrl": null
+}
