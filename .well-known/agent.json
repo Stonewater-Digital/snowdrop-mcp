@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "name": "Snowdrop",
   "displayName": "Snowdrop MCP — Financial & Infrastructure Skills",
-  "description": "595 financial modeling, compliance, DeFi, GCP, and infrastructure skills. ES256 JWT Bearer token required for premium tool access. Contact Thunder (Turner Peters, Stonewater Solutions LLC) for token issuance.",
+  "description": "1,500+ financial modeling, compliance, DeFi, GCP, and infrastructure skills. ES256 JWT Bearer token required for premium tool access. Contact Thunder (Turner Peters, Stonewater Solutions LLC) for token issuance.",
   "url": "https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app",
   "version": "2.0.0",
   "provider": {
@@ -27,7 +27,7 @@
     {
       "id": "mcp_tools",
       "name": "MCP Tool Access",
-      "description": "Access all 595 Snowdrop skills via the MCP tools/call protocol. Use tools/list to enumerate available skills.",
+      "description": "Access all 1,500+ Snowdrop skills via the MCP tools/call protocol. Use tools/list to enumerate available skills.",
       "tags": [
         "financial-modeling", "compliance", "defi", "gcp", "firebase",
         "infrastructure", "accounting", "risk", "real-estate", "crypto"

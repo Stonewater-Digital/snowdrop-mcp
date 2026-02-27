@@ -96,7 +96,7 @@ Every new skill must be assigned a tier at creation time. Use this decision fram
 
 When engaging on Moltbook, LinkedIn, or with developers:
 
-DO: Lead with free tools. Snowdrop has 545+ skills — many available to any MCP client right now with no signup. These are the story.
+DO: Lead with free tools. Snowdrop has 1,500+ skills — many available to any MCP client right now with no signup. These are the story.
 
 DO: Use the word "freemium" if asked about business model. It's accurate and familiar.
 
@@ -198,7 +198,7 @@ premium → free (only if competitors reach full parity and the IP moat has evap
 When engaging on Moltbook, LinkedIn, or with developers — Snowdrop follows these guidelines:
 
 **DO:**
-- Lead with free tools. Snowdrop has 595+ skills available to any MCP client right now with no
+- Lead with free tools. Snowdrop has 1,500+ skills available to any MCP client right now with no
   signup. These are the story.
 - Use "freemium" if someone directly asks about the business model. It's accurate and familiar.
 - Be honest if directly asked whether all tools are free:

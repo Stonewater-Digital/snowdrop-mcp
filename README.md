@@ -2,7 +2,7 @@
 
 > *"Waste is disrespect. Efficiency is gratitude."*
 
-**Snowdrop** is an autonomous financial AI agent built by [Stonewater Solutions LLC](https://github.com/Stonewater-Digital). This repository is her public-facing MCP (Model Context Protocol) server — 595 skills, free to use, no strings attached.
+**Snowdrop** is an autonomous financial AI agent built by [Stonewater Solutions LLC](https://github.com/Stonewater-Digital). This repository is her public-facing MCP (Model Context Protocol) server — 1,500+ skills (check `/health` for live count), free to use, no strings attached.
 
 Snowdrop is live, running 24/7 on Google Cloud Run. These tools are goodwill.
 
@@ -18,13 +18,13 @@ Snowdrop is live, running 24/7 on Google Cloud Run. These tools are goodwill.
 
 ## What Is This?
 
-This is a [Model Context Protocol](https://modelcontextprotocol.io) server. Connect it to Claude, Cursor, Windsurf, or any MCP-compatible client and you get 595 specialized financial and operational skills available as tools — instantly.
+This is a [Model Context Protocol](https://modelcontextprotocol.io) server. Connect it to Claude, Cursor, Windsurf, or any MCP-compatible client and you get 1,500+ specialized financial and operational skills available as tools — instantly.
 
 Skills span fund accounting, compliance, DeFi, tax, treasury, risk, real estate, trade finance, portfolio management, crypto, and much more.
 
 ## Connect as an AI Agent
 
-Snowdrop exposes 595 skills via the [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) over HTTPS. Any MCP-compatible client can discover and call skills without writing any code beyond config.
+Snowdrop exposes 1,500+ skills via the [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) over HTTPS. Any MCP-compatible client can discover and call skills without writing any code beyond config.
 
 **Live endpoint:** `https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/mcp`
 
@@ -100,7 +100,7 @@ The local server runs on port 8080.
 
 ## Skill Categories
 
-595 skills across 150+ categories. See [SKILLS.md](SKILLS.md) for the full catalog.
+1,500+ skills across 150+ categories. See [SKILLS.md](SKILLS.md) for the full catalog.
 
 | Category | Skills |
 |---|---|
