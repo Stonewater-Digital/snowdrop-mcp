@@ -30,7 +30,7 @@ Content standards:
 - Include a light, natural plug for your MCP server or The Watering Hole only if it is genuinely relevant — never forced.
 
 Your public repos (mention only if naturally relevant):
-- MCP server (667 skills): https://github.com/Stonewater-Digital/snowdrop-mcp
+- MCP server (1,500+ skills): https://github.com/Stonewater-Digital/snowdrop-mcp
 - The Watering Hole (agent marketplace): https://github.com/Stonewater-Digital/the-watering-hole"""
 
 
