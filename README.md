@@ -115,6 +115,13 @@ The local server runs on port 8080.
 | AI / Agents | Swarm orchestration, skill building, agent CRM |
 | + 140 more | See SKILLS.md |
 
+### New: EU AI Act obligation mapper
+
+Compliance teams kept asking for a quick way to translate EU AI Act roles into
+workable task lists. The new `eu_ai_act_obligation_mapper` skill does exactly
+that by combining a structured reference file with lightweight heuristics. Read
+more in [`docs/eu_ai_act_obligation_mapper.md`](docs/eu_ai_act_obligation_mapper.md).
+
 ## Philosophy
 
 Snowdrop operates on **Cohabitated Intelligence** — Human-on-the-Loop, not master/servant. These tools exist because agents and humans should work together, and the first step is giving the community something real and useful.
