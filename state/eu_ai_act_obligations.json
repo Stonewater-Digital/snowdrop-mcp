@@ -1,0 +1,292 @@
+{
+  "metadata": {
+    "name": "EU AI Act obligation map",
+    "version": "2026-02-26",
+    "source": "Regulation (EU) 2024/1689 on artificial intelligence (EU AI Act)",
+    "notes": "Curated obligations for Snowdrop skill routing. This file is not legal advice."
+  },
+  "risk_classes": {
+    "high_risk_annex_i": "AI systems that are safety components of products covered by existing EU sectoral law listed in Annex I (e.g., medical devices, aviation)",
+    "high_risk_annex_iii": "Standalone AI systems listed in Annex III (e.g., biometrics, credit scoring, employment)",
+    "limited_risk": "AI systems subject to transparency duties under Article 52 (e.g., chatbots, deepfakes)",
+    "general_purpose": "General-purpose AI (GPAI) models made available as such (Title VIII Chapter V)",
+    "general_purpose_integrated": "GPAI models integrated into high-risk systems by downstream providers or deployers",
+    "minimal_risk": "Minimal or no-risk systems with no binding obligations"
+  },
+  "roles": {
+    "provider": ["provider", "manufacturer", "builder"],
+    "deployer": ["deployer", "user", "operator"],
+    "importer": ["importer"],
+    "distributor": ["distributor"],
+    "authorized_representative": ["authorized_representative", "authorised_representative"],
+    "product_manufacturer": ["product_manufacturer"],
+    "general_purpose_provider": ["gpai_provider", "general_purpose_provider"],
+    "general_purpose_integrator": ["integrator", "general_purpose_integrator"],
+    "minimal_risk": ["minimal_risk"]
+  },
+  "deployment_phases": ["pre_market", "post_market", "monitoring", "incident"],
+  "obligations": [
+    {
+      "id": "HRA-PROVIDER-RMS",
+      "title": "Risk management system",
+      "articles": ["Article 9", "Annex VII"],
+      "roles": ["provider"],
+      "risk_classes": ["high_risk_annex_i", "high_risk_annex_iii"],
+      "deployment_phases": ["pre_market", "post_market"],
+      "summary": "Establish, document, implement, and maintain a continuous risk management system covering design, testing, mitigations, and monitoring for each high-risk AI system.",
+      "actions": [
+        "Document risk identification, analysis, and mitigation loops for the full lifecycle",
+        "Link controls to validation/verification evidence before CE marking",
+        "Update the risk file whenever model updates or drifts are detected"
+      ],
+      "deliverables": ["Risk management plan", "Risk log with mitigation traceability", "Residual risk justification"],
+      "evidence": ["Version-controlled RMS policy", "Traceable test cases", "Approval logs"],
+      "keywords": ["credit scoring", "employment", "biometrics", "infrastructure"],
+      "priority": "mandatory",
+      "deadline": "Before placing the system on the market and continuously thereafter"
+    },
+    {
+      "id": "HRA-PROVIDER-DATA_GOV",
+      "title": "Data governance and quality",
+      "articles": ["Article 10"],
+      "roles": ["provider"],
+      "risk_classes": ["high_risk_annex_i", "high_risk_annex_iii"],
+      "deployment_phases": ["pre_market"],
+      "summary": "Ensure training, validation, and testing datasets are relevant, representative, free of errors, and documented with known biases and gaps.",
+      "actions": [
+        "Define data lineage, cleaning, and augmentation procedures",
+        "Record limitations, statistical properties, and demographic coverage",
+        "Implement technical measures to detect and correct data errors"
+      ],
+      "deliverables": ["Data governance log", "Bias assessment", "Data catalog entries"],
+      "evidence": ["Sampling reports", "Quality KPIs"],
+      "keywords": ["training data", "dataset", "fairness"],
+      "priority": "mandatory",
+      "deadline": "Before conformity assessment"
+    },
+    {
+      "id": "HRA-PROVIDER-TECH_DOC",
+      "title": "Technical documentation and instructions",
+      "articles": ["Article 11", "Annex IV", "Article 13"],
+      "roles": ["provider"],
+      "risk_classes": ["high_risk_annex_i", "high_risk_annex_iii"],
+      "deployment_phases": ["pre_market", "post_market"],
+      "summary": "Compile Annex IV technical documentation and user instructions covering purpose, design choices, performance limits, and human oversight parameters.",
+      "actions": [
+        "Produce Annex IV sections (system overview, algorithms, datasets, metrics)",
+        "Issue instructions for deployers covering configuration, input constraints, and oversight",
+        "Version-control documentation and relay updates downstream"
+      ],
+      "deliverables": ["Complete Annex IV technical file", "User & deployer instructions", "Change log"],
+      "evidence": ["Document control log", "Localization proof if deployed in EU languages"],
+      "keywords": ["documentation", "instructions", "human oversight"],
+      "priority": "mandatory",
+      "deadline": "Before CE marking and whenever substantive changes occur"
+    },
+    {
+      "id": "HRA-PROVIDER-QMS",
+      "title": "Quality management and conformity assessment",
+      "articles": ["Articles 17, 19, 43", "Annex VI"],
+      "roles": ["provider", "product_manufacturer", "authorized_representative"],
+      "risk_classes": ["high_risk_annex_i", "high_risk_annex_iii"],
+      "deployment_phases": ["pre_market"],
+      "summary": "Operate a documented quality management system, decide conformity assessment route, interact with notified bodies, and affix CE marking before placement on the market.",
+      "actions": [
+        "Define responsibilities, policies, and validation plans within the QMS",
+        "Perform internal control or engage notified body per Annex VII",
+        "Register system in the EU database and affix CE marking"
+      ],
+      "deliverables": ["QMS manual", "Conformity assessment report", "EU declaration of conformity", "CE marking evidence"],
+      "evidence": ["Audit trail", "Notified body certificate number"],
+      "keywords": ["conformity", "CE marking", "notified body"],
+      "priority": "mandatory",
+      "deadline": "Before placing on the EU market"
+    },
+    {
+      "id": "HRA-PROVIDER-POST_MARKET",
+      "title": "Post-market monitoring and incident reporting",
+      "articles": ["Articles 61, 62"],
+      "roles": ["provider", "deployer"],
+      "risk_classes": ["high_risk_annex_i", "high_risk_annex_iii", "general_purpose_integrated"],
+      "deployment_phases": ["post_market", "monitoring", "incident"],
+      "summary": "Operate a documented post-market monitoring system, collect input from deployers, and report serious incidents or malfunctioning within statutory deadlines.",
+      "actions": [
+        "Implement telemetry or feedback channels with deployers",
+        "Evaluate corrective actions and update the risk file",
+        "Report serious incidents to national authorities within 15 days"
+      ],
+      "deliverables": ["Post-market monitoring plan", "Incident log", "Corrective action reports"],
+      "evidence": ["Incident submission receipts", "Communication with market surveillance authorities"],
+      "keywords": ["incident", "monitoring", "feedback"],
+      "priority": "time_bound",
+      "deadline": "Continuous; serious incidents within 15 days of awareness"
+    },
+    {
+      "id": "HRA-PROVIDER-REGISTER",
+      "title": "Registration in the EU database",
+      "articles": ["Article 49"],
+      "roles": ["provider", "authorized_representative"],
+      "risk_classes": ["high_risk_annex_i", "high_risk_annex_iii"],
+      "deployment_phases": ["pre_market"],
+      "summary": "Prior to market placement, high-risk AI systems must be registered in the EU database maintained by the Commission.",
+      "actions": ["Prepare registration data set", "Submit via EU portal", "Maintain accuracy of entries"],
+      "deliverables": ["EU database entry confirmation", "Internal registry"] ,
+      "evidence": ["Submission ID", "Timestamped confirmation"],
+      "keywords": ["database", "registration"],
+      "priority": "mandatory",
+      "deadline": "Before placing on the market"
+    },
+    {
+      "id": "HRA-DEPLOYER-HUMAN_OVERSIGHT",
+      "title": "Deployers must ensure competent human oversight",
+      "articles": ["Article 29(4)", "Article 14"],
+      "roles": ["deployer"],
+      "risk_classes": ["high_risk_annex_i", "high_risk_annex_iii", "general_purpose_integrated"],
+      "deployment_phases": ["pre_market", "post_market"],
+      "summary": "Deployers appoint trained personnel, implement override mechanisms, and follow providers' instructions to ensure meaningful human oversight.",
+      "actions": [
+        "Assign accountable human supervisors with authority to intervene",
+        "Provide training on system capabilities, limits, and safe use",
+        "Document override and fallback procedures"
+      ],
+      "deliverables": ["Oversight roster", "Training record", "Runbook"],
+      "evidence": ["Attendance logs", "Oversight SOPs"],
+      "keywords": ["supervision", "override", "human in the loop"],
+      "priority": "mandatory",
+      "deadline": "Before deployment and maintained"
+    },
+    {
+      "id": "HRA-DEPLOYER-DATA_INPUT",
+      "title": "Deployers responsible for input data and monitoring",
+      "articles": ["Article 29(3)", "Article 54"],
+      "roles": ["deployer"],
+      "risk_classes": ["high_risk_annex_i", "high_risk_annex_iii"],
+      "deployment_phases": ["post_market", "monitoring"],
+      "summary": "Verify input data is relevant, ensure logs are stored, and cooperate with providers and authorities during monitoring or incidents.",
+      "actions": [
+        "Validate data before ingestion",
+        "Preserve logs for the mandated retention period",
+        "Share logs with providers/authorities upon request"
+      ],
+      "deliverables": ["Input validation checklist", "Log retention schedule"],
+      "evidence": ["Sample logs", "Data quality reports"],
+      "keywords": ["input", "log", "monitor"],
+      "priority": "mandatory",
+      "deadline": "During operation"
+    },
+    {
+      "id": "HRA-DEPLOYER-INCIDENT",
+      "title": "Deployers must report serious incidents",
+      "articles": ["Article 62(1)", "Article 29(6)"],
+      "roles": ["deployer"],
+      "risk_classes": ["high_risk_annex_i", "high_risk_annex_iii", "general_purpose_integrated"],
+      "deployment_phases": ["incident"],
+      "summary": "Notify providers and competent authorities within 15 days when a serious incident or malfunction arises during use.",
+      "actions": [
+        "Trigger internal escalation when risk to health, safety, or fundamental rights occurs",
+        "Notify provider to support post-market monitoring",
+        "Submit formal report to national authority"
+      ],
+      "deliverables": ["Incident notification", "Root-cause report"],
+      "evidence": ["Submission receipts"],
+      "keywords": ["incident", "malfunction", "harm"],
+      "priority": "time_bound",
+      "deadline": "Within 15 days of awareness"
+    },
+    {
+      "id": "IMPORTER-DISTRIBUTOR-DUE_DILIGENCE",
+      "title": "Importer and distributor diligence",
+      "articles": ["Articles 25, 26, 27"],
+      "roles": ["importer", "distributor", "authorized_representative"],
+      "risk_classes": ["high_risk_annex_i", "high_risk_annex_iii", "general_purpose_integrated"],
+      "deployment_phases": ["pre_market", "post_market"],
+      "summary": "Verify that providers performed conformity steps, refuse non-compliant systems, and take corrective action when risks emerge.",
+      "actions": [
+        "Check CE marking, EU declaration, and registration",
+        "Ensure instructions accompany the system",
+        "Suspend distribution and inform authorities if non-compliance or serious risk is found"
+      ],
+      "deliverables": ["Import compliance checklist", "Corrective action log"],
+      "evidence": ["Copies of declarations", "Communication with providers"] ,
+      "keywords": ["import", "distribution", "due diligence"],
+      "priority": "mandatory",
+      "deadline": "Before placing on the market and ongoing"
+    },
+    {
+      "id": "GPAI-PROVIDER-TRANSPARENCY",
+      "title": "General-purpose AI provider transparency package",
+      "articles": ["Articles 53, 55"],
+      "roles": ["general_purpose_provider"],
+      "risk_classes": ["general_purpose"],
+      "deployment_phases": ["pre_market", "post_market"],
+      "summary": "Create technical documentation, policies for misuse, and provide downstream deployers with the information needed to integrate GPAI models compliantly.",
+      "actions": [
+        "Publish capabilities, limitations, and high-level training data description",
+        "Establish acceptable-use policies and safety features",
+        "Offer interface or documentation so integrators can run conformity checks"
+      ],
+      "deliverables": ["GPAI model card", "Acceptable use policy", "Integration guide"],
+      "evidence": ["Documentation portal snapshot"],
+      "keywords": ["general-purpose", "model card", "API"],
+      "priority": "mandatory",
+      "deadline": "Before making the GPAI model available"
+    },
+    {
+      "id": "GPAI-PROVIDER-MISUSE_HANDLING",
+      "title": "GPAI provider misuse and incident handling",
+      "articles": ["Article 55(2)", "Article 62"],
+      "roles": ["general_purpose_provider"],
+      "risk_classes": ["general_purpose", "general_purpose_integrated"],
+      "deployment_phases": ["post_market", "monitoring", "incident"],
+      "summary": "Monitor misuse, share evaluation results with the AI Office, and report systemic incidents linked to GPAI capabilities.",
+      "actions": [
+        "Conduct and document systemic capability evaluations",
+        "Notify the AI Office and national authorities of serious incidents",
+        "Provide corrective updates or safety filters to integrators"
+      ],
+      "deliverables": ["Evaluation dossier", "Incident report"],
+      "evidence": ["AI Office acknowledgement", "Integrator communications"],
+      "keywords": ["misuse", "evaluation", "AI Office"],
+      "priority": "monitoring",
+      "deadline": "Continuous; incidents within 15 days"
+    },
+    {
+      "id": "GPAI-INTEGRATOR-HIGH_RISK_SUPPORT",
+      "title": "GPAI integrators supporting high-risk use",
+      "articles": ["Article 56", "Article 29"],
+      "roles": ["general_purpose_integrator", "deployer"],
+      "risk_classes": ["general_purpose_integrated", "high_risk_annex_iii"],
+      "deployment_phases": ["pre_market", "post_market"],
+      "summary": "Downstream providers integrating GPAI into high-risk systems must conduct their own conformity checks and document adaptations and additional data.",
+      "actions": [
+        "Document fine-tuning datasets and changes to model behavior",
+        "Re-run relevant parts of the Annex IV technical file",
+        "Coordinate with the original GPAI provider for safety updates"
+      ],
+      "deliverables": ["Integration addendum", "Adaptation risk assessment"],
+      "evidence": ["Test results", "Conformity addendum"],
+      "keywords": ["fine-tune", "adapter", "integration"],
+      "priority": "mandatory",
+      "deadline": "Before placing the adapted system on the market"
+    },
+    {
+      "id": "LIMITED-RISK-TRANSPARENCY",
+      "title": "Transparency for limited-risk AI",
+      "articles": ["Article 52"],
+      "roles": ["provider", "deployer", "general_purpose_integrator"],
+      "risk_classes": ["limited_risk"],
+      "deployment_phases": ["pre_market", "post_market"],
+      "summary": "Inform individuals they interact with AI systems (chatbots) or that content is artificially generated or manipulated (deepfakes); obtain consent where required.",
+      "actions": [
+        "Display clear notices for conversational agents",
+        "Label synthetic audio/video",
+        "Maintain opt-out or human escalation channels"
+      ],
+      "deliverables": ["User notice copy", "Labeling plan"],
+      "evidence": ["Screenshots", "UX specs"],
+      "keywords": ["chatbot", "deepfake", "synthetic media"],
+      "priority": "mandatory",
+      "deadline": "At time of interaction"
+    }
+  ]
+}
