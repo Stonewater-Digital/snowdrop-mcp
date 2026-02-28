@@ -1,10 +1,10 @@
 # Snowdrop MCP — Skills Directory
 
 ## Executive Summary
-This document provides a comprehensive, auto-generated directory of all skills available on the Snowdrop MCP server. It details the exact count and capabilities of both **Premium** (proprietary/paid) and **Free** skills currently loaded in production. Generated: `2026-02-28T00:02:53.236038+00:00`. The skill count reflects the local Python environment. For the count of skills deployed to Cloud Run, call the /health endpoint at https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/health. To regenerate: `python scripts/generate_skill_directory.py` or `./scripts/sync_catalog.sh`.
+This document provides a comprehensive, auto-generated directory of all skills available on the Snowdrop MCP server. It details the exact count and capabilities of both **Premium** (proprietary/paid) and **Free** skills currently loaded in production. Generated: `2026-02-28T13:28:23.866554+00:00`. The skill count reflects the local Python environment. For the count of skills deployed to Cloud Run, call the /health endpoint at https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/health. To regenerate: `python scripts/generate_skill_directory.py` or `./scripts/sync_catalog.sh`.
 
-**Total Active Skills:** 1525
-- **Free Skills:** 1503
+**Total Active Skills:** 1528
+- **Free Skills:** 1506
 - **Premium Skills:** 22
 
 ## Table of Contents
@@ -629,6 +629,7 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `github_issue_tracker` | Fetches labeled GitHub issues and estimates difficulty. |
 | `global_tax_withholding_skill` | Calculates the withholding tax on a distribution to an international LP. Applies any available tax treaty rate in preference to the default rate. Grants full exemption (0%) to qualifying entities such as pension funds and sovereign wealth funds. Returns the withholding amount, effective rate, and net distribution after withholding. |
 | `goodwill_cask_allocator` | Allocates the daily Goodwill cask budget until depleted, then closes the tap. |
+| `google_chat_send` | Send a message to a Google Chat space via the Chat Bot API. |
 | `gordon_growth_model` | Computes intrinsic value using Gordon Growth, plus yield and growth sensitivity. |
 | `gp_clawback_calculator` | Evaluates carry distributions versus whole-fund entitlement and recommends clawback. |
 | `gp_co_invest_calculator` | Calculates GP and LP capital allocations plus promote economics for co-investment deals. Returns GP commitment, LP commitment, and the promote pool available for the GP. |
@@ -996,6 +997,7 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `preferred_return_calculator` | Calculates accrued preferred return on LP capital with configurable compounding frequency. Supports annual, quarterly, monthly, and daily compounding. |
 | `premium_calculator` | Computes gross written premium from base rate, exposure units, experience modification, schedule credits, and other adjustments following standard manual rating methodology. |
 | `premium_estimator` | Provides heuristic premium estimates based on business profile and coverage type. |
+| `prep_daily_intel` | Aggregate 24h logs and system health into 3-5 BLUF bullet points for CTO briefing. |
 | `present_value_calculator` | Computes the present value of a lump sum or annuity, adjusting for payment timing and reporting aggregate payments and implied interest. |
 | `price_alert_evaluator` | Checks price conditions (above, below, pct_change) and prioritizes alerts. |
 | `price_feed_aggregator` | Fetches CoinGecko and Kraken prices then returns the median. |
@@ -1421,6 +1423,7 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `transaction_ingest_bridge` | Fetches or accepts Mercury/Kraken transaction payloads and normalizes them for Ghost Ledger ingestion. |
 | `transaction_sim_pre_flight` | Simulates an on-chain transaction in isolation before submission. Checks for insufficient balances, high slippage, and other failure conditions. Returns projected new balances, estimated gas cost in USD, and a success probability score derived from balance adequacy and warning count. |
 | `transfer_pricing_fund_analyzer` | Evaluates arm's-length ranges for fund management fees under IRC §482 and OECD TP Guidelines (2022). |
+| `transmit_to_zeus` | Prepare daily intel and transmit to Zeus via Conductive Black Ops Google Chat space. |
 | `treasury_sweep_recommender` | Identifies idle cash available for sweeps and proposes destinations (pending Thunder). |
 | `treaty_rate_lookup` | Returns statutory vs treaty withholding rates and article citations for major US treaties. |
 | `trend_line_calculator` | Constructs trendlines using linear regression or peak/trough anchors to monitor price breaks. |
