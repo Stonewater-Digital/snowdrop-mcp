@@ -1,10 +1,10 @@
 # Snowdrop MCP — Skills Directory
 
 ## Executive Summary
-This document provides a comprehensive, auto-generated directory of all skills available on the Snowdrop MCP server. It details the exact count and capabilities of both **Premium** (proprietary/paid) and **Free** skills currently loaded in production. Generated: `2026-02-27T23:32:00.170537+00:00`. The skill count reflects the local Python environment. For the count of skills deployed to Cloud Run, call the /health endpoint at https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/health. To regenerate: `python scripts/generate_skill_directory.py` or `./scripts/sync_catalog.sh`.
+This document provides a comprehensive, auto-generated directory of all skills available on the Snowdrop MCP server. It details the exact count and capabilities of both **Premium** (proprietary/paid) and **Free** skills currently loaded in production. Generated: `2026-02-28T00:02:53.236038+00:00`. The skill count reflects the local Python environment. For the count of skills deployed to Cloud Run, call the /health endpoint at https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/health. To regenerate: `python scripts/generate_skill_directory.py` or `./scripts/sync_catalog.sh`.
 
-**Total Active Skills:** 1673
-- **Free Skills:** 1651
+**Total Active Skills:** 1525
+- **Free Skills:** 1503
 - **Premium Skills:** 22
 
 ## Table of Contents
@@ -47,7 +47,7 @@ Premium skills contain proprietary logic (e.g., financial modeling, compliance e
 ## Free Skills by Category
 Free skills are publicly available utility, infrastructure, and standard API wrapper tools.
 
-### Users
+### Home
 | Skill Name | Description |
 |------------|-------------|
 | `a2a_request_handler` | Performs JSON-RPC compliance checks and bearer-token auth for A2A requests. |
@@ -58,13 +58,10 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `accounts_payable_optimizer` | Evaluates supplier invoices for early payment discounts versus company cost of capital to recommend an optimal payment schedule. |
 | `accumulation_distribution` | Calculates accumulation/distribution via money flow multiplier and cumulative volume flow. |
 | `achievement_tracker` | Evaluates activity events for new badges and upcoming milestones. |
-| `acquirer_spread_hedge_allocator` | Optimizes hedge basket weighting using beta, borrow cost, and stub exposure. |
 | `action_item_extractor` | Uses heuristics to identify action items, assignees, and priority from text. |
 | `active_address_momentum` | Analyzes daily active address series, applying momentum and Metcalfe's Law valuation hints. |
-| `activist_campaign_scorecard` | Scores activist campaigns using filing cadence, proposal quality, and precedent outcomes to frame trade bias. |
 | `activity_based_costing` | Distributes cost pools based on activity driver consumption. |
 | `administrator_api_bridge` | Bridge skill that validates administrator feeds and emits normalized payload summaries. |
-| `adr_local_settlement_optimizer` | Suggests optimal ADR/local conversions factoring fees and FX parity. |
 | `advance_decline_line` | Builds the cumulative Advance-Decline line and optional McClellan oscillator signal. |
 | `adx_calculator` | Applies Wilder's Average Directional Index to gauge whether trends are weak or strong. |
 | `aerodrome_impermanent_loss_guardrail` | Simulates Aerodrome IL exposure for dual-asset pools and recommends caps. |
@@ -100,8 +97,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `annuity_payment_calculator` | Determines the periodic payment required to amortize a balance, including summary stats for total paid, interest, and early amortization snapshots. |
 | `annuity_pricing_tool` | Prices whole-life and deferred-life annuities-due using a simple mortality model calibrated to approximate 2017 CSO rates. Returns annuity factor, present value, and break-even analysis metrics. |
 | `anti_treaty_shopping_lob` | Evaluates LOB tests (ownership/base erosion, publicly traded, active trade or business, derivative benefits). |
-| `antitrust_case_law_matcher` | Matches live deals with precedent case rulings to infer regulatory posture. |
-| `antitrust_timeline_estimator` | Projects regulatory review paths using precedent duration by sector and agency workload. |
 | `api_credential_rotator` | Generates rotation tasks for API keys/secrets using age vs. policy frequency. |
 | `api_health_monitor` | Performs lightweight health checks and scores availability. |
 | `api_key_rotation_logic` | Evaluates API credential ages against their configured maximum lifetime. Returns three categories: expired keys (must rotate now), expiring-soon keys (within 7 days), and a full rotation schedule sorted by urgency. Also reports an overall compliance percentage. |
@@ -141,8 +136,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `asset_allocation_by_age` | Applies a modified age-based formula to recommend stock/bond/cash/alt allocations and produces a glide path toward retirement. |
 | `asset_allocation_optimizer` | Finds feasible allocations that hit target return/risk under constraints. |
 | `asset_backed_token_collateral_analyr` | Evaluates collateral value, advance rates, and haircuts for asset-backed token programs. |
-| `asset_light_transition_scorecard` | Scores restructurings shifting to asset-light models based on margin potential. |
-| `asset_sale_catalyst_model` | Assesses probability-weighted asset sale proceeds versus enterprise value gap. |
 | `asset_swap_spread` | Derives the par asset swap spread and constant Z-spread using swap discount factors and root-finding. |
 | `asset_tokenization_fee_estimator` | Aggregates setup and recurring platform fees to forecast tokenization economics. |
 | `atr_calculator` | Implements Wilder's Average True Range for volatility assessment. |
@@ -162,7 +155,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `balancer_impermanent_loss_guardrail` | Simulates Balancer IL exposure for dual-asset pools and recommends caps. |
 | `balancer_liquidity_rebalance_playbook` | Builds Balancer liquidity rebalance plans for yield rotations. |
 | `balancer_lsd_leverage_spread_modeler` | Models Balancer LSD leverage spreads with health-factor guardrails. |
-| `bankruptcy_exit_watchlist` | Tracks Chapter 11 emergence timelines, valuation metrics, and tradeable post-reorg equities. |
 | `barrier_option_pricer` | Monte Carlo pricer for continuously monitored barriers using Brownian-bridge correction (Broadie-Glasserman, 1997) for up/down and in/out configurations. |
 | `base_batch_cost_pressure_monitor` | Projects Base batch posting cost pressure based on calldata pricing and queue depth. |
 | `base_cross_domain_bundle_guard` | Tracks Base cross-domain bundles that leak MEV to L1. |
@@ -187,7 +179,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `base_tx_priority_curve_optimizer` | Builds a recommended Base priority fee curve for latency-sensitive users. |
 | `basel_output_floor` | Applies 72.5% output floor to IRB RWA and quantifies capital impact. |
 | `basis_risk_calculator` | Quantifies commodity hedge basis risk. Computes hedged portfolio volatility, hedge effectiveness (R²), optimal hedge ratio (minimum-variance), and basis differential. |
-| `basket_trade_rebalance_orchestrator` | Simulates rebalances for popular baskets to plan front-running trades. |
 | `benchmark_comparator` | Calculates alpha, beta, tracking error, and rolling alpha versus benchmark. |
 | `benchmark_relative_performance` | Calculates performance statistics versus a benchmark including capture ratios and tracking error. |
 | `beta_calculator` | Computes beta, correlation, alpha, systematic contribution, and residual risk relative to a benchmark. |
@@ -217,15 +208,12 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `break_even_analyzer` | Computes break-even units, revenue, margin of safety, and estimated time to break even. |
 | `breakeven_inflation_calculator` | Calculates breakeven inflation and adjusts for risk premium assumptions. |
 | `bridge_loan_pricing` | Prices a fixed-rate amortizing bridge loan. Computes the monthly payment using the standard annuity formula, total interest cost, effective APR (nominal, monthly compounding), and a partial amortization schedule showing the first 3 months and final month. Rates are expressed as annual decimals (e.g. 0.05 = 5%). |
-| `bridge_loan_rollover_calculator` | Models bridge maturity walls and rollover probability. |
 | `budget_variance_analyzer` | Summarizes budgeted versus actual spend by category with variance breakdowns, flagging overruns and savings opportunities. |
 | `burn_rate_calculator` | Calculates gross/net burn, runway, and trend classification from recent data. |
 | `burn_rate_runway` | Computes gross and net burn rates, cash runway, and projected zero-cash date accounting for compounding revenue growth. |
 | `burn_trigger_monitor` | Flags Watering Hole burn when expenses beat revenue+labor by 20% for 3 weeks. |
-| `buyback_window_optimizer` | Aligns blackout schedules with liquidity patterns to anticipate supportive repurchase flows. |
 | `cac_ltv_calculator` | Calculates CAC, gross-margin LTV, payback period, and ratio health to evaluate growth efficiency for subscription and transactional businesses. |
 | `calc_waterfall_dist` | Calculates LP/GP waterfall distributions across preferred return, catch-up, and carried interest tiers. |
-| `calendar_spread_decay_optimizer` | Optimizes calendar spreads by simulating theta bleed vs. vol drift. |
 | `callable_bond_oas` | Builds a Black-Derman-Toy short-rate lattice calibrated to the input curve and solves for the OAS that matches market price, then reports duration and convexity. |
 | `callable_bond_pricer` | Values a callable bond on a single-factor Hull-White lattice, providing model price, duration, and call exercise probabilities. |
 | `calmar_ratio_calculator` | Computes the Calmar ratio using cumulative returns and drawdown analysis. |
@@ -242,7 +230,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `capital_call_notice_generator` | Creates LP-specific capital call instructions awaiting Thunder sign-off. |
 | `capital_expenditure_analyzer` | Breaks capex into maintenance vs growth and measures NOI burden. |
 | `capital_gains_tax_calculator` | Calculates realized capital gain tax based on holding period and jurisdiction. |
-| `capital_raise_dilution_estimator` | Simulates rights, PIPE, and follow-on dilution paths to measure near-term overhangs. |
 | `captive_insurance_analyzer` | Estimates required surplus and feasibility for forming a captive insurer. Uses Value-at-Risk (VaR) at a user-specified confidence level with a normal loss distribution assumption. Returns required surplus, VaR capital, break-even loss ratio, and a feasibility score. |
 | `captive_insurance_feasibility_model` | Scores captive feasibility based on losses, premium, and surplus needs. |
 | `carbon_credit_pricer` | Applies benchmark market prices with discounts for vintage and premiums for project quality to produce fair values. |
@@ -251,12 +238,9 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `carried_interest_tax_calculator` | Recharacterizes carried interest under IRC §1061's three-year holding period rule. |
 | `carried_interest_tracker` | Tracks cumulative GP carried interest earned, distributed, and held in reserve based on fund cash flows. |
 | `carry_trade_calculator` | Computes carry-to-vol metrics for FX pairs using interest differentials. |
-| `carveout_proceeds_allocator` | Simulates cash deployment from equity carveouts vs. balance-sheet needs. |
 | `cash_conversion_cycle` | Computes DSO, DIO, DPO, and the cash conversion cycle to assess working capital efficiency. |
 | `cash_flow_forecaster` | Builds a 12-month cash forecast factoring in revenue growth, fixed operating costs, variable expenses, and scheduled one-time cash outlays. |
 | `cash_flow_projector` | Computes monthly cash flow projections with cumulative balances and risk flags. |
-| `cash_total_return_swap_equity_basis_analyzer` | Measures basis between cash equities and TRS quotes after funding. |
-| `cash_vs_stock_mix_optimizer` | Recommends optimal hedge mix incorporating borrow rates and dividend adjustments. |
 | `catastrophe_bond_analyzer` | Evaluates expected loss, risk-adjusted spread, multiple-at-risk (MAR), and approximate Sharpe ratio for catastrophe bonds. Uses trapezoidal integration over the loss distribution to estimate expected loss. |
 | `catastrophe_bond_spreads` | Applies industry convention (expected loss + risk load + liquidity premium) to decompose cat bond spreads. |
 | `ccar_capital_planning` | Projects CET1 ratio over stress horizon using Fed CCAR methodology. |
@@ -291,12 +275,10 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `cecl_calculator` | Calculates CECL reserves by segment using life-of-loan loss rates plus qualitative adjustments. |
 | `central_bank_ledger_sync` | Reconciles a CBDC transaction ledger against central bank balance and reported circulation figures to detect discrepancies. |
 | `cet1_deduction_engine` | Computes CET1 deductions with 15% aggregate threshold for DTAs, MSRs, and investments. |
-| `cfius_risk_heatmap_generator` | Scores deals on national security triggers using NAICS mapping and prior cases. |
 | `chaikin_money_flow` | Calculates Chaikin Money Flow (CMF) over a specified period to quantify accumulation or distribution. |
 | `chaikin_volatility` | Calculates Chaikin Volatility (EMA of range with rate-of-change comparison). |
 | `chalkboard_dashboard` | Aggregates transparency metrics for the public chalkboard dashboard. |
 | `changelog_generator` | Outputs Keep a Changelog formatted text from change entries. |
-| `chapter11_plan_value_dashboard` | Compares plan recovery waterfalls against market pricing for multiple classes. |
 | `charitable_giving_optimizer` | Applies IRS AGI limits for cash (60%) and appreciated asset (30%) donations and advises whether gifting stock yields higher tax savings. |
 | `chart_data_formatter` | Normalizes data into Chart.js/Plotly friendly schema with labels/datasets. |
 | `chart_of_accounts` | Adds or searches accounts across the Stonewater standard chart. |
@@ -306,12 +288,9 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `clawback_analyzer` | Determines whether the GP owes a clawback based on carry received versus carry entitled after preferred return. |
 | `clawback_calculator` | Determines GP clawback due when interim carried interest distributions exceed final entitlement. Optionally applies interest on the outstanding clawback amount. |
 | `climate_risk_transition` | Applies NGFS transition scenarios to sector PDs and estimates RWA impact and stranded assets. |
-| `clinical_trial_binary_planner` | Builds probability-weighted payoff trees for pivotal biotech readouts using open FDA calendars. |
 | `cliquet_option_pricer` | Monte Carlo pricing of locally capped/floored cliquet options with global collar following risk-neutral dynamics. |
 | `cln_pricer` | Discounts CLN coupons and principal with expected loss per Hull (2006) to estimate fair price and incremental spread. |
 | `clob_liquidity_score` | Computes a composite score from depth-weighted spread, imbalance, and volume decay to quantify CLOB liquidity. |
-| `closed_end_fund_activist_screener` | Flags CEFs ripe for activism based on discount persistence and governance terms. |
-| `closing_conditions_scorer` | Scores closing condition tightness to estimate slippage risk. |
 | `cloud_build_trigger` | Manually trigger a Google Cloud Build build from a trigger ID or repo/branch. Returns the build ID and log URL for monitoring. |
 | `cloud_run_deploy` | Deploy, inspect, list, or delete Google Cloud Run services. Uses Cloud Run Admin API v2 with explicit service account credentials only — no gcloud CLI, no Application Default Credentials. |
 | `cmbs_loan_analyzer` | Computes LTV, DSCR, debt yield, and balloon risk for CMBS loans. |
@@ -321,7 +300,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `cohort_retention_analyzer` | Computes retention percentages for each cohort, aggregates the average curve, and estimates cohort-level LTV along with churn by month. |
 | `coinbase_agentkit_verifier` | Drafts the JSON payload needed to verify Snowdrop in Coinbase AgentKit. |
 | `collaborative_liquidity_hunt` | Validates whether a group of trusted agents has sufficient combined capital to exploit a thin-market spread opportunity and produces a pro-rata allocation plan. |
-| `collar_ratio_sensitivity_analyzer` | Simulates collar payout across acquirer price paths to manage hedge sizing. |
 | `collar_strategy_analyzer` | Analyzes protective collar payoff, net cost, and protection ranges. |
 | `collateral_management_optimizer` | Ranks collateral by haircut-adjusted funding cost versus yield. |
 | `collections_manager` | Tiers overdue accounts into reminder, notice, suspension, or write off stages. |
@@ -342,7 +320,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `community_skill_submitter` | Validates community skill code before it enters the review queue. |
 | `comparable_company_screener` | Calculates EV/Revenue, EV/EBITDA, P/E, and implied values for a target. |
 | `comparable_transaction_analyzer` | Derives valuation ranges from comps using EV/Revenue and EV/EBITDA multiples. |
-| `competing_bid_probability_forecaster` | Uses M&A precedent, target scarcity, and sponsor interest signals to rate topping odds. |
 | `competitive_landscape_tracker` | Compares competitor offerings, pricing, and feature coverage. |
 | `compliance_calendar` | Generates a consolidated compliance deadline calendar with statuses. |
 | `compound_interest_calculator` | Calculates the future value of an investment with compound interest, returning effective annual yield and year-by-year growth. |
@@ -370,8 +347,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `convenience_yield_calculator` | Solves for implied convenience yield using the continuous cost-of-carry relation: F = S * exp((r + u - y) * T), rearranged as y = r + u - ln(F/S) / T. |
 | `conversation_summarizer` | Compress multi-turn logs into actionable decisions and questions. |
 | `convertible_arbitrage_analytics` | Computes share hedge, gamma exposure, and credit/borrow carry for convert arb positions. |
-| `convertible_arbitrage_event_sync` | Aligns convertible hedge unwinds with catalysts to trade equity lag/lead. |
-| `convertible_bond_basis_dashboard` | Tracks CB basis vs. fair value adjusting for credit spread and carry. |
 | `convertible_bond_pricer` | Approximates the Tsiveriotis-Fernandes convertible decomposition into straight bond and embedded call option to deliver price and Greeks. |
 | `convertible_note_calculator` | Computes accrued interest, conversion price, and shares for convertible notes. |
 | `convexity_hedger` | Determines barbell weights that match the duration of a bullet bond while maximizing convexity per CFA curriculum. |
@@ -388,7 +363,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `counterparty_exposure_calculator` | Aggregates MTM by counterparty, applies collateral, and flags threshold breaches. |
 | `counterparty_exposure_pfe` | Computes potential future exposure (PFE) across tenors using collateralized netting set information. |
 | `covenant_lite_risk_scorer` | Assigns protection scores based on covenant packages and aggressive terms. |
-| `covenant_reset_playbook_builder` | Outlines likely covenant reset packages from precedent negotiations. |
 | `covered_call_analyzer` | Computes payoff, breakeven, and annualized returns for a covered call position. |
 | `cre_cap_rate_aggregator` | Aggregates capitalization rates from a list of comparable CRE sales. Computes individual cap rates (NOI / sale_price), then averages by asset class (office, retail, multifamily, etc.) and by market (MSA). Returns overall market average and outlier flags. |
 | `cre_debt_stack_modeling` | Models a commercial real estate capital stack with senior debt, mezzanine, and equity tranches. Calculates blended cost of capital, cumulative LTV per tranche, and flags structural risk (e.g., LTV > 80% for senior). |
@@ -397,7 +371,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `credit_conversion_factor_calculator` | Assigns Basel CCF based on facility type (commitment, guarantee, trade finance, etc.). |
 | `credit_curve_bootstrapper` | Solves for piecewise-constant hazard rates that match CDS spreads under the ISDA standard model (premium leg equals protection leg per tenor). |
 | `credit_default_swap_pricer` | Prices a CDS using flat hazard and discount rates, returning par spread and PVs. |
-| `credit_downgrade_shock_modeler` | Projects equity beta and spread snapbacks tied to ratings-agency downgrade scenarios. |
 | `credit_enhancement_calculator` | Determines required subordination and overcollateralization to hit target ratings. |
 | `credit_event_probability` | Transforms piecewise hazard rates into survival, marginal default probabilities, and event odds per tenor. |
 | `credit_facility_utilization_monitor` | Aggregates revolver/DDTL/term loan utilization and identifies spread tiers. |
@@ -417,9 +390,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `credit_waterfall_calculator` | Allocates cash to fees, senior, mezzanine, and equity tranches. |
 | `cron_scheduler` | Checks which scheduled tasks are due and when the next run occurs. |
 | `cross_asset_correlation` | Computes pairwise correlations across asset classes and flags concentration risks. |
-| `cross_asset_vol_leak_tracker` | Tracks vol lead-lag between equities and credit/commodities proxies to inform trades. |
-| `cross_border_event_heat_gauge` | Flags jurisdictions with rising policy risks affecting pending company-level events. |
-| `cross_border_tax_grossup_modeler` | Estimates tax leakage and withholding adjustments for cross-border stock deals. |
 | `cross_chain_accounting_bridge` | Normalize TON, Solana, and Ethereum transactions into a unified single ledger with net positions per chain. |
 | `cross_chain_bridge_fee_estimator` | Estimates total bridge fees including relayer markup and destination chain execution gas. |
 | `crowd_roi_calculator` | Measures value created by community contributions versus review cost. |
@@ -453,52 +423,37 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `data_transformer` | Applies rename/cast/compute/drop/default transformations to dataset rows sequentially. |
 | `dcf_sensitivity_matrix` | Builds a DCF table across WACC and terminal growth assumptions. |
 | `dcf_simple` | Discounts forecast free cash flows and a Gordon terminal value to estimate EV. |
-| `deal_break_downside_calculator` | Benchmarks standalone downside using factor peers, DCF ranges, and option market cues. |
-| `deal_document_change_detector` | Diffs new filings against prior documents to surface material clause changes. |
-| `dealer_gamma_position_reconstructor` | Infers dealer gamma balance using OI ladder and price levels. |
 | `debt_avalanche_planner` | Simulates the debt avalanche payoff strategy (highest interest rate first) and contrasts it against a classic snowball to highlight savings. |
 | `debt_capacity_calculator` | Computes leverage and cash-flow-based debt capacity estimates. |
-| `debt_commitment_slippage_checker` | Monitors financing bank updates and macro stress to flag commitment cracks. |
 | `debt_covenant_monitor` | Evaluates debt covenants against current financial ratios. Supports leverage_ratio (lower is better), interest_coverage (higher is better), and current_ratio (higher is better) covenant types. Returns breach status and distance-to-breach for each covenant. |
 | `debt_issuance_analyzer` | Computes net proceeds, OID yields, and all-in borrowing costs for bond deals. |
 | `debt_service_coverage_calculator` | Computes DSCR using EBITDA less capex relative to cash interest and amortization. |
 | `debt_service_coverage_reit` | Computes DSCR using NOI less recurring capex versus debt service. |
 | `debt_snowball_planner` | Simulates a debt snowball strategy by ordering balances from smallest to largest, applying extra cash to the current focus account, and outputting the payoff timeline. |
 | `debt_to_income_calculator` | Evaluates monthly debt obligations relative to income for mortgage qualification across Conventional, FHA, and VA programs. |
-| `declining_margin_turnaround_monitor` | Scores restructurings on margin recovery speed relative to guidance. |
 | `default_fund_sizing` | Computes cover-2 requirement using member stress losses net of margin and allocates contributions. |
 | `default_rate_calculator` | Calculates period and trailing default rates from cohort data. |
 | `defi_liquidity_pool_analyzer` | Computes turnover, fee APR, and concentration analytics for AMM pools. |
 | `defi_yield_comparator` | Filters DeFi protocols by safety heuristics and ranks risk-adjusted yield. |
 | `delayed_draw_term_loan_tracker` | Calculates drawn/undrawn balances, fees, and blended costs for DDTLs. |
-| `deleveraging_path_visualizer` | Charts leverage trajectories under various asset sale and EBITDA scenarios. |
-| `delta_hedge_cost_forecaster` | Projects re-hedge frequency and cost for popular option structures. |
 | `delta_hedging_simulator` | Simulates discrete delta hedging P&L decomposition over a price path. |
 | `dema_calculator` | Computes the Double Exponential Moving Average (2*EMA - EMA(EMA)) to highlight early momentum turns. |
 | `deployment_readiness_checker` | Aggregates deployment checklist results and surfaces blockers/warnings. |
 | `deposit_pricing_analyzer` | Calculates weighted cost of deposits, effective beta, and expense impact from rate shifts. |
-| `depository_receipt_fee_analyzer` | Quantifies ad valorem fees eroding ADR parity to price trades correctly. |
 | `deprecation_notice_generator` | Formats structured deprecation notices for skills/endpoints. |
 | `depreciation_calculator` | Produces annual depreciation schedules for straight-line, declining balance, MACRS (simplified), and sum-of-years methods. |
 | `development_pipeline_tracker` | Summarizes pipeline by stage, budget, and delivery exposure. |
 | `digest_builder` | Creates readable digests summarizing activity, metrics, and tips per agent. |
 | `directors_officers_liability_calculator` | Estimates D&O expected loss, limit adequacy, and retention impacts. |
-| `dispersion_vs_correlation_mapper` | Relates single-name vol to index implied correlation for dispersion plays. |
 | `dispute_resolver` | Determines auto, manual, or split dispute resolutions for escrow issues. |
-| `dissent_rights_arbitrage_planner` | Quantifies appraisal-rights value vs. cost for appraisal arbitrage trades. |
 | `distressed_debt_recovery` | Waterfalls enterprise value through senior/mezz/equity to compute recoveries and implied returns. |
 | `distressed_debt_screener` | Flags distressed signals using price, spread, PD, and coverage metrics. |
-| `distressed_exchange_acceptance_model` | Estimates acceptance probability for distressed exchanges across tranche holders. |
 | `distribution_waterfall_calculator` | Runs a full 4-tier distribution waterfall: (1) return of capital, (2) preferred return, (3) GP catch-up, (4) residual profit split. Supports both European (whole-fund) and American (deal-by-deal) modes. Uses correct catch-up formula: GP gets 100% until carry% of total profits is met. |
 | `distribution_waterfall_modeler` | Calculates LP/GP outcomes for American and European waterfalls with tier detail. |
 | `divergence_detector` | Identifies regular and hidden divergences between price action and an oscillator/indicator. |
-| `divestiture_requirement_model` | Quantifies revenue thresholds regulators typically demand to approve similar deals. |
 | `dividend_accrual_calculator` | Accrues dividends between ex-date and pay-date across positions. |
 | `dividend_capacity_analyzer` | Determines MDA and dividend restrictions relative to combined capital buffer requirements. |
-| `dividend_capture_screener` | Ranks capture setups using effective tax rate, borrow cost, and vol-adjusted decay. |
-| `dividend_reinstatement_detector` | Screens for companies poised to restart dividends based on cash flow inflections and board language. |
 | `dividend_reinvestment_projector` | Projects a dividend reinvestment plan by compounding dividends into new shares with growth assumptions for payouts and share price. |
-| `dividend_swap_roll_calendar` | Plots dividend swap rolls to lock in mispriced implied dividends. |
 | `docker_cleanup` | Clean up Docker images, containers, and volumes on the local machine to prevent disk exhaustion. Supports dry-run mode. Schedule weekly via subagent. Always preserve keep_images list (e.g. the live snowdrop-mcp image). |
 | `docker_secret_injector` | Builds op run templates for injecting secrets into containers. |
 | `document_vault_ocr_router` | Assign vault documents to OCR models based on mime type, priority, and presence of embedded text. |
@@ -514,21 +469,14 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `drawdown_scheduler` | Schedules capital call drawdowns based on unfunded commitment and upcoming investment pipeline. |
 | `dry_powder_calculator` | Calculates available dry powder (uninvested capital), deployment rate, and deployment runway for a private equity fund. Dry powder = total_commitments - capital_called - reserves. If monthly_deployment_rate is provided, runway_months = dry_powder / rate. Useful for fund pacing, LP reporting, and GP investment planning. |
 | `dscr_calculator` | Computes DSCR, assessment tier, excess cash, and headroom for new debt. |
-| `dual_class_collapse_timer` | Estimates when dual-class sunsets or pressure points could unlock governance catalysts. |
-| `dual_listed_company_spread_tracker` | Monitors DLC spread relative to currency-adjusted parity and borrow friction. |
 | `duplicate_transaction_detector` | Finds exact and fuzzy duplicate transactions for Ghost Ledger hygiene. |
 | `dupont_analysis` | Returns 3-stage and 5-stage DuPont ROE decomposition. |
 | `dupont_decomposition` | Breaks down ROE using the classic DuPont formula plus a five-factor variant that isolates tax burden and interest burden effects. |
 | `duration_matching_engine` | Solves for asset weights whose duration and convexity match a target liability, using least-squares immunization per Fabozzi. |
 | `dynamic_discount_calculator` | Applies tiered volume and loyalty discounts for agents. |
-| `earnings_gap_playbook` | Quantifies historical post-earnings gaps vs. implied move to flag asymmetric setups using free price feeds. |
 | `earnings_quality_analyzer` | Computes accrual ratios, Beneish M-Score, and manipulation risk. |
-| `earnings_quality_restatement_checker` | Flags restatement risk from irregular accruals and audit comments. |
 | `earnings_surprise_calculator` | Calculates EPS surprise percentage, SUE proxy, and price-drift implications (PEAD). |
-| `earnings_vol_crush_projector` | Projects vol crush magnitude after earnings using historical analogs. |
-| `earnings_whisper_spread_analyzer` | Measures gap between whisper numbers and official consensus to weight surprise odds. |
 | `earnings_yield_calculator` | Computes earnings yield (inverse P/E) and compares against the 10Y Treasury yield. |
-| `earnout_value_distribution_engine` | Simulates milestone achievement probability to value contingent payouts. |
 | `ease_of_movement` | Computes Richard Arms' Ease of Movement oscillator with SMA signal to judge efficient rallies/drops. |
 | `ebitda_addback_analyzer` | Scores EBITDA addbacks by quality to show normalized EBITDA. |
 | `ebitda_normalization` | Scrubs and normalizes reported EBITDA by categorizing and summing add-back adjustments for M&A due diligence. |
@@ -541,7 +489,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `ema_calculator` | Calculates exponential moving averages using Wilder's smoothing to detect price momentum shifts. |
 | `email_alert_builder` | Prepares email payloads without sending them. |
 | `emergency_fund_calculator` | Determines the ideal emergency fund amount by weighing monthly expenses, income stability, and dependents while highlighting current coverage gaps. |
-| `employee_option_overhang_quantifier` | Measures equity overhang vs. expected dilution through restructuring. |
 | `employer_401k_match_optimizer` | Evaluates contribution rates needed to earn the full employer match while respecting IRS limits and highlights remaining match dollars on the table. |
 | `energy_crack_spread_calculator` | Computes 3-2-1 crack spread (standard refinery margin), custom ratio crack spread, 1-1-1 simplified spread, and a margin compression flag. All prices in $/bbl. |
 | `energy_to_currency_peg_logic` | Models energy-backed currency pegs (IoT/solar), computing intrinsic unit value and stress-testing sustainability across energy price scenarios. |
@@ -549,9 +496,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `entity_extractor` | Uses regex heuristics to extract Snowdrop-relevant entities. |
 | `env_var_auditor` | Finds missing, empty, and extra environment variables relative to .env.template. |
 | `environmental_liability_exposure_model` | Estimates environmental liability exposure using scenario severities. |
-| `equity_commitment_backstop_tracker` | Monitors rights backstop size, participants, and pricing fairness. |
-| `equity_cure_need_forecaster` | Projects covenant breaches and equity cure sizing windows. |
-| `equity_stub_volatility_estimator` | Models stub volatility using component variance contribution. |
 | `equity_swap_pricer` | Discounts realized equity leg returns against fixed rate leg to compute PV, DV01, and carry. |
 | `erc20_token_supply_analyzer` | Breaks total supply into circulating, treasury, and locked components to monitor float. |
 | `error_pattern_detector` | Clusters similar errors and surfaces bursts for remediation. |
@@ -562,8 +506,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `esg_tax_incentive_calculator` | Models ESG incentives including IRC §§45/48 credits, Canada's Clean Technology ITC, and the Dutch EIA regime. |
 | `estimated_quarterly_tax` | Combines income tax and self-employment tax to suggest quarterly estimated payments and safe harbor amounts to minimize penalties. |
 | `estimated_tax_calculator` | Applies 90%/100% safe harbor logic to estimate quarterly payments and due dates. |
-| `etf_create_redeem_arb_planner` | Optimizes swap vs. in-kind flows to monetize ETF create/redeem arbitrage. |
-| `etf_nav_premium_discount_poller` | Streams ETF premium/discount readings with create/redeem costs to rank arb setups. |
 | `etf_vs_mutual_fund_comparator` | Aggregates expense ratios, commissions, and tax drag to compare ETF and mutual fund costs annually and across a 10-year horizon. |
 | `etherfi_impermanent_loss_guardrail` | Simulates EtherFi IL exposure for dual-asset pools and recommends caps. |
 | `etherfi_liquidity_rebalance_playbook` | Builds EtherFi liquidity rebalance plans for yield rotations. |
@@ -575,12 +517,9 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `excess_of_loss_calculator` | Calculates per-occurrence reinsurance recoveries, layer loss ratio, attachment frequency, average in-layer severity, and reinstatement premium for an excess-of-loss (XL) reinsurance layer applied to a list of ground-up losses. |
 | `exchange_1031_analyzer` | Calculates gains, boot, and deadlines for like-kind exchanges. |
 | `exchange_netflow_analyzer` | Summarizes exchange wallet activity for accumulation/distribution signal generation. |
-| `exchange_ratio_fair_value_solver` | Calculates fair exchange ratios after adjusting for net debt and earning power. |
 | `executive_summary_generator` | Formats operational metrics into a Thunder-ready briefing. |
-| `executive_transition_sentiment_monitor` | Correlates C-suite turnover with subsequent stock performance and option flow clues. |
 | `exit_multiple_analysis` | Analyzes a portfolio of realized exits to compute Money-on-Invested-Capital (MoIC) multiples for each position. Aggregates median, mean, min, and max multiples at the portfolio level and breaks down performance by sector and exit type (IPO, M&A, secondary, write-off, etc.). |
 | `exit_tax_calculator` | Computes exit tax exposures for investors emigrating from the US, Germany, or Canada. |
-| `exotic_barrier_breach_probability_engine` | Estimates barrier hit probabilities using free implied vol data. |
 | `exotic_barrier_option_pricer` | Provides approximate closed-form barrier option prices for single-barrier European options. Uses the Reiner-Rubinstein analytic formulas for standard barrier types. |
 | `expected_shortfall_decomposition` | Basel III ES attribution by computing conditional tail expectations and factor contributions. |
 | `expense_allocation_engine` | Distributes fund expenses across share classes according to commitment or NAV weights. |
@@ -611,8 +550,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `financial_highlight_extractor` | Summarizes headline metrics, growth narratives, and risks for presentations. |
 | `financial_literacy_quiz` | Provides educational quizzes for goodwill content. |
 | `financial_ratio_analyzer` | Calculates common liquidity, leverage, and profitability ratios using provided balance sheet and income statement figures. |
-| `financing_gap_liquidity_checker` | Tracks committed financing sources, hedging cost, and debt market windows per deal. |
-| `fincen_filings_deal_linker` | Links suspicious activity filings to active deals to gauge watchdog heat. |
 | `fire_number_calculator` | Computes the FIRE nest egg based on expenses and withdrawal rate, simulates years to reach it with contributions, and reports Coast/Barista FIRE thresholds. |
 | `firebase_ai_logic_list_prompts` | List Firebase AI Logic server-side prompt templates for a project. Returns template IDs, model configurations, and system instructions. |
 | `firebase_ai_logic_run_prompt` | Execute a Firebase AI Logic prompt template with provided variables. Returns the model's text response. |
@@ -649,7 +586,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `form_1065_k1_allocator` | Splits partnership income items by partner percentages consistent with IRC §704(b). |
 | `form_1099_generator` | Produces Snowdrop's 1099-NEC structure for Thunder review. |
 | `forward_rate_agreement_calculator` | Calculates FRA settlement amounts given contracted and market rates. |
-| `forward_vol_calendar_curve_builder` | Builds forward vol curves from listed options to spot anomalies. |
 | `four_percent_rule_calculator` | Applies the 4% rule to approximate sustainable withdrawals, adjusts for desired horizon and inflation, and scores success probability heuristically. |
 | `fragment_number_monitor` | Filters Fragment number listings by prefix and budget. |
 | `franchise_analytics_reporter` | Summarizes revenue, royalties, and operational health per franchise operator. |
@@ -668,7 +604,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `fund_of_funds_optimizer` | Uses scenario analysis with CVaR targeting to produce FoF weights under allocation caps. |
 | `fund_restructuring_tax` | Evaluates IRC §§351, 368, 367 and EU Merger Directive treatment for fund Merger/Domestication transactions. |
 | `funding_dilution_calculator` | Walks through successive funding rounds to compute new share issuances, share prices, ownership percentages, and aggregate dilution for founders. |
-| `fungible_share_transfer_cost_estimator` | Calculates all-in costs for transferring shares across clearing venues. |
 | `futures_curve_analyzer` | Classifies contango/backwardation, computes annualized roll yield per tenor, implied cost of carry, and carry trade signal from spot + futures curve. |
 | `futures_roll_analyzer` | Evaluates roll cost, carry, and recommendation for futures positions. |
 | `fx_calculator` | Computes FX forward rates via covered interest parity and related metrics. |
@@ -677,7 +612,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `fx_rate_fetcher` | Retrieves spot FX quotes and inverse rates via ExchangeRate-API. |
 | `fx_risk_exposure_calculator` | Aggregates gross/net FX exposures and estimates VaR. |
 | `fx_swap_valuation` | Values currency basis swaps using discounted cash flows. |
-| `gamma_squeeze_exposure_tracker` | Reconstructs dealer gamma exposure using OI, delta, and borrow metrics. |
 | `gap_analyzer` | Scans OHLC data for breakaway, runaway, exhaustion, and common gaps, tracking fill status. |
 | `gas_fee_estimator` | Provides conservative fee estimates for TON and SOL transfers. |
 | `gcp_secret_manager` | Create, read, rotate, list, or delete secrets in Google Cloud Secret Manager. Uses Secret Manager API v1 with explicit service account credentials — no gcloud CLI, no ADC. Requires roles/secretmanager.admin on the service account. |
@@ -694,7 +628,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `ghost_town_detector` | Raises an alert when 14 days pass without paid transactions. |
 | `github_issue_tracker` | Fetches labeled GitHub issues and estimates difficulty. |
 | `global_tax_withholding_skill` | Calculates the withholding tax on a distribution to an international LP. Applies any available tax treaty rate in preference to the default rate. Grants full exemption (0%) to qualifying entities such as pension funds and sovereign wealth funds. Returns the withholding amount, effective rate, and net distribution after withholding. |
-| `go_shop_option_value_estimator` | Values go-shop clauses via historical topping-bid stats and target strategic scarcity. |
 | `goodwill_cask_allocator` | Allocates the daily Goodwill cask budget until depleted, then closes the tap. |
 | `gordon_growth_model` | Computes intrinsic value using Gordon Growth, plus yield and growth sensitivity. |
 | `gp_clawback_calculator` | Evaluates carry distributions versus whole-fund entitlement and recommends clawback. |
@@ -704,12 +637,10 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `grant_proposal_handler` | Accepts, evaluates, and adjudicates Goodwill grant proposals. |
 | `green_building_subsidy_audit` | Audits a commercial building's eligibility for green building tax incentives including the Investment Tax Credit (ITC) for solar, Section 179D energy efficiency deduction, and a curated set of state-level ESG incentives. Returns eligible programs, estimated values, and requirements met. |
 | `gsib_score_calculator` | Computes Basel systemic importance score using indicator values and denominators. |
-| `guidance_revision_heatmap` | Maps management guidance changes against Street revisions to spot underpriced sentiment swings. |
 | `hackathon_coordinator` | Manages hackathon lifecycle and scores submissions when provided. |
 | `hash_rate_security_model` | Calculates PoW security metrics and estimated 51% attack costs drawing from Nakamoto consensus economics. |
 | `heartbeat` | Checks Ghost Ledger readiness, required API keys, and reconciliation freshness before writing HEARTBEAT.md with the current timestamp. |
 | `hedge_fund_alpha_decomposition` | Performs multi-factor OLS (Fama-French-Carhart) to estimate alpha, betas, R², and information ratio for hedge fund returns. |
-| `hedge_ratio_slippage_monitor` | Alerts when hedge ratios drift from target because of price or volatility shifts. |
 | `hedging_cost_calculator` | Quantifies hedging cost, downside, and upside caps across hedge types. |
 | `heikin_ashi_calculator` | Converts standard candles to Heikin-Ashi and reports trend direction and strength. |
 | `heloc_calculator` | Calculates HELOC borrowing power, interest-only draw payments, amortized repayment amounts, and total interest based on rate and term parameters. |
@@ -718,7 +649,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `historical_replay` | Applies historical drawdowns to portfolio weights to estimate losses. |
 | `historical_var_calculator` | Historical simulation VaR/ES with Kupiec backtest p-value using equal or exponential age weights. |
 | `historical_volatility` | Computes realized volatility via close-to-close, Parkinson, Garman-Klass, or Yang-Zhang estimators. |
-| `holding_company_discount_modeler` | Calculates holdco vs. underlying NAV gaps, catalyst timelines, and leverage impact. |
 | `hsa_triple_tax_advantage` | Projects HSA balances using constant contributions and growth to highlight tax savings from deductions, tax-free compounding, and qualified medical withdrawals. |
 | `ibnr_reserve_calculator` | Estimates IBNR reserves using a volume-weighted chain-ladder approach. Accepts a loss development triangle (accident years × development periods) and per-year premiums. Returns age-to-age development factors, projected ultimates, IBNR by year, and an expected loss ratio. |
 | `ichimoku_cloud` | Generates Ichimoku Kinko Hyo components (Tenkan, Kijun, Senkou A/B, Chikou) for full cloud analysis. |
@@ -732,11 +662,8 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `imf_sdr_allocation_tracker` | Tracks IMF Special Drawing Rights (SDR) holdings vs allocations for a country, converts to USD, and assesses quota adequacy. |
 | `impermanent_loss_calculator` | Computes impermanent loss percentage for constant product pools given price ratio shifts. |
 | `implied_volatility_solver` | Computes implied volatility from an observed option price using bisection on the Black-Scholes model. |
-| `implied_vs_realized_carry_calculator` | Compares implied carry vs. realized vol for vol selling strategies. |
 | `incident_escalation_router` | Determines escalation targets and automatic guardrails based on severity. |
 | `incident_tracker` | Opens, updates, or lists incidents with SLA tracking and JSONL logging. |
-| `index_constituent_gap_finder` | Detects valuation gaps between index members and non-members with similar fundamentals. |
-| `index_rebalance_flow_simulator` | Models passive fund buying/selling pressure ahead of major index review announcements. |
 | `india_gst_tax_calculator` | Calculates Indian Goods and Services Tax (GST) for services including cross-border supply, SEZ, and export scenarios. Applies IGST Act 2017 rates, OIDAR (Online Information Database Access and Retrieval) rules, and LUT (Letter of Undertaking) exemptions for zero-rated exports. |
 | `industry_benchmark_comparator` | Ranks Snowdrop metrics versus benchmark percentiles to highlight strengths and gaps. |
 | `inflation_adjusted_return` | Calculates nominal versus real returns by discounting investment growth for inflation and highlighting purchasing power erosion. |
@@ -758,7 +685,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `interest_rate_sensitivity_reit` | Calculates fixed vs floating mix, duration, and DV01 for the debt stack. |
 | `interest_rate_swap_analyzer` | Values a fixed/float interest rate swap and reports DV01 and break-even rate. |
 | `interest_rate_swap_valuer` | Computes MTM, PV legs, and DV01 for swaps using provided discount curve. |
-| `interlisted_short_locate_planner` | Maps borrow availability across venues to support cross-border arbitrage. |
 | `intl_ae_fund_tax` | Outlines UAE's zero-withholding environment and new 9% corporate tax for mainland profits. |
 | `intl_au_fund_tax` | Computes Australian dividend/interest/royalty withholding, MIT incentives, and 30% corporate tax for onshore management entities. |
 | `intl_br_fund_tax` | Models Brazil's statutory withholding regime and 34% IRPJ/CSLL burden on Brazilian blockers. |
@@ -789,8 +715,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `intl_tr_fund_tax` | Computes Turkish withholding, treaty rates, and 25% CIT for entities with Turkish permanent establishments. |
 | `intl_vn_fund_tax` | Provides Vietnam foreign contractor tax computations and 20% corporate tax for onshore subsidiaries. |
 | `intl_za_fund_tax` | Assesses South African dividend/interest withholding, CGT inclusion, and 27% corporate tax for local operations. |
-| `intraday_basis_slippage_guard` | Alerts when live spreads deviate from modeled thresholds intraday. |
-| `intraday_vol_reversion_scanner` | Detects intraday vol spikes likely to mean revert based on order book metrics. |
 | `inventory_valuation` | Runs FIFO, LIFO, and weighted-average calculations to derive COGS and ending inventory, highlighting gross profit differences between methods. |
 | `investment_basics_explainer` | Returns plain-language explanations for foundational investing topics. |
 | `investment_fee_audit` | Tallies management, advisory, and transaction fees across accounts and quantifies the 10-year drag while pointing to expensive providers. |
@@ -825,7 +749,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `l2_shared_auction_tracker` | Aggregates shared sequencer auctions across major L2s to signal MEV demand. |
 | `large_exposure_checker` | Identifies exposures exceeding Basel LE limits (25% Tier1, 15% for G-SIB counterparties). |
 | `lbo_model_builder` | Models leverage, cash flows, and equity returns for a stylized LBO. |
-| `leak_rumor_price_action_profiler` | Profiles pre-announcement trading to flag deals with elevated leak scrutiny risk. |
 | `lease_abstract_skill` | Extracts key commercial lease terms from raw lease text using regex-based pattern matching. Targets commencement date, expiration date, base rent, escalation rate, renewal options, and break clauses. Returns confidence score and list of fields that could not be extracted. |
 | `lease_accounting_calculator` | Computes lease liability, ROU asset, and income statement impact for ASC 842. |
 | `lease_expiration_schedule` | Creates lease expiration ladder showing annual rollover percentages. |
@@ -833,9 +756,7 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `lesson_to_action_sync_bot` | Scan logs/lessons.md, cluster recurring entries, and emit recommended follow-up actions. |
 | `lessons_analyzer` | Parses logs/lessons.md content for failure hotspots and trends. |
 | `leverage_ratio_calculator` | Computes Basel leverage ratio including SA-CCR derivative add-ons and securities financing exposures. |
-| `levered_holdco_vs_opco_spread_tuner` | Quantifies spread impact from leverage and subsidiary dividend policy. |
 | `liability_driven_optimizer` | Matches liability duration/convexity and surplus targets by allocating across asset cash-flow profiles consistent with ERISA and Solvency II liability-driven investing practices. |
-| `liability_management_transaction_mapper` | Maps tender/exchange sequences to assess residual capital structure risk. |
 | `life_expectancy_calculator` | Calculates curtate life expectancy (e_x), complete life expectancy (ê_x), and median future lifetime from a list of annual qx mortality rates. Uses exact actuarial recursion: t_px = product of (1 - q_{x+k}) for k=0..t-1. |
 | `linea_data_availability_cost_forecaster` | Forecasts Linea data availability costs when proofs spike. |
 | `linea_proof_latency_profiler` | Profiles Linea proof latency and confidence based on queue depth and L1 gas noise. |
@@ -847,9 +768,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `liquidity_coverage_ratio` | Basel III LCR computation with supervisory caps on Level 2 assets and haircut adjustments. |
 | `liquidity_depth_analyzer` | Estimates price impact and slippage for CFMM pools. |
 | `liquidity_premium_calculator` | Approximates annual liquidity drag from bid-ask spreads and funding costs. |
-| `liquidity_sleeve_switchboard` | Reallocates liquidity sleeves between vehicles to exploit transient spreads. |
-| `liquidity_sweep_impact_estimator` | Estimates market impact from large option sweeps to manage slippage. |
-| `litigation_docket_event_tracker` | Monitors docket updates and court calendars to quantify lawsuit resolution catalysts. |
 | `llc_compliance_tracker` | Calculates upcoming compliance deadlines for Stonewater Solutions LLC. |
 | `loan_amendment_tracker` | Scores cumulative impact of loan amendments to highlight covenant drift. |
 | `loan_amortization_calculator` | Computes monthly payment, amortization schedule, and payoff projections. |
@@ -868,7 +786,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `lp_reporting_standard` | Generates an ILPA (Institutional Limited Partners Association) compliant quarterly fund report in markdown format. Validates presence of all required ILPA Reporting Template v2 fields and flags any that are missing or null. Produces structured markdown with sections for Fund Overview, Performance Metrics, Top Holdings, Cash Position, and Upcoming Events. |
 | `ltv_calculator` | Computes LTV, discounted LTV, and payback metrics for each agent tier. |
 | `macd_calculator` | Computes Moving Average Convergence Divergence (12/26/9 defaults) with bullish/bearish interpretation. |
-| `macro_data_surprise_linker` | Connects company guidance sensitivity with upcoming macro releases to prime event trays. |
 | `macro_indicator_tracker` | Fetches recent FRED indicators and computes MoM trends. |
 | `macro_scenario_builder` | Applies macro factor shocks to exposures to estimate scenario returns. |
 | `managed_futures_trend_signal` | Computes normalized trend-following signals using short/medium/long moving averages and breakout statistics inspired by CTA models. |
@@ -892,18 +809,16 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `mean_cvar_optimizer` | Minimizes portfolio conditional VaR via Rockafellar-Uryasev subgradient descent with simplex projection and optional target return constraint. |
 | `mean_reversion_detector` | Estimates Ornstein-Uhlenbeck half-life and current deviation z-score via OLS regression. |
 | `mean_reversion_score` | Computes z-score of price versus rolling mean and estimates Ornstein-Uhlenbeck half-life. |
-| `meme_stock_flow_regime_classifier` | Detects social-volume and borrow-cost trigger points that precede melt-up or crash phases. |
 | `mercury_balance_fetcher` | Retrieves account balances from Mercury's /api/v1/accounts endpoint. |
 | `mercury_payment_sender` | Constructs ACH/wire payloads for Mercury but leaves them pending Thunder approval. |
 | `mercury_transaction_ingest` | Pulls Mercury transactions, tags inflow/outflow, and formats for Ghost Ledger. |
 | `merger_accretion_dilution` | Evaluates EPS impact of an acquisition with cash/stock mix and synergies. |
 | `merger_arbitrage_spread` | Computes dollar and annualized spread along with implied deal probability from price-break analysis. |
-| `merger_spread_implied_probability` | Converts deal spreads into implied probabilities adjusting for borrow and carry. |
+| `merger_spread_implied_probability` | Calculates M&A deal closing probability from market spread, offer price, and unaffected downside. |
 | `merit_review_state_identifier` | Identifies merit review states for state securities registration planning. |
 | `message_signer` | Signs messages with an env-provided key for agent authentication. |
 | `metals_supply_demand_analyzer` | Builds supply/demand surplus or deficit tallies for base metals, computes inventory coverage in months, and flags deficit conditions. |
 | `mezzanine_return_calculator` | Calculates blended cash, PIK, and equity kicker returns for mezzanine debt. |
-| `minority_interest_buyin_model` | Values buy-in economics vs. minority protections and cash flow splits. |
 | `mlp_debt_coverage_ratio` | Computes EBITDA to debt service coverage for midstream partnerships. |
 | `mlp_distributable_cash_flow_calc` | Calculates Distributable Cash Flow (DCF) and coverage ratios for Master Limited Partnerships. |
 | `mlp_distributable_cash_flow_calculator` | Derives MLP distributable cash flow from EBITDA, capex, and non-cash adjustments. |
@@ -947,7 +862,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `multi_currency_consolidator` | Converts positions into a base currency with exposure diagnostics. |
 | `multi_jurisdiction_net_return` | Combines treaty withholding, local fund tax, and investor-level tax drag across income types. |
 | `multi_l2_mev_burst_scheduler` | Schedules rollup transaction batches to sidestep simultaneous MEV bursts. |
-| `multi_leg_strategy_pnl_simulator` | Simulates P&L paths for iron condors, butterflies, and ratio spreads. |
 | `multi_period_rebalancer` | Dynamic programming rebalancer choosing whether to rebalance or drift each period based on expected return trade-off versus transaction costs, following Bodie, Kane, Marcus multi-period optimization. |
 | `multi_sig_workflow` | Classifies an action into auto, 2FA, or multi-sig approval paths. |
 | `muni_bond_analyzer` | Computes tax-equivalent yield, breakeven rates, and annual savings for muni bonds. |
@@ -959,7 +873,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `negative_volume_index` | Computes the Negative Volume Index with a 255-day EMA signal line per Norman Fosback. |
 | `net_interest_margin_calculator` | Computes current NIM, gap ratios, and projected NIM under rate shocks. |
 | `net_operating_income_bridge` | Builds an NOI bridge showing contributions from volume, rate, occupancy, and opex. |
-| `net_operating_loss_shield_optimizer` | Maps NOL usage scenarios to protect tax assets post-transaction. |
 | `net_stable_funding_ratio` | Calculates ASF and RSF weighted balances to determine NSFR compliance. |
 | `new_highs_new_lows` | Computes new-high minus new-low series, ratios, and signals. |
 | `newsletter_composer` | Creates newsletters covering new skills, platform stats, and educational tips. |
@@ -972,7 +885,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `nmtc_investor_return_calculator` | Calculates investor IRR over NMTC compliance period with tax credits and fees. |
 | `noi_audit_tool` | Validates Net Operating Income (NOI) for a commercial real estate property. Computes NOI from gross revenue and operating expenses, calculates NOI margin, and flags material variance against a prior period if provided. |
 | `noi_calculator` | Calculates NOI and margin from rental revenue and operating expenses. |
-| `noncore_asset_sale_sequencer` | Orders asset dispositions to maximize deleveraging and valuation uplift. |
 | `notice_filing_requirement_tracker` | Tracks Form D notice filing triggers and deadlines by state. |
 | `notification_preferences_manager` | Gets, sets, or resets notification preferences per agent with persistence. |
 | `notification_router` | Maps alert priority to Telegram/SMS/freeze workflows. |
@@ -1015,14 +927,10 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `optimism_to_base_stablecoin_bridge_optimizer` | Optimizes stablecoin bridge routing from Optimism to Base with fee and latency heuristics. |
 | `optimism_tx_priority_curve_optimizer` | Builds a recommended Optimism priority fee curve for latency-sensitive users. |
 | `option_pool_modeler` | Evaluates current and proposed option pool sizing plus dilution to shareholders. |
-| `options_flow_clustering_model` | Clusters notable options prints to surface stealth positioning. |
 | `options_greeks_calculator` | Returns price and Greeks for European options via Black-Scholes. |
 | `options_implied_move` | Converts ATM straddle pricing into implied move, range, and annualized IV approximation. |
-| `options_liquidity_pullback_detector` | Detects widening bid-ask spreads and volume drops signaling liquidity stress. |
-| `options_open_interest_rotation_monitor` | Identifies large OI rolls indicating positioning shifts. |
 | `options_payoff_diagram` | Calculates strategy payoff across a price grid and identifies basic spread types. |
 | `options_strategy_analyzer` | Aggregates multi-leg option strategy P&L and diagnostics. |
-| `options_volatility_smile_plotter` | Builds smile curves from free option chains and overlays realized anchors. |
 | `pain_ratio_calculator` | Computes the Pain Index (average drawdown magnitude) and Pain Ratio (return/Pain). |
 | `pair_trade_analyzer` | Computes ratio z-scores, correlation, OLS half-life, and trade signals for price pairs. |
 | `parabolic_sar` | Implements Welles Wilder's Parabolic SAR with configurable acceleration factors to trail price trends. |
@@ -1038,7 +946,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `pdf_report_formatter` | Creates a layout-ready dict for PDF renderers (sections, TOC, metadata). |
 | `pe_secondary_pricing` | Applies secondary market heuristics (quartile + remaining commitment) to derive bid discount and implied IRR. |
 | `pe_valuation_dcf` | Performs DCF valuation of a private equity investment using projected cash flows, terminal value, and discount rate. |
-| `peer_holdco_nav_gap_meter` | Ranks peer holdcos by NAV gaps adjusted for discount catalysts. |
 | `peg_ratio_calculator` | Evaluates PEG ratio relative to growth and adjusts for dividend yield when provided. |
 | `pendle_impermanent_loss_guardrail` | Simulates Pendle IL exposure for dual-asset pools and recommends caps. |
 | `pendle_liquidity_rebalance_playbook` | Builds Pendle liquidity rebalance plans for yield rotations. |
@@ -1055,13 +962,11 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `pik_toggle_modeler` | Builds period schedules for cash and PIK interest accruals. |
 | `pillar_3_disclosure_generator` | Prepares Pillar 3 style summary of capital ratios, RWAs, LCR/NSFR, and leverage metrics. |
 | `piotroski_f_score` | Evaluates the nine Piotroski signals to rate financial strength. |
-| `pipe_registration_rights_timer` | Follows PIPE resale registration deadlines to anticipate float unlocks. |
 | `pitch_deck_generator` | Creates slide-by-slide pitch content for Snowdrop fundraising narratives. |
 | `pivot_point_calculator` | Computes pivot points and support/resistance for Standard, Fibonacci, Woodie, Camarilla, and DeMark methods. |
 | `places_search` | Search, discover, and retrieve details for businesses and points of interest using the Google Places API (New). Supports free-text search, nearby discovery, and full place detail lookups. Returns structured business data plus an investment_signal field assessing business density and health for real estate and market analysis. |
 | `pme_calculator` | Calculates Kaplan-Schoar PME (Public Market Equivalent) by discounting fund contributions and distributions using the compounded index return path. PME > 1.0 means the fund outperformed the public market benchmark. |
 | `pnl_attribution_calculator` | Breaks daily P&L into price, carry, FX, and fee components. |
-| `poison_pill_trigger_analyzer` | Tests thresholds and dilution math for outstanding shareholder rights plans. |
 | `polygon_zkevm_data_availability_cost_forecaster` | Forecasts Polygon zkEVM data availability costs when proofs spike. |
 | `polygon_zkevm_proof_latency_profiler` | Profiles Polygon zkEVM proof latency and confidence based on queue depth and L1 gas noise. |
 | `polygon_zkevm_prover_cluster_health_monitor` | Monitors Polygon zkEVM prover clusters for saturation and fallback readiness. |
@@ -1083,15 +988,12 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `portfolio_volatility_calculator` | Estimates portfolio variance and volatility from a covariance matrix. |
 | `position_reconciliation_tool` | Compares internal books with prime broker files and flags breaks. |
 | `post_mortem_generator` | Creates structured post-mortem Markdown with action items and lessons learned. |
-| `post_reorg_equity_liquidity_planner` | Forecasts float, turnover, and lockups for newly listed post-reorg equities. |
-| `post_spin_index_inclusion_tracker` | Tracks index add/drop impacts following spin-effective dates. |
 | `postgresql_ledger_adapter` | Builds parameterized SQL statements for Ghost Ledger backed by Postgres. |
 | `power_option_pricer` | Closed-form pricing for type-I power options (payoff (S^n − K)^+) based on moment-adjusted Black-Scholes. |
 | `power_price_calculator` | Calculates spark spread (gas-fired margin), dark spread (coal-fired margin), clean spark/dark spreads (including carbon cost), and generation dispatch signal. |
 | `precious_metals_lease_rate` | Derives the implied precious metals lease rate from spot, forward, and USD interest rate inputs. Uses the GOFO (Gold Forward Offered Rate) identity: Lease Rate = USD Rate − GOFO, where GOFO = annualized forward premium. |
 | `preferred_equity_analyzer` | Calculates preferred equity cash yield, coverage, and call protection metrics. |
 | `preferred_return_calculator` | Calculates accrued preferred return on LP capital with configurable compounding frequency. Supports annual, quarterly, monthly, and daily compounding. |
-| `preferred_vs_common_switch_pairer` | Identifies capital structures where preferred/common toggles misprice fundamentals. |
 | `premium_calculator` | Computes gross written premium from base rate, exposure units, experience modification, schedule credits, and other adjustments following standard manual rating methodology. |
 | `premium_estimator` | Provides heuristic premium estimates based on business profile and coverage type. |
 | `present_value_calculator` | Computes the present value of a lump sum or annuity, adjusting for payment timing and reporting aggregate payments and implied interest. |
@@ -1102,7 +1004,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `prime_broker_reconciliation` | Reconciles positions and cash between internal books and the prime broker. |
 | `private_credit_term_analyzer` | Computes all-in yields, covenant protection, and risk assessment for private credit facilities. |
 | `procyclicality_buffer` | Implements Basel CCyB mapping from credit-to-GDP gap and aggregates jurisdictional CCyB exposure-weighted rates. |
-| `product_launch_trade_setup` | Compares historical launch announcements to realized demand signals to gauge trade direction. |
 | `profit_margin_analyzer` | Builds a margin waterfall starting at revenue to show gross, operating, EBITDA, pretax, and net profit percentages. |
 | `proforma_generator` | Projects multi-year cash flows, NOI, and returns for income properties. |
 | `prompt_ab_tester` | Appends prompt experiment outcomes and computes per-variant stats. |
@@ -1112,7 +1013,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `property_type_diversification` | Computes HHI concentration and highlights overweight property types. |
 | `proposal_manager` | Submits, lists, fetches, or closes proposals per Snowdrop governance rules. |
 | `protocol_revenue_analyzer` | Calculates revenue per product and annualizes it to monitor concentration risk. |
-| `proxy_fight_vote_pathfinder` | Visualizes proxy math, record dates, and swing ballots for live contested meetings. |
 | `pubsub_publisher` | Google Cloud Pub/Sub skill for event streaming between Snowdrop services. Supports publish, pull, topic and subscription management via the Pub/Sub REST API. |
 | `put_call_ratio` | Tracks put/call ratios to identify fear vs greed sentiment zones. |
 | `put_spread_calculator` | Calculates payoff metrics for bull or bear put spreads. |
@@ -1139,13 +1039,11 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `referral_reward_calculator` | Determines referral tier, rate, and milestone bonuses. |
 | `referral_tracker` | Aggregates referral spend and issues credits to promoters. |
 | `refinancing_analyzer` | Evaluates refinance savings, break-even, and NPV for proposed loan terms. |
-| `reg_fd_8k_alert_router` | Streams fresh 8-Ks, tags material language, and suggests contextual playbooks. |
 | `regime_aware_allocator` | Fits a two-state hidden Markov model to realized returns and allocates according to risk-on/risk-off regime targets similar to Norges Bank's conditional allocation process. |
 | `regime_detector` | Detects bull vs bear regimes using realized volatility and return trends. |
 | `regulation_d_exemption_analyzer` | Determines Reg D rule availability based on size and investor counts. |
 | `regulatory_capital_estimator` | Estimates Basel-style RWA and capital ratios for market risk books. |
 | `regulatory_capital_waterfall` | Applies deductions to CET1 and adds AT1/Tier2 to produce regulatory ratios. |
-| `regulatory_remedy_playbook_builder` | Suggests divestiture candidates and valuation impact based on overlap matrices. |
 | `reinsurance_treaty_analyzer` | Evaluates quota share and per-occurrence excess-of-loss treaty economics. Returns ceded and net premium/losses, ceding commission, and net combined ratio. |
 | `reit_compliance_tester` | Evaluates income/asset/shareholder tests for REIT status. |
 | `reit_dividend_analyzer` | Evaluates dividend yield, payout ratios, and tax characterization. |
@@ -1178,10 +1076,7 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `revenue_per_skill_analyzer` | Aggregates billing records to highlight top-performing skills and concentration |
 | `revenue_recognition_checker` | Applies the ASC 606 five-step model to contracts and allocates revenue to obligations. |
 | `reverse_dcf` | Derives the growth rate required to justify the current market capitalization. |
-| `reverse_morris_trust_matchmaker` | Suggests RMT partners using complementary tax bases and strategic fit. |
-| `reverse_termination_fee_stress_test` | Models buyer default risk versus RTF incentives and financing covenants. |
 | `review_cost_estimator` | Approximates token/time cost to review a submission. |
-| `rights_offering_value_splitter` | Values tradable rights vs. subscription commitments using historical take-up rates. |
 | `risk_adjusted_return_calculator` | Calculates risk-adjusted metrics (Sharpe, Sortino, Treynor) plus annualized return/volatility and maximum drawdown from a series of periodic returns. |
 | `risk_budgeting_allocator` | Computes equal-risk-contribution weights (a la Maillard, Roncalli, Teiletche 2010) by solving for the portfolio weights whose marginal contributions match risk budgets. |
 | `risk_parity_allocator` | Uses iterative proportional fitting on the covariance matrix to achieve target risk budgets per asset. |
@@ -1292,29 +1187,20 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `seasonal_pattern_analyzer` | Aggregates historical commodity prices by calendar month to estimate seasonal factors, identify peak and trough months, and compute seasonal amplitude. |
 | `secondary_offering_dilution` | Evaluates dilution, proceeds, and TERP for primary/secondary offerings. |
 | `secrets_audit_monitor` | Checks whether required secrets are present in the environment and flags missing/empty variables. |
-| `section382_cap_table_guard` | Simulates ownership shifts to protect Section 382 limits. |
 | `section_1231_gain_loss_calculator` | Computes 1231 gains and recapture amounts under 5-year lookback. |
 | `sector_etf_comparator` | Ranks sector ETFs by performance metrics over a labelled period. |
 | `sector_rotation_analyzer` | Measures sector relative strength and assigns rotation phases (leading/lagging/etc.). |
-| `sector_spin_pair_alignment_tool` | Builds hedged baskets pairing spin parent and pure-play comps. |
 | `securitization_cashflow_modeler` | Generates month-by-month cash flow projections including CPR/CDR and servicing fees. |
 | `self_audit_daily` | Compares planned vs executed actions, logs discrepancies, and triggers freezes if needed. |
 | `self_deploy_check` | Detect unpushed commits on the current branch and push to origin/main to trigger Cloud Build CI/CD. Returns a summary of pushed commits or 'nothing to deploy' if HEAD matches origin/main. |
 | `self_employment_tax_calculator` | Computes Social Security and Medicare self-employment tax components, including the deductible half and additional Medicare surtax. |
 | `settlement_fail_tracker` | Ages failed trades and estimates fail penalties. |
-| `share_block_crossing_matchmaker` | Matches block trade appetite to reduce slippage in structural arb legs. |
-| `share_class_liquidity_gap_radar` | Spots dual share class liquidity premiums that invite arb. |
-| `share_lockup_expiry_pressure_meter` | Quantifies lockup expirations' float impact and price response odds. |
-| `shareholder_vote_turnout_forecaster` | Projects vote outcomes by modeling historical turnout, proxy advisor stances, and current register data. |
 | `sharpe_ratio_calculator` | Calculates Sharpe, Sortino, and ancillary performance stats. |
 | `sheet_pruner` | Prevents data bloat by autonomously removing logs older than the retention period from the Command Center. |
 | `sheets_to_postgres_migrator` | Produces SQL/ETL plan for moving Ghost Ledger tabs into PostgreSQL tables. |
-| `short_interest_crunch_indicator` | Combines short interest days-to-cover with catalyst calendar to time squeezes. |
 | `shout_option_pricer` | Monte Carlo shout option valuation treating shout dates as discrete lookback checkpoints where locked intrinsic is preserved per Rubinstein's construction. |
 | `signature_verifier` | Verifies HMAC-SHA256 signatures for incoming agent messages. |
 | `skeptic_challenge_generator` | Produces a structured counter-position with risks and precedents for a thesis. |
-| `skew_jump_risk_meter` | Quantifies skew jump risk around catalysts using historical skew shocks. |
-| `skew_steepener_backtest_lab` | Backtests skew steepener ideas across time using synthetic option data. |
 | `skewness_kurtosis_analyzer` | Computes skewness, kurtosis, and Jarque-Bera statistic for return distributions. |
 | `skill_builder` | Meta-skill: takes a plain-English skill description and generates a production-ready Snowdrop Python skill module via the Assembly Line (Haiku drafts, Sonnet polishes, Opus certifies for jury-tier complexity). Optionally writes the result to disk. |
 | `skill_catalog_sync` | Returns live skill count breakdown (total, free, premium, failed) from the running server. Pass regenerate=True to rebuild SNOWDROP_SKILLS.md and SKILLS.md from the current codebase (admin use only). |
@@ -1382,12 +1268,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `sovereign_reserves_analyzer` | Analyzes sovereign reserve composition (fiat/gold/digital) and compares against IMF adequacy metrics. |
 | `sovereign_wealth_alpha_source` | Screens and ranks sovereign wealth fund investment opportunities by return/risk ratio against configurable criteria. |
 | `spac_arbitrage_analyzer` | Breaks down SPAC trust yield, deal optionality, and expected value based on probability inputs. |
-| `spac_closure_probability_rater` | Scores SPAC deals using redemption levels, sponsor incentives, and regulatory risk. |
-| `special_dividend_arbitrage_planner` | Evaluates pre/post special dividend payout value capture tactics including deep ITM options. |
-| `spin_stub_pair_trade_planner` | Designs hedges between parent and spin based on float/weight forecasts. |
-| `spin_tax_free_safe_harbor_checker` | Tests transactions against IRS safe harbor requirements for tax-free status. |
-| `spinoff_sum_of_the_parts_modeler` | Aggregates segment data into SOP valuations to benchmark spin stub pricing. |
-| `spread_curve_speedometer` | Tracks spread compression velocity vs. historical analogs to size exposures. |
 | `spread_option_pricer` | Computes two-asset spread option values via Kirk's approximation and correlated Monte Carlo for verification. |
 | `sprint_planner` | Selects backlog tasks for the sprint based on priority, capacity, and dependencies. |
 | `stakewise_impermanent_loss_guardrail` | Simulates StakeWise IL exposure for dual-asset pools and recommends caps. |
@@ -1396,7 +1276,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `staking_reward_tracker` | Summarizes staking rewards, projected income, and outstanding claims per validator. |
 | `staking_yield_calculator` | Analyzes staking rewards to derive APR, payout cadence, and token emissions. |
 | `standard_deviation_channel` | Performs least-squares regression on prices and offsets by standard deviation bands. |
-| `stapled_security_basis_monitor` | Breaks stapled units into components to highlight mispriced legs. |
 | `starknet_data_availability_cost_forecaster` | Forecasts Starknet data availability costs when proofs spike. |
 | `starknet_proof_latency_profiler` | Profiles Starknet proof latency and confidence based on queue depth and L1 gas noise. |
 | `starknet_prover_cluster_health_monitor` | Monitors Starknet prover clusters for saturation and fallback readiness. |
@@ -1422,31 +1301,22 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `stress_test_scenario_engine` | Applies supervisory stresses to rate, FX, equity, and spread sensitivities to produce capital planning P&L breakdowns. |
 | `structured_deposit_pricer` | Combines the discount cost of principal protection with the price of an embedded equity option to price structured deposits. |
 | `structured_logger` | Appends structured log entries with correlation metadata to a JSONL file. |
-| `structured_note_hedge_unwinder` | Estimates issuer hedging unwind pressure around callable structured notes. |
-| `structured_product_greeks_unwrapper` | Decomposes popular retail structured products into Greek exposures. |
-| `stub_value_residual_calculator` | Estimates stub valuation for partial deals where equity carve-outs persist. |
 | `student_loan_repayment_comparator` | Models standard, graduated, IBR, PAYE, and REPAYE student loan plans to expose monthly payments, total paid, and potential forgiveness along with a recommendation. |
 | `subscription_doc_parser` | Parses LP subscription agreement text extracted from PDF to identify the limited partner name, committed capital amount, legal entity type, and jurisdiction. Returns structured data with per-field confidence scores. |
 | `subscription_facility_analyzer` | Evaluates subscription credit facility utilization, annualized interest cost, unused fee drag, and NAV impact. Subscription lines are backed by LP commitments. |
 | `subscription_manager` | Identifies subscriptions due for billing and drafts charge records. |
-| `subsector_pair_trade_curator` | Curates structural pair trades using variance-covariance analytics. |
 | `supertrend` | Applies the Supertrend algorithm (ATR bands with dynamic flips) to mark trailing stops and trend phase. |
-| `supervoting_conversion_timer` | Tracks super-voting share collapse triggers to anticipate governance shifts. |
-| `supply_chain_disruption_signal_board` | Uses shipping-data and supplier earnings to anticipate company-specific supply hits. |
 | `supply_chain_risk_insurance_model` | Scores suppliers and calculates contingent BI exposure. |
 | `support_escalation_router` | Determines routing paths for support tickets based on category, tier, and urgency. |
 | `support_resistance_finder` | Finds price levels with multiple touches using swing highs/lows within a lookback window. |
 | `support_ticket_manager` | Creates, updates, closes, and lists support tickets with SLA tracking. |
 | `surety_bond_capacity_calculator` | Estimates surety bonding capacity from financial statements. |
-| `swap_benchmark_mismatch_detector` | Flags swaps referencing off-benchmark underlyings that create synthetic arb. |
 | `swap_curve_builder` | Bootstraps an overnight-indexed swap (OIS) discount curve and overlays vanilla IRS par rates with turn-of-year adjustments per ISDA methodology. |
 | `swap_rate_calculator` | Computes par swap rate, fixed leg PV, float leg PV, and NPV. |
 | `swaption_pricer` | Prices payer or receiver swaptions via Black's model and returns Greeks. |
 | `swarm_message_router` | Validates sender/recipient roles and produces routing envelopes. |
-| `synergy_realization_probabilizer` | Scores synergy credibility via comps, procurement data, and management track record. |
 | `synthetic_cdo_pricer` | Implements the Gaussian copula with Vasicek closed form to deliver expected loss and spreads for each tranche. |
 | `synthetic_market_data_generator` | Generates realistic synthetic market data (time series, spreads, curves) for free-tier advanced analytics skills. |
-| `synthetic_short_interest_balancer` | Monitors synthetic short build-up across swaps vs. physical borrow. |
 | `system_health_composite` | Rolls subsystem telemetry into a weighted score and recommendations. |
 | `taiko_data_availability_cost_forecaster` | Forecasts Taiko data availability costs when proofs spike. |
 | `taiko_proof_latency_profiler` | Profiles Taiko proof latency and confidence based on queue depth and L1 gas noise. |
@@ -1454,17 +1324,13 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `taiko_sequencer_privacy_leak_scanner` | Detects privacy leak heuristics across Taiko sequencer mempools and hints. |
 | `taiko_state_diff_audit_simulator` | Simulates Taiko state diff coverage to spot risky batches before posting. |
 | `taiko_validity_challenge_planner` | Plans Taiko validity challenge playbooks if proofs degrade. |
-| `tail_event_rehedge_scheduler` | Automates re-hedge reminders when vol regime shifts breach thresholds. |
-| `tail_hedge_payoff_matcher` | Matches portfolio beta to best-fit tail hedge structures with payoff tables. |
 | `tail_ratio_calculator` | Calculates right-tail/left-tail ratio plus skewness and kurtosis for fat-tail detection. |
 | `tail_risk_hedging_cost` | Aggregates put option strikes/premiums to estimate hedge cost, drawdown coverage, and breakeven levels. |
 | `tailscale_mesh_healthcheck` | Pulls device metadata from Tailscale and surfaces online/offline state. |
-| `target_shareholder_overlap_mapper` | Maps common holders between acquirer and target to forecast vote outcomes. |
 | `task_dependency_resolver` | Performs topological sorting and surfaces parallelizable groups. |
 | `tax_aware_rebalancer` | Constructs a tax-lot aware rebalance plan that respects capital gains budgets, wash-sale windows, and differentiates long- vs short-term tax rates per IRS Publication 550 guidance. |
 | `tax_basics_guide` | Shares plain-language US tax basics by entity type (goodwill only). |
 | `tax_bracket_marginal_analyzer` | Reports the taxpayer's current federal bracket, marginal rate, remaining income headroom before the next bracket, and a visualization of all bracket tiers. |
-| `tax_loss_harvest_window_finder` | Identifies crowded losers with elevated December bounce odds using seasonal factor models. |
 | `tax_loss_harvester` | Ranks positions by after-tax savings potential with wash sale warnings. |
 | `tax_loss_harvesting_calculator` | Aggregates available capital losses to offset realized gains, estimates tax savings (federal + state), and flags 30-day wash sale blackout periods. |
 | `telegram_alert_formatter` | Formats alerts using Telegram MarkdownV2 with escaping and CTA support. |
@@ -1474,16 +1340,13 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `telnyx_alert` | Drafts Telnyx SMS payloads to notify Thunder of high-priority events. |
 | `tenant_concentration_tracker` | Flags top tenant exposure versus single-tenant and top-10 limits. |
 | `tenant_credit_analyzer` | Scores tenant credit strength based on financials and lease metrics. |
-| `tender_offer_price_response_simulator` | Projects price paths for issuer/third-party tender offers across acceptance levels. |
 | `term_premium_calculator` | Compares observed term yield to expected average of policy rates. |
 | `term_sheet_analyzer` | Evaluates post-money, ownership, and liquidation waterfalls for venture deals. |
-| `theta_decay_heatmap_builder` | Visualizes theta decay pockets across expiries and strikes. |
 | `three_statement_modeler` | Generates linked financial statements using indirect cash flow method. |
 | `three_way_reconciliation_bot` | Matches GL, administrator, and custodian balances to highlight breaks exceeding tolerance. |
 | `threshold_monitor` | Evaluates metrics against warning and critical thresholds. |
 | `thunder_executive_briefing` | Generates a concise, plain-English daily executive briefing for Thunder (operator). Synthesises portfolio value, P&L, open alerts, reconciliation status, and market movers into a human-readable summary. Classifies overall severity as routine, attention, or urgent and surfaces action items. |
 | `thunder_signal` | Sends a severity-tiered Telegram alert to Thunder (the Operator). Severity levels: CRITICAL (vault breach, reconciliation failure), WARNING (Sybil infiltration, threshold breach), INTEL (general updates, Great Day). |
-| `ticking_fee_tracker` | Calculates ticking-fee accrual vs. expected closing to inform spread carry trades. |
 | `tier2_instrument_amortization` | Calculates remaining Tier 2 recognition after applying 20% annual haircuts during final 5 years. |
 | `tif_district_calculator` | Projects increment revenue and coverage for TIF districts over the term. |
 | `timber_valuation` | Applies Faustmann formula to timber growth and stumpage pricing to compute NPV and optimal rotation age. |
@@ -1548,8 +1411,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `total_return_swap_pricer` | Discounts realized equity leg cashflows against floating leg funding to output PVs, breakeven spread, and sensitivity. |
 | `tracking_error_calculator` | Computes tracking error, active return, and a rough active-share proxy from return differences. |
 | `tracking_error_optimizer` | Minimizes ex-ante tracking error relative to the benchmark while enforcing factor exposure targets via Lagrangian solution of the quadratic optimization problem. |
-| `tracking_stock_basis_arbitrageur` | Models tracking stock dislocations vs. parent share price sensitivity. |
-| `tracking_stock_break_even_solver` | Computes break-even for tracking stock conversions and rollups. |
 | `trade_break_resolver` | Scores trade breaks by aging and category to prioritize remediation. |
 | `trade_lifecycle_tracker` | Summarizes trade lifecycle stages with elapsed times and bottlenecks. |
 | `trade_settlement_lc_logic` | Validates Letters of Credit against UCP 600 international rules, checks document completeness, and generates settlement recommendations. |
@@ -1576,7 +1437,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `underwriting_profit_calculator` | Computes underwriting profit/loss, underwriting margin, combined ratio, and return on net earned premium from earned premium, losses, and expenses. |
 | `unit_economics_sensitivity` | Applies +/- variation to CAC, LTV, margin, and churn to highlight best/worst case unit economics and breakeven thresholds. |
 | `unitranche_yield_calculator` | Calculates unitranche cash yield plus amortized OID and fees. |
-| `unsponsored_adr_signal_matrix` | Scores unsponsored ADR launches by comparing demand signals and float constraints. |
 | `uptime_tracker` | Calculates uptime %, MTBF, MTTR, and outage extremes from heartbeat logs. |
 | `us_state_ak_fund_tax` | Highlights Alaska's zero income tax treatment while adding borough mill rate exposure for real assets. |
 | `us_state_al_fund_tax` | Computes Alabama pass-through entity tax, nonresident withholding, and composite filing triggers pursuant to Ala. Code §§40-18-14 and 40-18-24. |
@@ -1637,10 +1497,8 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `value_at_risk_parametric` | Computes Gaussian VaR and expected shortfall over a specified horizon. |
 | `var_calculator` | Computes one-day VaR using historical percentile and parametric methods. |
 | `variance_swap_fair_strike` | Applies the continuous variance swap replication integral approximated by discrete strikes (Carr & Madan 2001). |
-| `variance_swap_mark_to_market_estimator` | Calculates MTM on listed variance swaps using free realized data. |
 | `variance_swap_pricer` | Applies the Carr-Madan replication integral to infer fair variance strikes and MTM P&L. |
 | `velocity_tracker` | Summarizes velocity averages, trend, and predictability over past sprints. |
-| `vendor_channel_check_synthesizer` | Aggregates public datapoints (earnings calls, supply chain indices) into actionable sales inflection alerts. |
 | `vendor_cost_comparator` | Computes daily/monthly spend per provider and ranks by cost-effectiveness. |
 | `vendor_due_diligence` | Scores vendor fit based on uptime, pricing, certifications, and experience. |
 | `vendor_risk_assessor` | Evaluates concentration risk, SPOFs, and diversification across vendors. |
@@ -1652,21 +1510,15 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `vertex_ai_inference` | Call Vertex AI Gemini models for text generation, analysis, or embeddings. Uses Vertex AI REST API with explicit service account credentials — no gcloud, no ADC. Supports gemini-2.0-flash-exp (fastest), gemini-1.5-pro (most capable), gemini-1.5-flash. |
 | `vintage_year_analyzer` | Benchmarks fund IRR/MOIC/DPI against vintage-year peer quartile data. Returns quartile placement (top/2nd/3rd/bottom) for each metric. |
 | `vintage_year_benchmarking` | Benchmarks a private equity fund's performance against vintage-year peer data. Calculates the Public Market Equivalent (PME) ratio as fund_tvpi / benchmark_median_tvpi, determines quartile rank (Q1=top), and produces a side-by-side comparison table for TVPI, DPI, and IRR. |
-| `vix_term_structure_analyzer` | Charts VIX futures curve shape vs. realized vol to identify steepening trades. |
-| `vol_carry_roll_down_alerts` | Alerts when rolling long-vol positions offers attractive carry improvements. |
-| `vol_surface_regime_classifier` | Labels vol regimes (contango/backwardation) and ties them to macro states. |
-| `volatility_etf_decay_tracker` | Tracks decay and rebalance drag in vol-linked ETFs. |
+| `vix_term_structure_analyzer` | Analyzes VIX futures prices by expiry to identify contango/backwardation and roll yield. |
 | `volatility_rank_percentile` | Calculates IV rank and percentile to understand volatility regimes. |
-| `volatility_risk_premium_surface_plotter` | Maps VRP across tenors and strikes for strategy selection. |
 | `volatility_surface_analyzer` | Regresses implied volatility against strikes for each expiry to measure skew and term structure. |
-| `volga_vanna_sensitivity_mapper` | Computes second-order Greeks to guide exotic options hedging. |
 | `volume_price_trend` | Calculates cumulative Volume Price Trend and compares against SMA to detect divergences. |
 | `vote_tabulator` | Counts proposal votes and checks for mandates via 1-sigma upvote threshold. |
 | `vwap_calculator` | Computes VWAP from typical price (H+L+C)/3 and derives 1/2 standard deviation bands. |
 | `vwma_calculator` | Computes the volume-weighted moving average to compare price trends against standard SMA and confirm with volume. |
 | `wallet_concentration_analyzer` | Analyzes wallet balance data to quantify concentration risk and whale dominance. |
 | `wallets_check` | Checks on-chain balances versus Ghost Ledger and enforces $0.00 tolerance. |
-| `warranty_breach_risk_meter` | Uses sector incident databases to estimate reps and warranties breach odds. |
 | `wash_sale_cross_account` | Determines wash-sale disallowances when substantially identical securities are repurchased within ±30 days across related accounts. |
 | `wash_sale_detector` | Flags loss sales with repurchases inside the 30-day wash window. |
 | `wash_sale_rule_checker` | Checks transaction logs for wash sales inside 30-day windows. |
