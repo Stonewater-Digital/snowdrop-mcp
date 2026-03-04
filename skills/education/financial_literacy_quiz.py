@@ -119,10 +119,10 @@ def financial_literacy_quiz(
         selected = bank[: num_questions or len(bank)]
         questions = [
             {
-                "question": item["question"],
-                "options": item["options"],
-                "correct_answer_index": item["answer"],
-                "explanation": item["explanation"],
+                "question": item[0],
+                "options": item[1],
+                "correct_answer_index": item[2],
+                "explanation": item[3],
             }
             for item in selected
         ]

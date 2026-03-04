@@ -74,12 +74,12 @@ def continuous_compounding_calculator(**kwargs: Any) -> dict:
             },
             "timestamp": datetime.now(timezone.utc).isoformat(),
         }
-    except (ValueError, TypeError, ZeroDivisionError) as e:
-        logger.error(f"continuous_compounding_calculator failed: {e}")
-        _log_lesson(f"continuous_compounding_calculator: {e}")
+    except (ValueError, TypeError, ZeroDivisionError) as exc:
+        logger.error(f"continuous_compounding_calculator failed: {exc}")
+        _log_lesson(f"continuous_compounding_calculator: {exc}")
         return {
             "status": "error",
-            "error": str(e),
+            "error": str(exc),
             "timestamp": datetime.now(timezone.utc).isoformat(),
         }
 

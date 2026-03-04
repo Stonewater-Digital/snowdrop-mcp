@@ -119,12 +119,25 @@ def _ema(values: list[float], period: int) -> list[float]:
     if len(values) < period:
         return ema
     alpha = 2 / (period + 1)
-    seed = sum(values[:period]) / period
-    ema[period - 1] = seed
-    prev = seed
-    for idx in range(period, len(values)):
-        prev = alpha * values[idx] + (1 - alpha) * prev
-        ema[idx] = prev
+    # Skip leading NaN values to find valid seed window
+    valid_count = 0
+    start_idx = 0
+    for i, v in enumerate(values):
+        if math.isnan(v):
+            valid_count = 0
+            start_idx = i + 1
+        else:
+            valid_count += 1
+            if valid_count == period:
+                seed = sum(values[start_idx:i + 1]) / period
+                ema[i] = seed
+                prev = seed
+                for idx in range(i + 1, len(values)):
+                    if math.isnan(values[idx]):
+                        break
+                    prev = alpha * values[idx] + (1 - alpha) * prev
+                    ema[idx] = prev
+                return ema
     return ema
 
 

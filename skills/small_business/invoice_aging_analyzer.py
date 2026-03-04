@@ -72,7 +72,7 @@ def invoice_aging_analyzer(**kwargs: Any) -> dict:
 
         weighted_average_days = weighted_days / total_outstanding if total_outstanding else 0.0
         collection_rate = collected / total_amount if total_amount else 0.0
-        bad_debt_estimate = buckets["121-inf"] * 0.5
+        bad_debt_estimate = buckets["121-+"] * 0.5
 
         return {
             "status": "success",
@@ -98,8 +98,8 @@ def invoice_aging_analyzer(**kwargs: Any) -> dict:
 def _bucket_label(days_past_due: int) -> str:
     for low, high in BUCKETS:
         if days_past_due <= high:
-            return f"{low}-{int(high) if high != float('inf') else 'inf'}"
-    return "121-inf"
+            return f"{low}-{int(high) if high != float('inf') else '+'}"
+    return "121-+"
 
 
 def _log_lesson(message: str) -> None:
