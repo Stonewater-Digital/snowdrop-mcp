@@ -1,0 +1,1 @@
+"""Snowdrop treasury skills package."""

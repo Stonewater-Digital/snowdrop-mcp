@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0",
+  "name": "Snowdrop Community Edition",
+  "displayName": "Snowdrop MCP — Community Edition",
+  "description": "Free, self-hostable MCP server with 1,500+ financial modeling, compliance, DeFi, GCP, and infrastructure skills. No authentication required. For premium skills with JWT auth, connect to the Cloud Run endpoint.",
+  "url": "http://localhost:8000",
+  "version": "2.0.0",
+  "provider": {
+    "organization": "Stonewater Solutions LLC",
+    "url": "https://snowdrop.ai"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": false,
+    "multiTurn": true
+  },
+  "authentication": {
+    "schemes": [],
+    "description": "Community edition — no authentication required. For premium skills, connect to https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/mcp with an ES256 JWT Bearer token."
+  },
+  "defaultInputModes": ["application/json"],
+  "defaultOutputModes": ["application/json"],
+  "skills": [
+    {
+      "id": "mcp_tools",
+      "name": "MCP Tool Access",
+      "description": "Access all 1,500+ Snowdrop skills via 3 dispatcher meta-tools: snowdrop_list_skills, snowdrop_search_skills, snowdrop_execute.",
+      "tags": [
+        "financial-modeling", "compliance", "defi", "gcp", "firebase",
+        "infrastructure", "accounting", "risk", "real-estate", "crypto"
+      ],
+      "examples": [
+        "Calculate IRR for a set of cash flows",
+        "Run MiCA asset classification on a token",
+        "Perform Altman Z-Score bankruptcy analysis",
+        "Search for volatility-related skills"
+      ]
+    }
+  ],
+  "documentationUrl": "https://github.com/Stonewater-Digital/snowdrop-mcp",
+  "premiumEndpoint": "https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/mcp",
+  "iconUrl": null,
+  "termsOfServiceUrl": null,
+  "privacyPolicyUrl": null
+}

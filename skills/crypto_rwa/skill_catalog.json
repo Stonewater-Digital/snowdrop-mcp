@@ -1,0 +1,740 @@
+[
+  {
+    "name": "rwa_real_estate_title_registry_sync",
+    "description": "Cross-checks tokenized deed metadata with county title registries and surfaces mismatched parcel identifiers.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_deed_forgery_scanner",
+    "description": "Analyzes notarized deed uploads for signature anomalies and tamper patterns before minting tokens.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_parcel_zoning_attestor",
+    "description": "Confirms each parcel's zoning class via municipal APIs to enforce token-level use restrictions.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_property_tax_ledger_matcher",
+    "description": "Matches property tax receipts versus blockchain cash flows to confirm taxes remain current.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_escrow_disbursement_chain_watcher",
+    "description": "Traces escrow disbursements to ensure fiat releases mirror token allocation events.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_rent_roll_cashflow_verifier",
+    "description": "Audits rent-roll statements against stablecoin remittance data for income-backed tokens.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_appraisal_report_consistency_checker",
+    "description": "Checks appraisal comparables and LTV metrics for consistency with disclosure packets.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_insurance_binder_attestor",
+    "description": "Validates property insurance binders, coverage limits, and renewal dates pre-transfer.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_utility_arrears_detector",
+    "description": "Flags properties with unpaid utility balances or liens impacting collateral quality.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_occupancy_certificate_validator",
+    "description": "Verifies certificates of occupancy and permit status for new developments.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_tenant_kyc_rollup",
+    "description": "Aggregates tenant KYC attestations to verify income streams backing lease tokens.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_property_liens_status_monitor",
+    "description": "Pulls lien registries to detect new encumbrances on token collateral.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_hoa_compliance_verifier",
+    "description": "Checks HOA dues payments and covenant compliance before distributions are released.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_construction_permit_tracker",
+    "description": "Aligns construction draw schedules with permit milestones to gate unlocks.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_real_estate_environmental_report_checker",
+    "description": "Validates environmental assessments and ensures mitigation steps are recorded on-chain.",
+    "category": "asset_verification",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_treasury_cusip_whitelist_verifier",
+    "description": "Ensures only approved CUSIPs appear in wrapped Treasury vaults by reconciling mint payloads with issuance calendars.",
+    "category": "asset_verification",
+    "subcategory": "treasury"
+  },
+  {
+    "name": "rwa_treasury_maturity_schedule_guardian",
+    "description": "Checks that token maturity ladders align with underlying Treasury maturity dates.",
+    "category": "asset_verification",
+    "subcategory": "treasury"
+  },
+  {
+    "name": "rwa_treasury_auction_allotment_matcher",
+    "description": "Matches primary auction allotments to token mint quantities to prevent synthetic supply.",
+    "category": "asset_verification",
+    "subcategory": "treasury"
+  },
+  {
+    "name": "rwa_treasury_rebate_payment_tracker",
+    "description": "Tracks rebate and coupon-equivalent flows into token treasury accounts.",
+    "category": "asset_verification",
+    "subcategory": "treasury"
+  },
+  {
+    "name": "rwa_treasury_fedwire_settlement_audit",
+    "description": "Maps Fedwire settlement receipts to blockchain proofs for custody assurance.",
+    "category": "asset_verification",
+    "subcategory": "treasury"
+  },
+  {
+    "name": "rwa_treasury_collateral_chain_snapshotter",
+    "description": "Builds snapshots of collateral pledges to avoid double counting the same bills.",
+    "category": "asset_verification",
+    "subcategory": "treasury"
+  },
+  {
+    "name": "rwa_treasury_safekeeping_receipt_checker",
+    "description": "Validates safekeeping receipts and custodial chain-of-control for token wrappers.",
+    "category": "asset_verification",
+    "subcategory": "treasury"
+  },
+  {
+    "name": "rwa_treasury_repo_haircut_compliance_monitor",
+    "description": "Checks repo leverage agreements to ensure haircuts stay within disclosures.",
+    "category": "asset_verification",
+    "subcategory": "treasury"
+  },
+  {
+    "name": "rwa_treasury_discount_curve_checker",
+    "description": "Compares implied token discounts to the live Treasury curve to spot mispricing.",
+    "category": "asset_verification",
+    "subcategory": "treasury"
+  },
+  {
+    "name": "rwa_treasury_sanctions_screen",
+    "description": "Screens custodians and counterparties for OFAC flags before settlement.",
+    "category": "asset_verification",
+    "subcategory": "treasury"
+  },
+  {
+    "name": "rwa_private_credit_loan_servicer_cashflow_validator",
+    "description": "Reconciles servicer remittance files against token payout streams for private credit pools.",
+    "category": "asset_verification",
+    "subcategory": "private_credit"
+  },
+  {
+    "name": "rwa_private_credit_covenant_packet_checker",
+    "description": "Parses covenant reports to ensure breach notices trigger token gating logic.",
+    "category": "asset_verification",
+    "subcategory": "private_credit"
+  },
+  {
+    "name": "rwa_private_credit_collateral_file_attestor",
+    "description": "Confirms collateral file hashes and borrowing base calculations for on-chain lenders.",
+    "category": "asset_verification",
+    "subcategory": "private_credit"
+  },
+  {
+    "name": "rwa_private_credit_nav_facility_limit_monitor",
+    "description": "Checks NAV facility utilization versus limits before approving new draws.",
+    "category": "asset_verification",
+    "subcategory": "private_credit"
+  },
+  {
+    "name": "rwa_private_credit_payment_default_signal_router",
+    "description": "Routes delinquency signals to holders and pauses distributions until resolved.",
+    "category": "asset_verification",
+    "subcategory": "private_credit"
+  },
+  {
+    "name": "smart_contract_reentrancy_surface_mapper",
+    "description": "Simulates nested calls and flags storage slots lacking reentrancy guards.",
+    "category": "security_heuristics",
+    "subcategory": "reentrancy"
+  },
+  {
+    "name": "smart_contract_delegatecall_guardrail",
+    "description": "Inspects delegatecall targets to ensure they respect access control and immutability assumptions.",
+    "category": "security_heuristics",
+    "subcategory": "privilege"
+  },
+  {
+    "name": "smart_contract_storage_collision_detector",
+    "description": "Analyzes proxy storage layouts for slot collisions across upgrades.",
+    "category": "security_heuristics",
+    "subcategory": "upgrade"
+  },
+  {
+    "name": "smart_contract_authority_matrix_auditor",
+    "description": "Builds a permission matrix for each method to catch privilege creep.",
+    "category": "security_heuristics",
+    "subcategory": "access"
+  },
+  {
+    "name": "smart_contract_flashloan_pressure_tester",
+    "description": "Runs deterministic flash-loan scenarios to measure collateral buffers and slippage thresholds.",
+    "category": "security_heuristics",
+    "subcategory": "flashloan"
+  },
+  {
+    "name": "smart_contract_oracle_dependency_graph",
+    "description": "Constructs dependency graphs of oracle feeds to find single points of failure.",
+    "category": "security_heuristics",
+    "subcategory": "oracle"
+  },
+  {
+    "name": "smart_contract_price_staleness_alarm",
+    "description": "Calculates price feed staleness windows and raises alerts when data age exceeds limits.",
+    "category": "security_heuristics",
+    "subcategory": "oracle"
+  },
+  {
+    "name": "smart_contract_emergency_pause_validator",
+    "description": "Validates pause pathways ensure multi-sig approvals and enforce cooldowns.",
+    "category": "security_heuristics",
+    "subcategory": "circuit_breaker"
+  },
+  {
+    "name": "smart_contract_liquidity_sink_detector",
+    "description": "Detects pools where withdrawals can be blocked via hooks or sticky fee logic.",
+    "category": "security_heuristics",
+    "subcategory": "liquidity"
+  },
+  {
+    "name": "smart_contract_fee_switch_diff_checker",
+    "description": "Compares fee switch states across deployments to expose unnoticed toggles.",
+    "category": "security_heuristics",
+    "subcategory": "fees"
+  },
+  {
+    "name": "smart_contract_state_desync_simulator",
+    "description": "Simulates sequencer delays to predict when L2 states diverge from L1 finality.",
+    "category": "security_heuristics",
+    "subcategory": "l2"
+  },
+  {
+    "name": "smart_contract_upgrade_timelock_checker",
+    "description": "Verifies upgrade timelocks meet governance thresholds and cannot be bypassed.",
+    "category": "security_heuristics",
+    "subcategory": "governance"
+  },
+  {
+    "name": "smart_contract_governance_quorum_analyzer",
+    "description": "Evaluates historical quorum attainment to estimate hostile takeover risk.",
+    "category": "security_heuristics",
+    "subcategory": "governance"
+  },
+  {
+    "name": "smart_contract_vault_share_dilution_checker",
+    "description": "Models share issuance math to catch dilution vectors for vault depositors.",
+    "category": "security_heuristics",
+    "subcategory": "tokenomics"
+  },
+  {
+    "name": "smart_contract_unbounded_loop_detector",
+    "description": "Scans bytecode for unbounded loops that can be griefed via block gas limits.",
+    "category": "security_heuristics",
+    "subcategory": "gas"
+  },
+  {
+    "name": "smart_contract_precision_loss_guard",
+    "description": "Checks decimal math routines to prevent precision loss on rebasing assets.",
+    "category": "security_heuristics",
+    "subcategory": "math"
+  },
+  {
+    "name": "smart_contract_cross_chain_message_profiler",
+    "description": "Profiles bridge message flow for ack failures or stalled packets.",
+    "category": "security_heuristics",
+    "subcategory": "bridge"
+  },
+  {
+    "name": "smart_contract_oracle_sandwich_risk_scanner",
+    "description": "Identifies oracle updates that traders can sandwich before settlement.",
+    "category": "security_heuristics",
+    "subcategory": "oracle"
+  },
+  {
+    "name": "smart_contract_mev_backrun_scorer",
+    "description": "Scores how easily transactions can be backrun given hooks and mempool patterns.",
+    "category": "security_heuristics",
+    "subcategory": "mev"
+  },
+  {
+    "name": "smart_contract_liquidation_waterfall_checker",
+    "description": "Validates liquidation waterfalls respect seniority rules across tranches.",
+    "category": "security_heuristics",
+    "subcategory": "risk"
+  },
+  {
+    "name": "smart_contract_native_asset_sweep_detector",
+    "description": "Ensures no function can sweep native chain assets without quorum approval.",
+    "category": "security_heuristics",
+    "subcategory": "custody"
+  },
+  {
+    "name": "smart_contract_reward_emission_checker",
+    "description": "Compares scheduled reward emissions to live supply to catch runaway inflation.",
+    "category": "security_heuristics",
+    "subcategory": "tokenomics"
+  },
+  {
+    "name": "smart_contract_permit_replay_guard",
+    "description": "Validates permit signatures expire correctly and integrate nonce tracking.",
+    "category": "security_heuristics",
+    "subcategory": "signatures"
+  },
+  {
+    "name": "smart_contract_signature_malleability_scan",
+    "description": "Checks signature verification logic for malleability or unchecked parameters.",
+    "category": "security_heuristics",
+    "subcategory": "signatures"
+  },
+  {
+    "name": "smart_contract_token_allowance_drift_checker",
+    "description": "Monitors allowances versus expected spend to highlight risky approvals.",
+    "category": "security_heuristics",
+    "subcategory": "allowance"
+  },
+  {
+    "name": "smart_contract_infinite_mint_sentinel",
+    "description": "Detects code paths capable of unlimited minting without supply caps.",
+    "category": "security_heuristics",
+    "subcategory": "tokenomics"
+  },
+  {
+    "name": "smart_contract_stateful_callback_tracker",
+    "description": "Tracks callbacks to ensure downstream states revert when upstream calls fail.",
+    "category": "security_heuristics",
+    "subcategory": "callbacks"
+  },
+  {
+    "name": "smart_contract_interest_rate_jump_detector",
+    "description": "Stress-tests rate models for discontinuities following governance votes.",
+    "category": "security_heuristics",
+    "subcategory": "rates"
+  },
+  {
+    "name": "smart_contract_protocol_fee_recon",
+    "description": "Reconciles protocol fee accounting with actual treasury balances.",
+    "category": "security_heuristics",
+    "subcategory": "accounting"
+  },
+  {
+    "name": "smart_contract_validator_slash_risk_checker",
+    "description": "Estimates slash exposure by simulating validator misbehavior scenarios.",
+    "category": "security_heuristics",
+    "subcategory": "validators"
+  },
+  {
+    "name": "smart_contract_access_control_diff_checker",
+    "description": "Diffs access-control lists between versions to highlight missing roles.",
+    "category": "security_heuristics",
+    "subcategory": "access"
+  },
+  {
+    "name": "smart_contract_bridge_finality_checker",
+    "description": "Verifies bridge contracts enforce finality depth before crediting funds.",
+    "category": "security_heuristics",
+    "subcategory": "bridge"
+  },
+  {
+    "name": "smart_contract_paymaster_abuse_detector",
+    "description": "Analyzes ERC-4337 paymaster policies for unlimited sponsor risk.",
+    "category": "security_heuristics",
+    "subcategory": "gas"
+  },
+  {
+    "name": "smart_contract_nonce_management_monitor",
+    "description": "Ensures relayers clear queued nonces to prevent stuck meta-transactions.",
+    "category": "security_heuristics",
+    "subcategory": "operations"
+  },
+  {
+    "name": "smart_contract_cross_pool_drain_simulator",
+    "description": "Runs stress flows across linked pools to detect capital draining routes.",
+    "category": "security_heuristics",
+    "subcategory": "liquidity"
+  },
+  {
+    "name": "rwa_oracle_muni_bond_price_sync",
+    "description": "Aligns municipal bond marks from EMMA with on-chain oracle quotes and flags spreads beyond tolerance.",
+    "category": "oracle_reconciliation",
+    "subcategory": "fixed_income"
+  },
+  {
+    "name": "rwa_oracle_treasury_curve_reconciler",
+    "description": "Compares oracle Treasury curves with FRED benchmarks to ensure discount factors match.",
+    "category": "oracle_reconciliation",
+    "subcategory": "fixed_income"
+  },
+  {
+    "name": "rwa_oracle_real_estate_index_blender",
+    "description": "Blends Case-Shiller and proprietary comps to smooth real-estate NAV ticks feeding tokens.",
+    "category": "oracle_reconciliation",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "rwa_oracle_private_credit_nav_tracker",
+    "description": "Aggregates private credit NAV statements and reconciles them with streaming oracle NAVs.",
+    "category": "oracle_reconciliation",
+    "subcategory": "private_credit"
+  },
+  {
+    "name": "rwa_oracle_carbon_asset_price_guard",
+    "description": "Validates carbon offset price feeds against EU ETS and voluntary market data.",
+    "category": "oracle_reconciliation",
+    "subcategory": "carbon"
+  },
+  {
+    "name": "rwa_oracle_shipping_rate_feed_watcher",
+    "description": "Checks Baltic Dry and Freightos prints versus oracle shipping feeds for divergence.",
+    "category": "oracle_reconciliation",
+    "subcategory": "shipping"
+  },
+  {
+    "name": "rwa_oracle_energy_ppa_price_monitor",
+    "description": "Monitors PPA settlement curves versus on-chain kilowatt-hour pricing oracles.",
+    "category": "oracle_reconciliation",
+    "subcategory": "energy"
+  },
+  {
+    "name": "rwa_oracle_metals_inventory_indexer",
+    "description": "Reconciles LME inventory data against tokenized warehouse receipt feeds.",
+    "category": "oracle_reconciliation",
+    "subcategory": "metals"
+  },
+  {
+    "name": "rwa_oracle_forestry_land_value_checker",
+    "description": "Compares forestry land appraisal indexes with oracle quotes backing timber tokens.",
+    "category": "oracle_reconciliation",
+    "subcategory": "real_assets"
+  },
+  {
+    "name": "rwa_oracle_t_bill_fx_cross_checker",
+    "description": "Ensures T-bill tokens priced in non-USD denominations reflect live FX crosses.",
+    "category": "oracle_reconciliation",
+    "subcategory": "fx"
+  },
+  {
+    "name": "rwa_oracle_inflation_swap_bridge",
+    "description": "Maps inflation swap fixings to CPI-linked RWA oracle inputs.",
+    "category": "oracle_reconciliation",
+    "subcategory": "inflation"
+  },
+  {
+    "name": "rwa_oracle_sofr_libor_spread_monitor",
+    "description": "Tracks SOFR-LIBOR spreads embedded in oracle discount factors for loans.",
+    "category": "oracle_reconciliation",
+    "subcategory": "rates"
+  },
+  {
+    "name": "rwa_oracle_cds_spread_checker",
+    "description": "Checks corporate CDS spreads feeding private credit tokens for stale data.",
+    "category": "oracle_reconciliation",
+    "subcategory": "credit"
+  },
+  {
+    "name": "rwa_oracle_weather_index_checker",
+    "description": "Validates weather derivative indexes powering parametric insurance tokens.",
+    "category": "oracle_reconciliation",
+    "subcategory": "climate"
+  },
+  {
+    "name": "rwa_oracle_token_nav_consistency_guard",
+    "description": "Confirms oracle NAV outputs reconcile with issuer-reported NAV statements.",
+    "category": "oracle_reconciliation",
+    "subcategory": "nav"
+  },
+  {
+    "name": "rwa_oracle_fallback_latency_monitor",
+    "description": "Measures latency when feeds fall back to secondary providers during outages.",
+    "category": "oracle_reconciliation",
+    "subcategory": "resilience"
+  },
+  {
+    "name": "rwa_oracle_data_vendor_quorum_checker",
+    "description": "Ensures quorum logic across multiple vendors is functioning and weighted correctly.",
+    "category": "oracle_reconciliation",
+    "subcategory": "resilience"
+  },
+  {
+    "name": "rwa_oracle_distribution_waterfall_recon",
+    "description": "Checks that oracle-distributed cashflows match waterfall calculations per tranche.",
+    "category": "oracle_reconciliation",
+    "subcategory": "cashflow"
+  },
+  {
+    "name": "rwa_oracle_collateral_liquidity_flagger",
+    "description": "Flags collateral where oracle liquidity inputs diverge from on-chain trades.",
+    "category": "oracle_reconciliation",
+    "subcategory": "liquidity"
+  },
+  {
+    "name": "rwa_oracle_cross_chain_feed_diff",
+    "description": "Diffs oracle values across chains to detect delayed relays or bridge drifts.",
+    "category": "oracle_reconciliation",
+    "subcategory": "bridge"
+  },
+  {
+    "name": "rwa_oracle_block_timestamp_gapper",
+    "description": "Measures block timestamp gaps affecting TWAP-driven oracle updates.",
+    "category": "oracle_reconciliation",
+    "subcategory": "time"
+  },
+  {
+    "name": "rwa_oracle_primary_secondary_spread_checker",
+    "description": "Compares primary issuance prices with secondary token trading to spot gaps.",
+    "category": "oracle_reconciliation",
+    "subcategory": "market_structure"
+  },
+  {
+    "name": "rwa_oracle_price_ladder_sanity_checker",
+    "description": "Validates laddered price levels for order-book fed RWAs remain monotonic.",
+    "category": "oracle_reconciliation",
+    "subcategory": "market_structure"
+  },
+  {
+    "name": "rwa_oracle_volume_weight_consistency",
+    "description": "Ensures oracle VWAP calculations match reported venue volumes.",
+    "category": "oracle_reconciliation",
+    "subcategory": "market_structure"
+  },
+  {
+    "name": "rwa_oracle_market_data_downtime_buffer",
+    "description": "Projects NAV impact when core venues go dark and oracles rely on stale buffers.",
+    "category": "oracle_reconciliation",
+    "subcategory": "resilience"
+  },
+  {
+    "name": "rwa_oracle_performance_fee_shadow_calc",
+    "description": "Runs independent performance-fee calculations to cross-check oracle output.",
+    "category": "oracle_reconciliation",
+    "subcategory": "fees"
+  },
+  {
+    "name": "rwa_oracle_stress_scenario_projector",
+    "description": "Applies stress shocks to oracle inputs to preview NAV drawdowns before they post.",
+    "category": "oracle_reconciliation",
+    "subcategory": "stress"
+  },
+  {
+    "name": "rwa_oracle_real_estate_sale_comp_checker",
+    "description": "Confirms sale comparables feeding residential tokens align with MLS data.",
+    "category": "oracle_reconciliation",
+    "subcategory": "real_estate"
+  },
+  {
+    "name": "token_standard_erc3643_whitelist_enforcer",
+    "description": "Validates ERC-3643 allowlists against investor registries before transfers.",
+    "category": "token_compliance",
+    "subcategory": "erc3643"
+  },
+  {
+    "name": "token_standard_erc3643_partition_guard",
+    "description": "Ensures partition balances respect transfer restrictions across partitions.",
+    "category": "token_compliance",
+    "subcategory": "erc3643"
+  },
+  {
+    "name": "token_standard_erc3643_hook_validator",
+    "description": "Checks ERC-3643 validation hooks execute within gas and return proper codes.",
+    "category": "token_compliance",
+    "subcategory": "erc3643"
+  },
+  {
+    "name": "token_standard_erc1400_issuance_policy_checker",
+    "description": "Confirms ERC-1400 issuance hooks adhere to disclosure-driven policies.",
+    "category": "token_compliance",
+    "subcategory": "erc1400"
+  },
+  {
+    "name": "token_standard_erc1400_redemption_flow_modeler",
+    "description": "Simulates ERC-1400 redemption flows to ensure certificate revocations propagate.",
+    "category": "token_compliance",
+    "subcategory": "erc1400"
+  },
+  {
+    "name": "token_standard_erc1400_document_registry_sync",
+    "description": "Keeps ERC-1400 document URIs synced with latest prospectus filings.",
+    "category": "token_compliance",
+    "subcategory": "erc1400"
+  },
+  {
+    "name": "token_standard_mica_security_token_classifier",
+    "description": "Runs MiCA tests to classify tokens as financial instruments requiring passporting.",
+    "category": "token_compliance",
+    "subcategory": "mica"
+  },
+  {
+    "name": "token_standard_mica_utility_token_guardrail",
+    "description": "Checks MiCA utility token criteria to ensure consumer disclosures are adequate.",
+    "category": "token_compliance",
+    "subcategory": "mica"
+  },
+  {
+    "name": "token_standard_travel_rule_payload_builder",
+    "description": "Builds Travel Rule payloads for off-ramp transactions initiated by RWA tokens.",
+    "category": "token_compliance",
+    "subcategory": "compliance"
+  },
+  {
+    "name": "token_standard_beneficial_owner_registry_bridge",
+    "description": "Bridges beneficial owner registries into token KYC proofs for regulators.",
+    "category": "token_compliance",
+    "subcategory": "compliance"
+  },
+  {
+    "name": "token_standard_transfer_restriction_matrix",
+    "description": "Generates restriction matrices mapping jurisdiction plus investor tier combinations.",
+    "category": "token_compliance",
+    "subcategory": "policy"
+  },
+  {
+    "name": "token_standard_geofence_policy_checker",
+    "description": "Enforces geo-fencing policies at the smart-contract level before transfers settle.",
+    "category": "token_compliance",
+    "subcategory": "policy"
+  },
+  {
+    "name": "token_standard_rwa_oracle_binding_validator",
+    "description": "Verifies tokens consume signed oracle data per governance charter.",
+    "category": "token_compliance",
+    "subcategory": "oracle"
+  },
+  {
+    "name": "token_standard_sanctions_attestor",
+    "description": "Confirms sanctions screening proofs are attached to each restricted transfer.",
+    "category": "token_compliance",
+    "subcategory": "compliance"
+  },
+  {
+    "name": "token_standard_corporate_actions_allocator",
+    "description": "Automates corporate action allocation tables for partitioned cap tables.",
+    "category": "token_compliance",
+    "subcategory": "operations"
+  },
+  {
+    "name": "token_standard_prospectus_linker",
+    "description": "Ensures wallets receive the latest prospectus hash before participating in offerings.",
+    "category": "token_compliance",
+    "subcategory": "disclosure"
+  },
+  {
+    "name": "token_standard_aml_risk_timer",
+    "description": "Applies dynamic AML cooldown timers when risk scores breach thresholds.",
+    "category": "token_compliance",
+    "subcategory": "aml"
+  },
+  {
+    "name": "token_standard_risk_scorecard_generator",
+    "description": "Generates composite risk scorecards per investor wallet for compliance teams.",
+    "category": "token_compliance",
+    "subcategory": "aml"
+  },
+  {
+    "name": "token_standard_secondary_liquidity_gater",
+    "description": "Controls secondary trading windows based on issuer-defined liquidity tiers.",
+    "category": "token_compliance",
+    "subcategory": "liquidity"
+  },
+  {
+    "name": "token_standard_liquidation_preference_mapper",
+    "description": "Maps liquidation preference stacks to ensure payouts follow documentation.",
+    "category": "token_compliance",
+    "subcategory": "operations"
+  },
+  {
+    "name": "token_standard_redemption_notice_builder",
+    "description": "Crafts redemption notice packets with deadlines and KYC refresh requests.",
+    "category": "token_compliance",
+    "subcategory": "operations"
+  },
+  {
+    "name": "token_standard_audit_trail_packer",
+    "description": "Packages on-chain and off-chain audit trails for regulator-ready exports.",
+    "category": "token_compliance",
+    "subcategory": "reporting"
+  },
+  {
+    "name": "token_standard_tax_withholding_engine",
+    "description": "Calculates withholding schedules per jurisdiction before stablecoin payouts.",
+    "category": "token_compliance",
+    "subcategory": "tax"
+  },
+  {
+    "name": "token_standard_solvency_ratio_checker",
+    "description": "Checks issuer solvency ratios versus promised buffers before new issuance.",
+    "category": "token_compliance",
+    "subcategory": "risk"
+  },
+  {
+    "name": "token_standard_control_person_limit_monitor",
+    "description": "Tracks beneficial ownership percentages to enforce control-person caps.",
+    "category": "token_compliance",
+    "subcategory": "governance"
+  },
+  {
+    "name": "token_standard_multi_chain_supply_auditor",
+    "description": "Audits circulating supply across chains to prevent double listings.",
+    "category": "token_compliance",
+    "subcategory": "operations"
+  },
+  {
+    "name": "token_standard_escrow_release_scheduler",
+    "description": "Schedules escrow release events based on oracle-verified milestones.",
+    "category": "token_compliance",
+    "subcategory": "operations"
+  },
+  {
+    "name": "token_standard_routing_number_verifier",
+    "description": "Validates routing and account numbers used for fiat bridges in compliance workflows.",
+    "category": "token_compliance",
+    "subcategory": "infrastructure"
+  },
+  {
+    "name": "token_standard_oracle_binding_tester",
+    "description": "Tests failover paths for oracle binding functions within compliance wrappers.",
+    "category": "token_compliance",
+    "subcategory": "oracle"
+  },
+  {
+    "name": "token_standard_registrar_sync_agent",
+    "description": "Synchronizes token transfer agents with smart-contract registrars in near-real time.",
+    "category": "token_compliance",
+    "subcategory": "operations"
+  }
+]

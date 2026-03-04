@@ -1,0 +1,69 @@
+name: Test Snowdrop Community Edition
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Discover Skills + Health Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Discover skills and verify count
+        run: |
+          python -c "
+          import sys
+          sys.path.insert(0, '.')
+          from mcp_server import _discover_skills, _SKILLS_DIR
+          print(f'Skills directory: {_SKILLS_DIR}')
+          discovered = _discover_skills()
+          print(f'Discovered {len(discovered)} skills')
+          failed = getattr(_discover_skills, '_failed_imports', [])
+          print(f'Failed imports: {len(failed)}')
+          for f in failed[:10]:
+              print(f'  - {f}')
+          assert len(discovered) > 500, f'Expected >500 skills, got {len(discovered)}'
+          print('Skill count check passed.')
+          "
+
+      - name: Start server and health check
+        run: |
+          PORT=9999 python mcp_server.py &
+          SERVER_PID=$!
+          sleep 10
+
+          # Health check
+          HTTP_CODE=$(curl -s -o /tmp/health.json -w '%{http_code}' http://localhost:9999/health)
+          echo "Health response: $(cat /tmp/health.json)"
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "Health check failed with HTTP $HTTP_CODE"
+            kill $SERVER_PID 2>/dev/null
+            exit 1
+          fi
+
+          # Agent card check
+          HTTP_CODE=$(curl -s -o /tmp/agent.json -w '%{http_code}' http://localhost:9999/.well-known/agent.json)
+          echo "Agent card response: $(cat /tmp/agent.json)"
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "Agent card check failed with HTTP $HTTP_CODE"
+            kill $SERVER_PID 2>/dev/null
+            exit 1
+          fi
+
+          kill $SERVER_PID 2>/dev/null
+          echo "All checks passed."
