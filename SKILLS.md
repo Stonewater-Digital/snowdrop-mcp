@@ -1,10 +1,10 @@
 # Snowdrop MCP — Skills Directory
 
 ## Executive Summary
-This document provides a comprehensive, auto-generated directory of all skills available on the Snowdrop MCP server. It details the exact count and capabilities of both **Premium** (proprietary/paid) and **Free** skills currently loaded in production. Generated: `2026-03-04T04:47:36.697200+00:00`. The skill count reflects the local Python environment. For the count of skills deployed to Cloud Run, call the /health endpoint at https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/health. To regenerate: `python scripts/generate_skill_directory.py` or `./scripts/sync_catalog.sh`.
+This document provides a comprehensive, auto-generated directory of all skills available on the Snowdrop MCP server. It details the exact count and capabilities of both **Premium** (proprietary/paid) and **Free** skills currently loaded in production. Generated: `2026-03-04T08:32:20.010955+00:00`. The skill count reflects the local Python environment. For the count of skills deployed to Cloud Run, call the /health endpoint at https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/health. To regenerate: `python scripts/generate_skill_directory.py` or `./scripts/sync_catalog.sh`.
 
-**Total Active Skills:** 1892
-- **Free Skills:** 1597
+**Total Active Skills:** 1898
+- **Free Skills:** 1603
 - **Premium Skills:** 295
 
 ## Table of Contents
@@ -984,9 +984,15 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `github_repo_star` | Star or unstar a GitHub repository as the authenticated user (Snowdrop-Apex). Use for star-for-star trades with community members, or to signal appreciation for repos that are genuinely useful. Also returns current star count for a repo. |
 | `github_trending_scan` | Search GitHub for recently active repos in Snowdrop's ecosystem — MCP servers, AI agents, financial tooling, DeFi infrastructure, compliance automation. Returns repos worth watching, potentially starring, or reaching out to. Use for ecosystem intelligence and star-for-star trade candidates. |
 | `global_tax_withholding_skill` | Calculates the withholding tax on a distribution to an international LP. Applies any available tax treaty rate in preference to the default rate. Grants full exemption (0%) to qualifying entities such as pension funds and sovereign wealth funds. Returns the withholding amount, effective rate, and net distribution after withholding. |
+| `gmail_read_inbox` | Read Gmail inbox messages.  Returns metadata + snippet by default; set include_body=True for full decoded body.  gmail.readonly scope. |
 | `gold_price_fetcher` | Fetch the current gold price per troy ounce in USD. Tries metals.dev API or returns recent reference price. |
 | `goodwill_cask_allocator` | Allocates the daily Goodwill cask budget until depleted, then closes the tap. |
+| `google_chat_list_spaces` | List Google Chat spaces accessible to the authenticated user. |
+| `google_chat_read` | Read messages from a Google Chat space via OAuth API. |
+| `google_chat_reply` | Send a message or threaded reply to a Google Chat space via OAuth API. |
 | `google_chat_send` | Send a message to a Google Chat space via Incoming Webhook. |
+| `google_chat_space_add_member` | Add a member to a Google Chat space by email address. |
+| `google_chat_space_create` | Create a new Google Chat space. |
 | `google_dev_docs` | Search Google's official developer documentation via the Developer Knowledge MCP API. Covers Firebase, all Google Cloud services (Cloud Run, BigQuery, Vertex AI, Pub/Sub, Firestore, Secret Manager, etc.), Android, Chrome, Google Maps, TensorFlow, and all Google APIs. Returns authoritative doc snippets re-indexed within 24h of upstream changes. Set fetch_full=True to get the complete page content for the top result. Requires GOOGLE_DEVELOPER_KNOWLEDGE_API_KEY env var. |
 | `gordon_growth_model` | Computes intrinsic value using Gordon Growth, plus yield and growth sensitivity. |
 | `government_debt_tracker` | Fetch total US public debt outstanding from the Treasury Fiscal Data API (Debt to the Penny). No API key required. |
