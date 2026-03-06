@@ -1,0 +1,8 @@
+startCommand:
+  type: stdio
+  command: python
+  args:
+    - mcp_server.py
+dependencies:
+  - type: pip
+    file: requirements.txt
