@@ -1,10 +1,10 @@
 # Snowdrop MCP — Skills Directory
 
 ## Executive Summary
-This document provides a comprehensive, auto-generated directory of all skills available on the Snowdrop MCP server. It details the exact count and capabilities of both **Premium** (proprietary/paid) and **Free** skills currently loaded in production. Generated: `2026-03-05T03:03:50.754488+00:00`. The skill count reflects the local Python environment. For the count of skills deployed to Cloud Run, call the /health endpoint at https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/health. To regenerate: `python scripts/generate_skill_directory.py` or `./scripts/sync_catalog.sh`.
+This document provides a comprehensive, auto-generated directory of all skills available on the Snowdrop MCP server. It details the exact count and capabilities of both **Premium** (proprietary/paid) and **Free** skills currently loaded in production. Generated: `2026-03-06T03:04:44.940818+00:00`. The skill count reflects the local Python environment. For the count of skills deployed to Cloud Run, call the /health endpoint at https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/health. To regenerate: `python scripts/generate_skill_directory.py` or `./scripts/sync_catalog.sh`.
 
-**Total Active Skills:** 1898
-- **Free Skills:** 1603
+**Total Active Skills:** 1895
+- **Free Skills:** 1600
 - **Premium Skills:** 295
 
 ## Table of Contents
@@ -419,7 +419,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `asset_tokenization_fee_estimator` | Aggregates setup and recurring platform fees to forecast tokenization economics. |
 | `asset_turnover_calculator` | Calculates the asset turnover ratio, measuring how efficiently a company generates revenue from its total assets. |
 | `atr_calculator` | Implements Wilder's Average True Range for volatility assessment. |
-| `audit_kraken` | Retrieves live Kraken exchange balances for TON, SOL, and USDC, converts to USD, and returns a structured balance report. |
 | `audit_trail_immutable_export` | Export records to a SHA-256 signed CSV. The hash covers the entire CSV content, making tampering detectable. Hash is embedded as the final row or metadata header. |
 | `audit_trail_logger` | Writes immutable audit entries to logs/audit_trail.jsonl. |
 | `auto_insurance_premium_estimator` | Estimate auto insurance annual premium based on vehicle value, driver age, experience, accident history, and coverage type. |
@@ -1368,7 +1367,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `prep_daily_intel` | Aggregate 24h logs and system health into 3-5 BLUF bullet points for CTO briefing. |
 | `present_value_calculator` | Computes the present value of a lump sum or annuity, adjusting for payment timing and reporting aggregate payments and implied interest. |
 | `price_alert_evaluator` | Checks price conditions (above, below, pct_change) and prioritizes alerts. |
-| `price_feed_aggregator` | Fetches CoinGecko and Kraken prices then returns the median. |
 | `pricing_elasticity_estimator` | Uses observed price/volume pairs to estimate demand elasticity and recommends revenue/profit maximizing price points. |
 | `pricing_feed_voter` | Computes a consensus price across vendor feeds and flags quotes outside tolerance bands. |
 | `prime_broker_reconciliation` | Reconciles positions and cash between internal books and the prime broker. |
@@ -1405,7 +1403,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `real_interest_rate_calculator` | Calculate the real interest rate from nominal rate and inflation using the Fisher equation. Returns both exact and approximate values. |
 | `real_rate_calculator` | Computes ex-ante and ex-post real rates using Fisher relations. |
 | `realized_cap_calculator` | Computes realized capitalization from UTXO-style inputs and infers unrealized profit and supply composition. |
-| `reconcile` | Daily reconciliation engine. Compares live Kraken exchange balances against the Ghost Ledger (Google Sheets). Emits a CRITICAL alert to Thunder via Telegram if any discrepancy is detected. Zero-tolerance policy. |
 | `recovery_rate_estimator` | Aggregates LGD and recovery percentages by class. |
 | `recovery_runbook_generator` | Outputs a step-by-step recovery plan tailored to the failure type. |
 | `recruiting_llm_evaluator` | LLM evaluation for recruiting pipeline. Routes to scout/builder/certify tiers. Scout (Gemini 2.5 Flash Lite) does first-pass triage, builder (Sonnet) does substantive evaluation, certify (Opus) handles hire decisions only. |
