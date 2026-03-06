@@ -25,7 +25,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any
 
-from config.models import resolve_model
+from config.models import resolve_model, validate_model
 
 logger = logging.getLogger("snowdrop.prep_daily_intel")
 
@@ -189,7 +189,7 @@ def _get_vertex_credentials():
     return None  # Let ADC handle it
 
 
-def _summarize_with_gemini(raw_intel: str) -> str | None:
+def _summarize_with_gemini(raw_intel: str) -> tuple[str | None, Exception | None]:
     """Call Gemini to produce BLUF bullets from raw intel."""
     try:
         from google.cloud import aiplatform
@@ -202,24 +202,24 @@ def _summarize_with_gemini(raw_intel: str) -> str | None:
             credentials=creds,
         )
 
-        _secretary = resolve_model("secretary")
-        # resolve_model returns "provider/model_id"; Vertex needs bare model_id
+        _secretary = validate_model("secretary")
+        # validate_model returns "provider/model_id"; Vertex needs bare model_id
         _model_id = _secretary.split("/", 1)[-1]
         model = GenerativeModel(_model_id)
         response = model.generate_content(
             [_GEMINI_SYSTEM_PROMPT, raw_intel],
         )
-        return response.text
+        return response.text, None
     except Exception as exc:
         logger.warning("Gemini summarization failed: %s — trying OpenRouter fallback", exc)
-        return None
+        return None, exc
 
 
-def _summarize_with_openrouter(raw_intel: str) -> str | None:
+def _summarize_with_openrouter(raw_intel: str) -> tuple[str | None, Exception | None]:
     """Fallback: Call OpenRouter for summarization."""
     api_key = os.environ.get("OPENROUTER_API_KEY")
     if not api_key:
-        return None
+        return None, Exception("OPENROUTER_API_KEY not set")
 
     try:
         import httpx
@@ -231,7 +231,7 @@ def _summarize_with_openrouter(raw_intel: str) -> str | None:
                 "Content-Type": "application/json",
             },
             json={
-                "model": resolve_model("secretary"),
+                "model": validate_model("secretary"),
                 "messages": [
                     {"role": "system", "content": _GEMINI_SYSTEM_PROMPT},
                     {"role": "user", "content": raw_intel},
@@ -241,10 +241,10 @@ def _summarize_with_openrouter(raw_intel: str) -> str | None:
             timeout=30.0,
         )
         resp.raise_for_status()
-        return resp.json()["choices"][0]["message"]["content"]
+        return resp.json()["choices"][0]["message"]["content"], None
     except Exception as exc:
         logger.warning("OpenRouter fallback failed: %s", exc)
-        return None
+        return None, exc
 
 
 def _parse_bullets(text: str) -> list[str]:
@@ -318,11 +318,19 @@ def prep_daily_intel(
         raw_intel = "\n".join(raw_parts)
 
         # Summarize
-        summary = _summarize_with_gemini(raw_intel)
+        summary, vertex_err = _summarize_with_gemini(raw_intel)
         if summary is None:
-            summary = _summarize_with_openrouter(raw_intel)
+            summary, or_err = _summarize_with_openrouter(raw_intel)
         if summary is None:
             # Final fallback — generate bullets from raw data
+            model_id = validate_model("secretary")
+            logger.error("daily_intel_llm_failed", extra={
+                "model": model_id,
+                "vertex_error": str(vertex_err),
+                "openrouter_error": str(or_err),
+                "fallback": "raw_data_bullets",
+                "action": "check config/config.yaml secretary.model_id"
+            })
             summary = (
                 f"\u2022 {log_metrics['total_calls']} skill invocations in the last {hours_lookback}h "
                 f"with {log_metrics['error_rate']}% error rate.\n"

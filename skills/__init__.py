@@ -166,6 +166,8 @@ SKILL_REGISTRY: dict[str, str] = {
     "merger_spread_implied_probability": "skills.quant.merger_spread_implied_probability",
     "usd_jpy_carry_trade_monitor": "skills.fx.usd_jpy_carry_trade_monitor",
     "mlp_distributable_cash_flow_calc": "skills.premium.mlps.mlp_distributable_cash_flow_calc",
+    # Media Processing (1)
+    "heic_converter": "skills.media.heic_converter",
 }
 
 
