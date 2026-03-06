@@ -1,10 +1,10 @@
 # Snowdrop MCP — Skills Directory
 
 ## Executive Summary
-This document provides a comprehensive, auto-generated directory of all skills available on the Snowdrop MCP server. It details the exact count and capabilities of both **Premium** (proprietary/paid) and **Free** skills currently loaded in production. Generated: `2026-03-06T06:46:07.020811+00:00`. The skill count reflects the local Python environment. For the count of skills deployed to Cloud Run, call the /health endpoint at https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/health. To regenerate: `python scripts/generate_skill_directory.py` or `./scripts/sync_catalog.sh`.
+This document provides a comprehensive, auto-generated directory of all skills available on the Snowdrop MCP server. It details the exact count and capabilities of both **Premium** (proprietary/paid) and **Free** skills currently loaded in production. Generated: `2026-03-06T21:39:13.167505+00:00`. The skill count reflects the local Python environment. For the count of skills deployed to Cloud Run, call the /health endpoint at https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/health. To regenerate: `python scripts/generate_skill_directory.py` or `./scripts/sync_catalog.sh`.
 
-**Total Active Skills:** 1900
-- **Free Skills:** 1605
+**Total Active Skills:** 1902
+- **Free Skills:** 1607
 - **Premium Skills:** 295
 
 ## Table of Contents
@@ -570,6 +570,7 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `child_tax_credit_calculator` | Calculate the Child Tax Credit ($2,000 per child under 17) with income phase-out at $200k single / $400k MFJ. $50 reduction per $1,000 over threshold. |
 | `churn_analyzer` | Analyzes churn patterns, cohort retention, and at-risk agents. |
 | `churn_rate_calculator` | Calculate customer churn rate for a period and annualized churn rate. |
+| `ci_cd_monitor` | Monitor GitHub Actions CI/CD workflows. Returns strict JSON summaries of workflow statuses and failures, avoiding massive raw log dumps. |
 | `claims_development_triangle` | Constructs a cumulative loss development triangle and computes volume-weighted age-to-age factors, tail factor, and cumulative-to-ultimate factors from a list of claim records with accident_year, development_year, and cumulative_paid fields. |
 | `climate_risk_transition` | Applies NGFS transition scenarios to sector PDs and estimates RWA impact and stranded assets. |
 | `clinical_trial_binary_planner` | Builds probability-weighted payoff trees for pivotal biotech readouts using open FDA calendars. |
@@ -1147,6 +1148,7 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `macro_data_surprise_linker` | Connects company guidance sensitivity with upcoming macro releases to prime event trays. |
 | `macro_indicator_tracker` | Fetches recent FRED indicators and computes MoM trends. |
 | `macro_scenario_builder` | Applies macro factor shocks to exposures to estimate scenario returns. |
+| `manage_remote_daemon` | Manage remote systemd daemons on snowdrop-node via SSH. Abstracts systemctl commands to return clean JSON summaries instead of massive log dumps. |
 | `mandate_enforcer` | Injects mandated proposals at top of sprint backlog while respecting capacity. |
 | `margin_calculator` | Calculate profit margin percentage: (selling_price - cost) / selling_price * 100. |
 | `margin_initial_simm` | Approximates ISDA SIMM initial margin by aggregating weighted sensitivities per risk class. |
