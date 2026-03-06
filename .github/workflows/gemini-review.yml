@@ -1,0 +1,20 @@
+name: Gemini Code Review
+on:
+  pull_request:
+    types: [opened, synchronize]
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Gemini AI PR Reviewer
+        uses: google-github-actions/gemini-code-review@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          model: "gemini-2.5-flash-lite"
