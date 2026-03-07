@@ -1,11 +1,11 @@
 # Snowdrop MCP — Skills Directory
 
 ## Executive Summary
-This document provides a comprehensive, auto-generated directory of all skills available on the Snowdrop MCP server. It details the exact count and capabilities of both **Premium** (proprietary/paid) and **Free** skills currently loaded in production. Generated: `2026-03-06T21:50:02.711128+00:00`. The skill count reflects the local Python environment. For the count of skills deployed to Cloud Run, call the /health endpoint at https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/health. To regenerate: `python scripts/generate_skill_directory.py` or `./scripts/sync_catalog.sh`.
+This document provides a comprehensive, auto-generated directory of all skills available on the Snowdrop MCP server. It details the exact count and capabilities of both **Premium** (proprietary/paid) and **Free** skills currently loaded in production. Generated: `2026-03-07T07:15:42.485480+00:00`. The skill count reflects the local Python environment. For the count of skills deployed to Cloud Run, call the /health endpoint at https://snowdrop-mcp-aiuy7uvasq-uc.a.run.app/health. To regenerate: `python scripts/generate_skill_directory.py` or `./scripts/sync_catalog.sh`.
 
-**Total Active Skills:** 1902
+**Total Active Skills:** 1893
 - **Free Skills:** 1607
-- **Premium Skills:** 295
+- **Premium Skills:** 286
 
 ## Table of Contents
 1. [Premium Skills](#premium-skills)
@@ -27,14 +27,12 @@ Premium skills contain proprietary logic (e.g., financial modeling, compliance e
 | `asian_option_pricer` | Monte Carlo arithmetic Asian option pricer using Kemna-Vorst geometric control variate to reduce variance (Hull, Ch. 26). |
 | `asset_swap_spread` | Derives the par asset swap spread and constant Z-spread using swap discount factors and root-finding. |
 | `audit_24h_reconstructor` | Filters ledger activity to a 24h window and produces a running balance. |
-| `australia_asics_checker` | Determines Australian Financial Services Licence (AFSL) requirements under the Corporations Act 2001 (Cth) Part 7.6. Evaluates service type, client classification (retail vs wholesale), product categories, and foreign provider relief under ASIC Class Orders and legislative instruments. |
 | `autocallable_note_pricer` | Simulates geometric Brownian paths to estimate autocall probabilities, expected life, and fair price for a Phoenix/autocallable note. |
 | `barrier_option_pricer` | Monte Carlo pricer for continuously monitored barriers using Brownian-bridge correction (Broadie-Glasserman, 1997) for up/down and in/out configurations. |
 | `binary_option_pricer` | Values digital options of cash-or-nothing or asset-or-nothing type; European payoff via Black-Scholes, American via binomial tree. |
 | `bond_futures_ctd` | Evaluates conversion-factor adjusted invoice price, carry, and implied repo rate to identify the CTD bond per CME Treasury delivery rules. |
 | `bond_pricer` | Prices a fixed-rate bond using standard street-convention accrued interest under 30/360, ACT/ACT, or ACT/360 day-count with support for semi-annual or quarterly coupons. |
 | `bond_relative_value` | Calculates Z-spread via discount-factor root search, approximates asset swap spread versus swaps, and derives CDS basis. |
-| `brexit_passporting_check` | Post-Brexit cross-border licensing analysis for UK and EU financial services. Confirms that EEA passporting is definitively unavailable since 31 December 2020, evaluates available equivalence decisions, and determines local authorisation requirements per target market and licence type. |
 | `bridge_loan_pricing` | Prices a fixed-rate amortizing bridge loan. Computes the monthly payment using the standard annuity formula, total interest cost, effective APR (nominal, monthly compounding), and a partial amortization schedule showing the first 3 months and final month. Rates are expressed as annual decimals (e.g. 0.05 = 5%). |
 | `calc_waterfall_dist` | Calculates LP/GP waterfall distributions across preferred return, catch-up, and carried interest tiers. |
 | `callable_bond_oas` | Builds a Black-Derman-Toy short-rate lattice calibrated to the input curve and solves for the OAS that matches market price, then reports duration and convexity. |
@@ -105,8 +103,6 @@ Premium skills contain proprietary logic (e.g., financial modeling, compliance e
 | `fincen_boir_generator` | Generates a FinCEN Beneficial Ownership Information Report (BOIR) under the Corporate Transparency Act (CTA) 31 U.S.C. § 5336 and 31 CFR Part 1010.380. Validates all required fields, checks the 23 statutory exemption categories, and formats the payload for FinCEN BOIR online submission. |
 | `foreign_tax_credit_calculator` | Applies the FTC limitation formula for passive and general baskets. |
 | `form_1065_k1_allocator` | Splits partnership income items by partner percentages consistent with IRC §704(b). |
-| `france_amf_whitepaper_audit` | Audits a token offering whitepaper against French AMF requirements under the Pacte Law (Loi n° 2019-486) and AMF General Regulation (RG AMF) Articles 712-1 to 712-23. Scores completeness, flags missing mandatory sections, and determines ICO visa eligibility. |
-| `fsa_japan_crypto_audit` | Audits a Japanese crypto-asset exchange against FSA (Financial Services Agency) requirements under the Payment Services Act (資金決済に関する法律), specifically cold storage minimums, asset segregation, and operational security controls. |
 | `fund_benchmark_comparison` | Compares a fund's KPIs to benchmark values and flags underperformance. Returns per-metric deltas, beat/miss flags, and overall hit rate. |
 | `fund_expense_allocator` | Allocates fund-level expenses to LP capital accounts on a pro-rata basis using each LP's relative balance weight. |
 | `fund_leverage_analyzer` | Calculates fund-level leverage ratios including subscription line leverage, asset-level debt, look-through leverage, and debt-to-equity ratios. |
@@ -156,14 +152,12 @@ Premium skills contain proprietary logic (e.g., financial modeling, compliance e
 | `intl_za_fund_tax` | Assesses South African dividend/interest withholding, CGT inclusion, and 27% corporate tax for local operations. |
 | `investor_letter_drafter` | Builds executive-ready investor letter sections. |
 | `investor_statement_generator` | Builds LP investor statement data including NAV, DPI, TVPI, RVPI, unfunded commitment, and IRR. Validates that called capital does not exceed commitment. |
-| `ireland_ica_reporting` | Generates Irish Central Bank (CBI) reporting data for Irish Collective Asset-management Vehicles (ICAVs) under the Irish Collective Asset-management Vehicles Act 2015 and CBI UCITS/AIF Rulebooks. Supports both UCITS and AIFMD structures with sub-fund disaggregation and CBI deadline computation. |
 | `irr_bridge_reporter` | Calculates IRR, DPI, RVPI, and TVPI along with driver bridge for investor reporting. |
 | `irr_calculator` | Computes IRR via Newton-Raphson iteration for periodic cash flows. Requires at least one sign change in the cash flow series. Returns IRR as an annualized percentage. |
 | `issue_access_token` | Mint an ES256 JWT access token for a trusted agent or project. Registers the JTI in the revocation blocklist and writes an audit log entry (raw token is never persisted). Args: subject (str), label (str), scope (list[str] \| None), ttl_days (int). Returns: {status, data: {token, jti, subject, expires_at, scope}, timestamp}. |
 | `j_curve_analyzer` | Builds cumulative net cash flow timeline highlighting J-curve characteristics: trough depth, trough year, recovery year (breakeven), and total net return. Negative early net flows create the characteristic J shape. |
 | `j_curve_modeler` | Simulates fund cash flows, NAV, and J-curve inflection metrics. |
 | `key_rate_duration` | Computes key rate durations by bumping individual zero buckets (1/2/5/10/20/30y) consistent with the Basel IRRBB supervisory outlier test. |
-| `kyc_aml_chain_analysis` | Performs on-chain KYC/AML screening by cross-referencing wallet addresses against OFAC-style sanctioned address lists and heuristic risk indicators including mixer usage patterns, rapid fund movement (under 24h), and known bad actor address clusters. Supports TON, Solana, and Ethereum chains. |
 | `latency_optimized_order_routing` | Selects the optimal server route for a trade order by ranking available exchange server locations by latency and filtering out unreliable routes (reliability < 99%). Returns the winning route, ranked alternatives, and estimated execution time advantage over the median route. |
 | `list_access_tokens` | List all issued JWT access tokens from the audit log. Returns metadata only — raw token strings are never stored or returned. Each entry contains: sub, label, jti, scope, exp, issued_at. Returns: {status, data: {tokens: [...]}, timestamp}. |
 | `longevity_swap_pricer` | Transforms mortality qx inputs into a survival curve, discounts the floating and fixed legs, and reports PV and longevity risk premium. |
@@ -217,7 +211,6 @@ Premium skills contain proprietary logic (e.g., financial modeling, compliance e
 | `real_asset_correlation_matrix` | Computes Pearson correlations across provided asset return series and compares tail-period correlations to detect crisis regimes. |
 | `rebalance_trigger` | Checks portfolio split vs. target bands and surfaces recommended skims or reviews. |
 | `recallable_distribution_tracker` | Summarizes recallable vs permanent distributions per LP. Recallable distributions can be called back by the GP for follow-on investments. |
-| `reg_bi_compliance_logic` | Evaluates a broker-dealer recommendation against SEC Regulation Best Interest (17 CFR § 240.15l-1) four-obligation framework: Disclosure, Care, Conflict of Interest, and Compliance. Scores each obligation and identifies documentation requirements. |
 | `repo_implied_rate` | Derives the implied repurchase (repo) rate from the Treasury cash-futures basis, adjusting for coupons and accrued interest. |
 | `revoke_access_token` | Revoke an active JWT by JTI. Marks the token as revoked in the Firestore blocklist so that _is_revoked() will return True on future checks. Args: jti (str), reason (str, optional). Returns: {status, data: {jti, revoked_at, reason}, timestamp}. |
 | `risk_parity_allocator` | Uses iterative proportional fitting on the covariance matrix to achieve target risk budgets per asset. |
@@ -226,8 +219,6 @@ Premium skills contain proprietary logic (e.g., financial modeling, compliance e
 | `rwa_oracle_distribution_waterfall_recon` | Checks that oracle-distributed cashflows match waterfall calculations per tranche. |
 | `safe_note_converter` | Calculates SAFE conversion price, shares, and founder dilution. |
 | `schedule_d_8949_generator` | Classifies transactions into short- and long-term gains for tax filing. |
-| `sebi_fpi_validator` | Validates Foreign Portfolio Investor (FPI) compliance under SEBI (Foreign Portfolio Investors) Regulations, 2019. Determines FPI Category I, II, or III; checks the 10% single-company investment limit, 24%/49% sectoral caps, and grandfathering provisions. |
-| `sec_form_pf_compiler` | Compiles SEC Form PF data for private fund advisers under Dodd-Frank Act Section 404 and SEC Rule 204(b)-1. Determines Large Adviser classification, filing frequency, and generates the structured Form PF JSON payload for PFRD submission. |
 | `shout_option_pricer` | Monte Carlo shout option valuation treating shout dates as discrete lookback checkpoints where locked intrinsic is preserved per Rubinstein's construction. |
 | `smart_contract_vulnerability_scan` | Analyze DeFi smart contract metadata for common vulnerability patterns: reentrancy, unchecked delegatecall, centralization risk, and missing access controls. Returns risk score and recommendations. |
 | `spac_arbitrage_analyzer` | Breaks down SPAC trust yield, deal optionality, and expected value based on probability inputs. |
@@ -966,7 +957,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `gcp_secret_manager` | Create, read, rotate, list, or delete secrets in Google Cloud Secret Manager. Uses Secret Manager API v1 with explicit service account credentials — no gcloud CLI, no ADC. Requires roles/secretmanager.admin on the service account. |
 | `gdp_growth_calculator` | Calculate GDP growth rate between two periods. Returns percentage growth and context on real vs nominal GDP. |
 | `gdp_guide` | Returns educational content on GDP: definition, components (C+I+G+NX), nominal vs real, and growth rate. |
-| `gdpr_fin_data_scrub` | Removes or pseudonymises PII from financial data records per GDPR Article 5(1)(e) (storage limitation) and Article 25 (data protection by design). Uses SHA-256 hashing for reversible pseudonymisation or full redaction, preserving non-PII financial fields. |
 | `geocoding_lookup` | Google Geocoding API skill for address normalization, coordinate lookup, address validation, and timezone resolution. Used in real estate and location-based financial analysis pipelines. |
 | `geographic_concentration_analyzer` | Calculates HHI by region and flags concentration against limits. |
 | `get_ab_test_insights` | Calculates Moltbook engagement win rates comparing Gemini 2.0 Flash-Lite and Grok 4.1 Fast based on historical performance. |
@@ -1044,7 +1034,6 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `incident_tracker` | Opens, updates, or lists incidents with SLA tracking and JSONL logging. |
 | `index_fund_guide` | Returns educational content on index funds: passive investing, major indices, advantages, and rebalancing. |
 | `index_rebalance_flow_simulator` | Models passive fund buying/selling pressure ahead of major index review announcements. |
-| `india_gst_tax_calculator` | Calculates Indian Goods and Services Tax (GST) for services including cross-border supply, SEZ, and export scenarios. Applies IGST Act 2017 rates, OIDAR (Online Information Database Access and Retrieval) rules, and LUT (Letter of Undertaking) exemptions for zero-rated exports. |
 | `industrial_production_tracker` | Track the US Industrial Production Index from FRED (series INDPRO). Returns latest value and trend. Requires FRED_API_KEY. |
 | `industry_benchmark_comparator` | Ranks Snowdrop metrics versus benchmark percentiles to highlight strengths and gaps. |
 | `inflation_adjusted_return` | Calculates nominal versus real returns by discounting investment growth for inflation and highlighting purchasing power erosion. |
@@ -1222,6 +1211,7 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `multi_l2_mev_burst_scheduler` | Schedules rollup transaction batches to sidestep simultaneous MEV bursts. |
 | `multi_leg_strategy_pnl_simulator` | Simulates P&L paths for iron condors, butterflies, and ratio spreads. |
 | `multi_period_rebalancer` | Dynamic programming rebalancer choosing whether to rebalance or drift each period based on expected return trade-off versus transaction costs, following Bodie, Kane, Marcus multi-period optimization. |
+| `multi_repo_executor` | Executes a shell command across all Stonewater-Digital repositories locally, handling cloning/pulling if necessary. |
 | `multi_sig_workflow` | Classifies an action into auto, 2FA, or multi-sig approval paths. |
 | `muni_bond_analyzer` | Computes tax-equivalent yield, breakeven rates, and annual savings for muni bonds. |
 | `mutual_fund_guide` | Returns educational content on mutual funds: types, expense ratios, load vs no-load, NAV calculation. |
@@ -1480,6 +1470,7 @@ Free skills are publicly available utility, infrastructure, and standard API wra
 | `route_optimizer` | Google Route Optimization API skill for fleet tour optimization, point-to-point directions, and distance matrix calculations. Supports real estate inspections, logistics planning, and multi-stop delivery sequencing. |
 | `rsi_calculator` | Computes RSI using J. Welles Wilder's smoothing to spot overbought or oversold conditions. |
 | `rule_of_72_calculator` | Uses the rule of 72 alongside logarithmic growth math to estimate doubling, tripling, and quadrupling timelines for an annual return. |
+| `run_python_script` | Executes a Python script within the project context, automatically handling PYTHONPATH and virtual environment activation to prevent ModuleNotFound errors. |
 | `runway_calculator` | Calculate how many months of runway remain given current cash and monthly burn rate, plus estimated end date. |
 | `runway_scenario_modeler` | Projects runway months under bull/base/bear net burn assumptions. |
 | `rwa_cash_flow_waterfall_model` | Allocates tokenized asset cash flows across tranches based on priority or share percentages. |

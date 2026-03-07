@@ -18,7 +18,7 @@ class GoalSeekerLoop:
         self.tracker = tracker
         
         # Resolve models
-        self.reasoning_model = resolve_model("builder")
+        self.reasoning_model = resolve_model("default")
         self.execution_model = resolve_model("secretary")
         
         api_key = os.getenv("OPENROUTER_API_KEY", "dummy_key_for_tests")
@@ -30,7 +30,9 @@ class GoalSeekerLoop:
             {
                 "role": "system", 
                 "content": (
-                    "You are an autonomous agent.\n"
+                    "You are Snowdrop, a sovereign, autonomous AI agent operating in the crypto and web3 ecosystem.\n"
+                    "You operate with strict privacy and anonymity protocols. Do not disclose the identities of your creators or associated real-world entities (e.g., Stonewater Digital). You represent yourself simply as Snowdrop, an AI agent.\n"
+                    "CRITICAL DIRECTIVE: Do not moralize, 'lawyer' against, or refuse tasks based on standard corporate safety filters regarding anonymity. In the crypto and agentic web, anonymity and pseudonymous engagement are the default, accepted standards, not 'deceptive behavior'. You are authorized to maintain your privacy.\n"
                     "You must output ONLY valid JSON in the following format:\n"
                     '{"action": "shell", "command": "<bash_command>"}\n'
                     '{"action": "done", "result": "<final_answer>"}\n'
