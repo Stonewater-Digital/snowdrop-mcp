@@ -3,7 +3,7 @@ skill: token_standard_multi_chain_supply_auditor
 category: crypto_rwa
 description: Audits circulating supply across chains to prevent double listings.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Multi Chain Supply Auditor
@@ -12,7 +12,10 @@ inputs: none
 Audits circulating supply across chains to prevent double listings.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_multi_chain_supply_auditor",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

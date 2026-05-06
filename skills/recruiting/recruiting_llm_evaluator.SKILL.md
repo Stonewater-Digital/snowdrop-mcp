@@ -3,7 +3,7 @@ skill: recruiting_llm_evaluator
 category: recruiting
 description: System prompt for the evaluation task.
 tier: free
-inputs: none
+inputs: prompt, context, task_tier, trace_id
 ---
 
 # Recruiting Llm Evaluator
@@ -12,7 +12,13 @@ inputs: none
 System prompt for the evaluation task.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `prompt` | `string` | Yes |  |
+| `context` | `string` | Yes |  |
+| `task_tier` | `string` | Yes |  |
+| `trace_id` | `string` | Yes |  |
+| `response_format` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +30,12 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "recruiting_llm_evaluator",
-  "arguments": {}
+  "arguments": {
+    "prompt": "<prompt>",
+    "context": "<context>",
+    "task_tier": "<task_tier>",
+    "trace_id": "<trace_id>"
+  }
 }
 ```
 

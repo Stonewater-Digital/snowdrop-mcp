@@ -3,7 +3,7 @@ skill: ghost_ledger_sheets_reader
 category: ghost_ledger
 description: Ghost Ledger tab name.
 tier: free
-inputs: none
+inputs: ab_name, date_range_start, date_range_end
 ---
 
 # Ghost Ledger Sheets Reader
@@ -12,7 +12,11 @@ inputs: none
 Ghost Ledger tab name.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `ab_name` | `string` | Yes |  |
+| `date_range_start` | `string` | Yes |  |
+| `date_range_end` | `string` | Yes |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +28,11 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "ghost_ledger_sheets_reader",
-  "arguments": {}
+  "arguments": {
+    "ab_name": "<ab_name>",
+    "date_range_start": "<date_range_start>",
+    "date_range_end": "<date_range_end>"
+  }
 }
 ```
 

@@ -3,7 +3,7 @@ skill: rwa_oracle_data_vendor_quorum_checker
 category: crypto_rwa
 description: Ensures quorum logic across multiple vendors is functioning and weighted correctly.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Data Vendor Quorum Checker
@@ -12,7 +12,10 @@ inputs: none
 Ensures quorum logic across multiple vendors is functioning and weighted correctly.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_data_vendor_quorum_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

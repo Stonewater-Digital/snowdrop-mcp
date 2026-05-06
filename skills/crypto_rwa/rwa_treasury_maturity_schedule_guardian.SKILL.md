@@ -3,7 +3,7 @@ skill: rwa_treasury_maturity_schedule_guardian
 category: crypto_rwa
 description: Checks that token maturity ladders align with underlying Treasury maturity dates.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Treasury Maturity Schedule Guardian
@@ -12,7 +12,10 @@ inputs: none
 Checks that token maturity ladders align with underlying Treasury maturity dates.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_treasury_maturity_schedule_guardian",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

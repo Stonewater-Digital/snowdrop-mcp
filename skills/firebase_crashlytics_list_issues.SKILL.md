@@ -3,7 +3,7 @@ skill: firebase_crashlytics_list_issues
 category: root
 description: List crash issues from Firebase Crashlytics for a given app. Returns issue ID, title, impact (users affected), and last occurrence time.
 tier: free
-inputs: none
+inputs: app_id
 ---
 
 # Firebase Crashlytics List Issues
@@ -12,7 +12,12 @@ inputs: none
 List crash issues from Firebase Crashlytics for a given app. Returns issue ID, title, impact (users affected), and last occurrence time.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `app_id` | `string` | Yes |  |
+| `project_id` | `string` | No |  |
+| `page_size` | `integer` | No |  |
+| `state` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +29,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_crashlytics_list_issues",
-  "arguments": {}
+  "arguments": {
+    "app_id": "<app_id>"
+  }
 }
 ```
 

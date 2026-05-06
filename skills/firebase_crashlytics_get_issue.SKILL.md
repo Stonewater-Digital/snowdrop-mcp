@@ -3,7 +3,7 @@ skill: firebase_crashlytics_get_issue
 category: root
 description: Get detailed information about a specific Firebase Crashlytics issue including stack trace summary and affected versions.
 tier: free
-inputs: none
+inputs: app_id, issue_id
 ---
 
 # Firebase Crashlytics Get Issue
@@ -12,7 +12,11 @@ inputs: none
 Get detailed information about a specific Firebase Crashlytics issue including stack trace summary and affected versions.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `app_id` | `string` | Yes |  |
+| `issue_id` | `string` | Yes |  |
+| `project_id` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +28,10 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_crashlytics_get_issue",
-  "arguments": {}
+  "arguments": {
+    "app_id": "<app_id>",
+    "issue_id": "<issue_id>"
+  }
 }
 ```
 

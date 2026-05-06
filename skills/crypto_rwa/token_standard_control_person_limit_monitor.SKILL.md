@@ -3,7 +3,7 @@ skill: token_standard_control_person_limit_monitor
 category: crypto_rwa
 description: Tracks beneficial ownership percentages to enforce control-person caps.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Control Person Limit Monitor
@@ -12,7 +12,10 @@ inputs: none
 Tracks beneficial ownership percentages to enforce control-person caps.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_control_person_limit_monitor",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

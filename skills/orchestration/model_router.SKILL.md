@@ -3,7 +3,7 @@ skill: model_router
 category: orchestration
 description: Reads config/config.yaml and maps a task category to the correct model entry.
 tier: free
-inputs: none
+inputs: task_category
 ---
 
 # Model Router
@@ -12,7 +12,11 @@ inputs: none
 Reads config/config.yaml and maps a task category to the correct model entry.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `task_category` | `string` | Yes |  |
+| `urgency` | `string` | No |  |
+| `fallback_allowed` | `boolean` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +28,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "model_router",
-  "arguments": {}
+  "arguments": {
+    "task_category": "<task_category>"
+  }
 }
 ```
 

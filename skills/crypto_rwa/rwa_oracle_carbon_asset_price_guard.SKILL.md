@@ -3,7 +3,7 @@ skill: rwa_oracle_carbon_asset_price_guard
 category: crypto_rwa
 description: Validates carbon offset price feeds against EU ETS and voluntary market data.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Carbon Asset Price Guard
@@ -12,7 +12,10 @@ inputs: none
 Validates carbon offset price feeds against EU ETS and voluntary market data.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_carbon_asset_price_guard",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

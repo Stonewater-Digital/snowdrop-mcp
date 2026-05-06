@@ -3,7 +3,7 @@ skill: rwa_real_estate_appraisal_report_consistency_checker
 category: crypto_rwa
 description: Checks appraisal comparables and LTV metrics for consistency with disclosure packets.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Appraisal Report Consistency Checker
@@ -12,7 +12,10 @@ inputs: none
 Checks appraisal comparables and LTV metrics for consistency with disclosure packets.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_appraisal_report_consistency_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

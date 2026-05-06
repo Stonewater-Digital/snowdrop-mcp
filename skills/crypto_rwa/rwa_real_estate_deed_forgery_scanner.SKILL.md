@@ -3,7 +3,7 @@ skill: rwa_real_estate_deed_forgery_scanner
 category: crypto_rwa
 description: Analyzes notarized deed uploads for signature anomalies and tamper patterns before minting tokens.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Deed Forgery Scanner
@@ -12,7 +12,10 @@ inputs: none
 Analyzes notarized deed uploads for signature anomalies and tamper patterns before minting tokens.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_deed_forgery_scanner",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

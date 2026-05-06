@@ -3,7 +3,7 @@ skill: rwa_treasury_discount_curve_checker
 category: crypto_rwa
 description: Compares implied token discounts to the live Treasury curve to spot mispricing.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Treasury Discount Curve Checker
@@ -12,7 +12,10 @@ inputs: none
 Compares implied token discounts to the live Treasury curve to spot mispricing.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_treasury_discount_curve_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

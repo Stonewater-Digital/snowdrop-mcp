@@ -3,7 +3,7 @@ skill: synthetic_market_data_generator
 category: data_ingestion
 description: Generates realistic synthetic market data (time series, spreads, curves) for free-tier advanced analytics skills.
 tier: free
-inputs: none
+inputs: asset_class, data_type
 ---
 
 # Synthetic Market Data Generator
@@ -12,7 +12,11 @@ inputs: none
 Generates realistic synthetic market data (time series, spreads, curves) for free-tier advanced analytics skills.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `asset_class` | `string` | Yes |  |
+| `data_type` | `string` | Yes |  |
+| `days_back` | `integer` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +28,10 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "synthetic_market_data_generator",
-  "arguments": {}
+  "arguments": {
+    "asset_class": "<asset_class>",
+    "data_type": "<data_type>"
+  }
 }
 ```
 

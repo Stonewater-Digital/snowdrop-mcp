@@ -3,7 +3,7 @@ skill: rwa_real_estate_environmental_report_checker
 category: crypto_rwa
 description: Validates environmental assessments and ensures mitigation steps are recorded on-chain.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Environmental Report Checker
@@ -12,7 +12,10 @@ inputs: none
 Validates environmental assessments and ensures mitigation steps are recorded on-chain.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_environmental_report_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

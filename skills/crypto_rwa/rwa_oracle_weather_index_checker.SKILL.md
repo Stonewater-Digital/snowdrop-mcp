@@ -3,7 +3,7 @@ skill: rwa_oracle_weather_index_checker
 category: crypto_rwa
 description: Validates weather derivative indexes powering parametric insurance tokens.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Weather Index Checker
@@ -12,7 +12,10 @@ inputs: none
 Validates weather derivative indexes powering parametric insurance tokens.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_weather_index_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

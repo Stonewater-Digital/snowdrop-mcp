@@ -3,7 +3,7 @@ skill: token_standard_audit_trail_packer
 category: crypto_rwa
 description: Packages on-chain and off-chain audit trails for regulator-ready exports.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Audit Trail Packer
@@ -12,7 +12,10 @@ inputs: none
 Packages on-chain and off-chain audit trails for regulator-ready exports.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_audit_trail_packer",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

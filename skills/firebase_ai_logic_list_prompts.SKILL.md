@@ -12,7 +12,11 @@ inputs: none
 List Firebase AI Logic server-side prompt templates for a project. Returns template IDs, model configurations, and system instructions.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `project_id` | `string` | No |  |
+| `location` | `string` | No |  |
+| `page_size` | `integer` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

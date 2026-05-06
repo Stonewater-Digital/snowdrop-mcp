@@ -3,7 +3,7 @@ skill: rwa_oracle_volume_weight_consistency
 category: crypto_rwa
 description: Ensures oracle VWAP calculations match reported venue volumes.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Volume Weight Consistency
@@ -12,7 +12,10 @@ inputs: none
 Ensures oracle VWAP calculations match reported venue volumes.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_volume_weight_consistency",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

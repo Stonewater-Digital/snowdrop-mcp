@@ -3,7 +3,7 @@ skill: token_standard_erc1400_document_registry_sync
 category: crypto_rwa
 description: Keeps ERC-1400 document URIs synced with latest prospectus filings.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Erc1400 Document Registry Sync
@@ -12,7 +12,10 @@ inputs: none
 Keeps ERC-1400 document URIs synced with latest prospectus filings.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_erc1400_document_registry_sync",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

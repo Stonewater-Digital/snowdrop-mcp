@@ -14,9 +14,9 @@ Projects runway months under bull/base/bear net burn assumptions.
 ## Parameters
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `current_cash` | `number` | Yes | Total cash on hand in USD. Must be >= 0. |
-| `base_monthly_burn` | `number` | Yes | Baseline gross monthly expenses in USD (the base scenario). Must be >= 0. |
-| `base_monthly_revenue` | `number` | Yes | Baseline monthly revenue in USD (the base scenario). Must be >= 0. |
+| `current_cash` | `number` | Yes |  |
+| `base_monthly_burn` | `number` | Yes |  |
+| `base_monthly_revenue` | `number` | Yes |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -29,9 +29,9 @@ Standard Snowdrop envelope:
 {
   "tool": "runway_scenario_modeler",
   "arguments": {
-    "current_cash": 500000,
-    "base_monthly_burn": 45000,
-    "base_monthly_revenue": 22000
+    "current_cash": 0,
+    "base_monthly_burn": 0,
+    "base_monthly_revenue": 0
   }
 }
 ```

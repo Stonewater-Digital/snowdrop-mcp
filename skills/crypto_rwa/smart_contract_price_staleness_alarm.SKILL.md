@@ -3,7 +3,7 @@ skill: smart_contract_price_staleness_alarm
 category: crypto_rwa
 description: Calculates price feed staleness windows and raises alerts when data age exceeds limits.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Price Staleness Alarm
@@ -12,7 +12,10 @@ inputs: none
 Calculates price feed staleness windows and raises alerts when data age exceeds limits.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_price_staleness_alarm",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

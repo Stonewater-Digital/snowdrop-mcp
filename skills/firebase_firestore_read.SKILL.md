@@ -3,7 +3,7 @@ skill: firebase_firestore_read
 category: root
 description: Read a Firestore document by collection+document ID, or query a collection with optional filters. Returns document data as JSON.
 tier: free
-inputs: none
+inputs: collection
 ---
 
 # Firebase Firestore Read
@@ -12,7 +12,12 @@ inputs: none
 Read a Firestore document by collection+document ID, or query a collection with optional filters. Returns document data as JSON.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `collection` | `string` | Yes |  |
+| `document_id` | `string` | No |  |
+| `filters` | `any` | No |  |
+| `limit` | `integer` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +29,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_firestore_read",
-  "arguments": {}
+  "arguments": {
+    "collection": "<collection>"
+  }
 }
 ```
 

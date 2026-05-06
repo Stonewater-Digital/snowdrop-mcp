@@ -3,7 +3,7 @@ skill: digital_agent_clause_checker
 category: compliance
 description: Evaluates actions against identity, spend, and communication rules. (Premium — subscribe at https://snowdrop.ai)
 tier: premium
-inputs: action_type, amount, requires_external
+inputs: none
 ---
 
 # Digital Agent Clause Checker
@@ -12,12 +12,7 @@ inputs: action_type, amount, requires_external
 Evaluates actions against identity, spend, and communication rules. (Premium — subscribe at https://snowdrop.ai)
 
 ## Parameters
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| `action_type` | `string` | Yes | The action being evaluated (e.g., "spend", "communicate", "identity_claim") |
-| `amount` | `number` | Yes | Dollar amount of the action being evaluated |
-| `requires_external` | `boolean` | Yes | Whether the action requires an external party or system |
-| `total_assets` | `number` | No | Total assets under management for proportionality checks |
+_No parameters defined._
 
 ## Returns
 Standard Snowdrop envelope:
@@ -29,12 +24,7 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "digital_agent_clause_checker",
-  "arguments": {
-    "action_type": "spend",
-    "amount": 5000.00,
-    "requires_external": true,
-    "total_assets": 2000000.00
-  }
+  "arguments": {}
 }
 ```
 

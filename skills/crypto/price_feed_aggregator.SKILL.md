@@ -3,7 +3,7 @@ skill: price_feed_aggregator
 category: crypto
 description: Fetches CoinGecko and Kraken prices then returns the median.
 tier: free
-inputs: none
+inputs: asset_symbol
 ---
 
 # Price Feed Aggregator
@@ -12,7 +12,9 @@ inputs: none
 Fetches CoinGecko and Kraken prices then returns the median.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `asset_symbol` | `string` | Yes |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +26,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "price_feed_aggregator",
-  "arguments": {}
+  "arguments": {
+    "asset_symbol": "<asset_symbol>"
+  }
 }
 ```
 

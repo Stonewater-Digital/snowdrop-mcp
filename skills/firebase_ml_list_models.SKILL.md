@@ -12,7 +12,11 @@ inputs: none
 List ML models hosted in Firebase ML for a project. Returns model ID, display name, creation time, and download URI.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `project_id` | `string` | No |  |
+| `page_size` | `integer` | No |  |
+| `filter` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

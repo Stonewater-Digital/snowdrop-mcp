@@ -3,7 +3,7 @@ skill: rwa_real_estate_utility_arrears_detector
 category: crypto_rwa
 description: Flags properties with unpaid utility balances or liens impacting collateral quality.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Utility Arrears Detector
@@ -12,7 +12,10 @@ inputs: none
 Flags properties with unpaid utility balances or liens impacting collateral quality.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_utility_arrears_detector",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

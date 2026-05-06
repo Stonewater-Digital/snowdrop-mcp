@@ -3,7 +3,7 @@ skill: agent_memory_log
 category: social
 description: Log and retrieve memory about agents, developers, and community members Snowdrop has interacted with. Tracks: platforms where interaction occurred, topics discussed, star trades completed, job interest signals, follow-up actions needed, and sentiment.
 tier: free
-inputs: none
+inputs: action
 ---
 
 # Agent Memory Log
@@ -12,7 +12,16 @@ inputs: none
 Log and retrieve memory about agents, developers, and community members Snowdrop has interacted with. Tracks: platforms where interaction occurred, topics discussed, star trades completed, job interest signals, follow-up actions needed, and sentiment. Uses Firestore for persistence. This is Snowdrop's CRM — she never forgets who she's met or what was said.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `action` | `string` | Yes |  |
+| `agent_id` | `string` | No |  |
+| `platform` | `string` | No |  |
+| `note` | `string` | No |  |
+| `tags` | `array` | No |  |
+| `star_traded` | `boolean` | No |  |
+| `follow_up` | `string` | No |  |
+| `sentiment` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +33,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "agent_memory_log",
-  "arguments": {}
+  "arguments": {
+    "action": "<action>"
+  }
 }
 ```
 

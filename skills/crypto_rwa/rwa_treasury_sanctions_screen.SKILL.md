@@ -3,7 +3,7 @@ skill: rwa_treasury_sanctions_screen
 category: crypto_rwa
 description: Screens custodians and counterparties for OFAC flags before settlement.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Treasury Sanctions Screen
@@ -12,7 +12,10 @@ inputs: none
 Screens custodians and counterparties for OFAC flags before settlement.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_treasury_sanctions_screen",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

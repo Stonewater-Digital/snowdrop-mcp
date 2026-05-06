@@ -3,7 +3,7 @@ skill: token_standard_erc1400_redemption_flow_modeler
 category: crypto_rwa
 description: Simulates ERC-1400 redemption flows to ensure certificate revocations propagate.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Erc1400 Redemption Flow Modeler
@@ -12,7 +12,10 @@ inputs: none
 Simulates ERC-1400 redemption flows to ensure certificate revocations propagate.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_erc1400_redemption_flow_modeler",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

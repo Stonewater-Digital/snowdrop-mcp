@@ -3,7 +3,7 @@ skill: firebase_realtime_db_read
 category: root
 description: Read a value from Firebase Realtime Database at the given path. Returns the value as JSON.
 tier: free
-inputs: none
+inputs: path
 ---
 
 # Firebase Realtime Db Read
@@ -12,7 +12,10 @@ inputs: none
 Read a value from Firebase Realtime Database at the given path. Returns the value as JSON.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `path` | `string` | Yes |  |
+| `database_url` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_realtime_db_read",
-  "arguments": {}
+  "arguments": {
+    "path": "<path>"
+  }
 }
 ```
 

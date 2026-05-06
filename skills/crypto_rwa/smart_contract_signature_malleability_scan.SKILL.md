@@ -3,7 +3,7 @@ skill: smart_contract_signature_malleability_scan
 category: crypto_rwa
 description: Checks signature verification logic for malleability or unchecked parameters.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Signature Malleability Scan
@@ -12,7 +12,10 @@ inputs: none
 Checks signature verification logic for malleability or unchecked parameters.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_signature_malleability_scan",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

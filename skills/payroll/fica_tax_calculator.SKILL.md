@@ -28,7 +28,7 @@ Standard Snowdrop envelope:
 {
   "tool": "fica_tax_calculator",
   "arguments": {
-    "gross_income": 95000.00
+    "gross_income": 0
   }
 }
 ```

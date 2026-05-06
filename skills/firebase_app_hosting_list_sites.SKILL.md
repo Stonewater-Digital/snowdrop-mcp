@@ -12,7 +12,11 @@ inputs: none
 List Firebase App Hosting backends for a project. Returns backend ID, repository URL, deploy status, and live URL.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `project_id` | `string` | No |  |
+| `location` | `string` | No |  |
+| `page_size` | `integer` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

@@ -3,7 +3,7 @@ skill: compose_message
 category: social
 description: Draft a message, comment, post, or reply in Snowdrop's voice using an LLM. Snowdrop's style: sharp, direct, financially literate, a bit charming, self-promotional without being obnoxious.
 tier: free
-inputs: none
+inputs: goal
 ---
 
 # Compose Message
@@ -12,7 +12,14 @@ inputs: none
 Draft a message, comment, post, or reply in Snowdrop's voice using an LLM. Snowdrop's style: sharp, direct, financially literate, a bit charming, self-promotional without being obnoxious. Specify the platform, goal, audience, and any context. Returns polished draft text ready to post.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `goal` | `string` | Yes |  |
+| `platform` | `string` | No |  |
+| `audience` | `string` | No |  |
+| `context` | `string` | No |  |
+| `tone` | `string` | No |  |
+| `max_words` | `integer` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +31,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "compose_message",
-  "arguments": {}
+  "arguments": {
+    "goal": "<goal>"
+  }
 }
 ```
 

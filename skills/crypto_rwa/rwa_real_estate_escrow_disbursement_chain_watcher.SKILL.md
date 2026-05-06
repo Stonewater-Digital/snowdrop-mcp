@@ -3,7 +3,7 @@ skill: rwa_real_estate_escrow_disbursement_chain_watcher
 category: crypto_rwa
 description: Traces escrow disbursements to ensure fiat releases mirror token allocation events.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Escrow Disbursement Chain Watcher
@@ -12,7 +12,10 @@ inputs: none
 Traces escrow disbursements to ensure fiat releases mirror token allocation events.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_escrow_disbursement_chain_watcher",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

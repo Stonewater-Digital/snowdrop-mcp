@@ -14,9 +14,9 @@ Builds balanced journal entries and assigns sequential IDs.
 ## Parameters
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `date` | `string` | Yes | Transaction date in ISO 8601 format (e.g. "2024-06-30"). |
-| `description` | `string` | Yes | Human-readable memo describing the journal entry purpose. |
-| `lines` | `array` | Yes | Journal lines, each with `account_number` (string), `debit` (number), and `credit` (number). Debits must equal credits. |
+| `date` | `string` | Yes |  |
+| `description` | `string` | Yes |  |
+| `lines` | `array` | Yes | Journal lines with account_number, debit, credit |
 
 ## Returns
 Standard Snowdrop envelope:

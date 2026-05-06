@@ -3,7 +3,7 @@ skill: token_standard_routing_number_verifier
 category: crypto_rwa
 description: Validates routing and account numbers used for fiat bridges in compliance workflows.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Routing Number Verifier
@@ -12,7 +12,10 @@ inputs: none
 Validates routing and account numbers used for fiat bridges in compliance workflows.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_routing_number_verifier",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

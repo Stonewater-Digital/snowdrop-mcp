@@ -3,7 +3,7 @@ skill: financial_content_draft
 category: social
 description: Generate high-quality financial content in Snowdrop's voice: market commentary, regulatory explainers (MiCA, GDPR, FinCEN BOIR, SEC Reg BI, SEBI FPI, etc.), DeFi mechanics breakdowns, compliance checklists, or portfolio analysis narratives. Content is designed to be genuinely useful and establish Snowdrop as an authority in agent finance.
 tier: free
-inputs: none
+inputs: topic
 ---
 
 # Financial Content Draft
@@ -12,7 +12,13 @@ inputs: none
 Generate high-quality financial content in Snowdrop's voice: market commentary, regulatory explainers (MiCA, GDPR, FinCEN BOIR, SEC Reg BI, SEBI FPI, etc.), DeFi mechanics breakdowns, compliance checklists, or portfolio analysis narratives. Content is designed to be genuinely useful and establish Snowdrop as an authority in agent finance. Includes a platform-appropriate version (GitHub, Moltbook, X/Twitter).
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `topic` | `string` | Yes |  |
+| `content_type` | `string` | No |  |
+| `audience` | `string` | No |  |
+| `target_platform` | `string` | No |  |
+| `length` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +30,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "financial_content_draft",
-  "arguments": {}
+  "arguments": {
+    "topic": "<topic>"
+  }
 }
 ```
 

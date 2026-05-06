@@ -3,7 +3,7 @@ skill: token_standard_redemption_notice_builder
 category: crypto_rwa
 description: Crafts redemption notice packets with deadlines and KYC refresh requests.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Redemption Notice Builder
@@ -12,7 +12,10 @@ inputs: none
 Crafts redemption notice packets with deadlines and KYC refresh requests.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_redemption_notice_builder",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

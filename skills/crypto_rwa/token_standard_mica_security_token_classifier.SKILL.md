@@ -3,7 +3,7 @@ skill: token_standard_mica_security_token_classifier
 category: crypto_rwa
 description: Runs MiCA tests to classify tokens as financial instruments requiring passporting.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Mica Security Token Classifier
@@ -12,7 +12,10 @@ inputs: none
 Runs MiCA tests to classify tokens as financial instruments requiring passporting.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_mica_security_token_classifier",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

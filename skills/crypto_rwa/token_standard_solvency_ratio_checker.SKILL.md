@@ -3,7 +3,7 @@ skill: token_standard_solvency_ratio_checker
 category: crypto_rwa
 description: Checks issuer solvency ratios versus promised buffers before new issuance.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Solvency Ratio Checker
@@ -12,7 +12,10 @@ inputs: none
 Checks issuer solvency ratios versus promised buffers before new issuance.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_solvency_ratio_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

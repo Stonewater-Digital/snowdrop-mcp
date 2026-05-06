@@ -3,7 +3,7 @@ skill: firebase_ml_get_model
 category: root
 description: Get details of a specific Firebase ML model including its download URI for TFLite deployment.
 tier: free
-inputs: none
+inputs: model_id
 ---
 
 # Firebase Ml Get Model
@@ -12,7 +12,10 @@ inputs: none
 Get details of a specific Firebase ML model including its download URI for TFLite deployment.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `model_id` | `string` | Yes |  |
+| `project_id` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_ml_get_model",
-  "arguments": {}
+  "arguments": {
+    "model_id": "<model_id>"
+  }
 }
 ```
 

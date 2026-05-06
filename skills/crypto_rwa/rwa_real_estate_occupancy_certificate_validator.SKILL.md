@@ -3,7 +3,7 @@ skill: rwa_real_estate_occupancy_certificate_validator
 category: crypto_rwa
 description: Verifies certificates of occupancy and permit status for new developments.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Occupancy Certificate Validator
@@ -12,7 +12,10 @@ inputs: none
 Verifies certificates of occupancy and permit status for new developments.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_occupancy_certificate_validator",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

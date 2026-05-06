@@ -12,7 +12,9 @@ inputs: none
 Returns live skill count breakdown (total, free, premium, failed) from the running server. Pass regenerate=True to rebuild SNOWDROP_SKILLS.md and SKILLS.md from the current codebase (admin use only).
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `regenerate` | `boolean` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

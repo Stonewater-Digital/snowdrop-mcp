@@ -3,7 +3,7 @@ skill: rwa_real_estate_tenant_kyc_rollup
 category: crypto_rwa
 description: Aggregates tenant KYC attestations to verify income streams backing lease tokens.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Tenant Kyc Rollup
@@ -12,7 +12,10 @@ inputs: none
 Aggregates tenant KYC attestations to verify income streams backing lease tokens.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_tenant_kyc_rollup",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

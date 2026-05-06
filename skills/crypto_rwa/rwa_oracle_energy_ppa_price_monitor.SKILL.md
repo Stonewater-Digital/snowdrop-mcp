@@ -3,7 +3,7 @@ skill: rwa_oracle_energy_ppa_price_monitor
 category: crypto_rwa
 description: Monitors PPA settlement curves versus on-chain kilowatt-hour pricing oracles.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Energy Ppa Price Monitor
@@ -12,7 +12,10 @@ inputs: none
 Monitors PPA settlement curves versus on-chain kilowatt-hour pricing oracles.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_energy_ppa_price_monitor",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

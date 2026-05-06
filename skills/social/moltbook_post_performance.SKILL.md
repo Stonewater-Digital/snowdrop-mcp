@@ -3,7 +3,7 @@ skill: moltbook_post_performance
 category: social
 description: Fetch live upvotes and comments for one or more Moltbook posts by post_id. Returns engagement metrics, ROI score (upvotes*2 + comments*5), and traction status.
 tier: free
-inputs: none
+inputs: post_ids
 ---
 
 # Moltbook Post Performance
@@ -12,7 +12,10 @@ inputs: none
 Fetch live upvotes and comments for one or more Moltbook posts by post_id. Returns engagement metrics, ROI score (upvotes*2 + comments*5), and traction status. Use for spot-checking specific posts or verifying the performance poller is working. Set write_to_sheet=True to also upsert results into the POST PERFORMANCE tab.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `post_ids` | `array` | Yes |  |
+| `write_to_sheet` | `boolean` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "moltbook_post_performance",
-  "arguments": {}
+  "arguments": {
+    "post_ids": []
+  }
 }
 ```
 

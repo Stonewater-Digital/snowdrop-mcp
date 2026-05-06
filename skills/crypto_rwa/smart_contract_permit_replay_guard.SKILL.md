@@ -3,7 +3,7 @@ skill: smart_contract_permit_replay_guard
 category: crypto_rwa
 description: Validates permit signatures expire correctly and integrate nonce tracking.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Permit Replay Guard
@@ -12,7 +12,10 @@ inputs: none
 Validates permit signatures expire correctly and integrate nonce tracking.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_permit_replay_guard",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

@@ -3,7 +3,7 @@ skill: rwa_real_estate_construction_permit_tracker
 category: crypto_rwa
 description: Aligns construction draw schedules with permit milestones to gate unlocks.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Construction Permit Tracker
@@ -12,7 +12,10 @@ inputs: none
 Aligns construction draw schedules with permit milestones to gate unlocks.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_construction_permit_tracker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

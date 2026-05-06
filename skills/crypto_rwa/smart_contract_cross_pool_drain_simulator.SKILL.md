@@ -3,7 +3,7 @@ skill: smart_contract_cross_pool_drain_simulator
 category: crypto_rwa
 description: Runs stress flows across linked pools to detect capital draining routes.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Cross Pool Drain Simulator
@@ -12,7 +12,10 @@ inputs: none
 Runs stress flows across linked pools to detect capital draining routes.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_cross_pool_drain_simulator",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

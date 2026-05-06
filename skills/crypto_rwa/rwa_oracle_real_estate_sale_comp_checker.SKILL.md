@@ -3,7 +3,7 @@ skill: rwa_oracle_real_estate_sale_comp_checker
 category: crypto_rwa
 description: Confirms sale comparables feeding residential tokens align with MLS data.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Real Estate Sale Comp Checker
@@ -12,7 +12,10 @@ inputs: none
 Confirms sale comparables feeding residential tokens align with MLS data.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_real_estate_sale_comp_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

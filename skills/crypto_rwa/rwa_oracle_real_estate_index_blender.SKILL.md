@@ -3,7 +3,7 @@ skill: rwa_oracle_real_estate_index_blender
 category: crypto_rwa
 description: Blends Case-Shiller and proprietary comps to smooth real-estate NAV ticks feeding tokens.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Real Estate Index Blender
@@ -12,7 +12,10 @@ inputs: none
 Blends Case-Shiller and proprietary comps to smooth real-estate NAV ticks feeding tokens.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_real_estate_index_blender",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

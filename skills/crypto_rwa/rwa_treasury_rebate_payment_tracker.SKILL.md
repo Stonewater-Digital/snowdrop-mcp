@@ -3,7 +3,7 @@ skill: rwa_treasury_rebate_payment_tracker
 category: crypto_rwa
 description: Tracks rebate and coupon-equivalent flows into token treasury accounts.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Treasury Rebate Payment Tracker
@@ -12,7 +12,10 @@ inputs: none
 Tracks rebate and coupon-equivalent flows into token treasury accounts.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_treasury_rebate_payment_tracker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

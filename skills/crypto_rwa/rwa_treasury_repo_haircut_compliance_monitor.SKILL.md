@@ -3,7 +3,7 @@ skill: rwa_treasury_repo_haircut_compliance_monitor
 category: crypto_rwa
 description: Checks repo leverage agreements to ensure haircuts stay within disclosures.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Treasury Repo Haircut Compliance Monitor
@@ -12,7 +12,10 @@ inputs: none
 Checks repo leverage agreements to ensure haircuts stay within disclosures.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_treasury_repo_haircut_compliance_monitor",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

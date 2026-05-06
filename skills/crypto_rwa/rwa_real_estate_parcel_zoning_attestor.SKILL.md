@@ -3,7 +3,7 @@ skill: rwa_real_estate_parcel_zoning_attestor
 category: crypto_rwa
 description: Confirms each parcel's zoning class via municipal APIs to enforce token-level use restrictions.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Parcel Zoning Attestor
@@ -12,7 +12,10 @@ inputs: none
 Confirms each parcel's zoning class via municipal APIs to enforce token-level use restrictions.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_parcel_zoning_attestor",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

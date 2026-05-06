@@ -3,7 +3,7 @@ skill: rwa_real_estate_title_registry_sync
 category: crypto_rwa
 description: Cross-checks tokenized deed metadata with county title registries and surfaces mismatched parcel identifiers.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Title Registry Sync
@@ -12,7 +12,10 @@ inputs: none
 Cross-checks tokenized deed metadata with county title registries and surfaces mismatched parcel identifiers.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_title_registry_sync",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

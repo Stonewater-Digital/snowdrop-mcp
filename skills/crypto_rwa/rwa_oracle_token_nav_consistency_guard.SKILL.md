@@ -3,7 +3,7 @@ skill: rwa_oracle_token_nav_consistency_guard
 category: crypto_rwa
 description: Confirms oracle NAV outputs reconcile with issuer-reported NAV statements.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Token Nav Consistency Guard
@@ -12,7 +12,10 @@ inputs: none
 Confirms oracle NAV outputs reconcile with issuer-reported NAV statements.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_token_nav_consistency_guard",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

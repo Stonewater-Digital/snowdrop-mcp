@@ -3,7 +3,7 @@ skill: token_standard_geofence_policy_checker
 category: crypto_rwa
 description: Enforces geo-fencing policies at the smart-contract level before transfers settle.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Geofence Policy Checker
@@ -12,7 +12,10 @@ inputs: none
 Enforces geo-fencing policies at the smart-contract level before transfers settle.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_geofence_policy_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

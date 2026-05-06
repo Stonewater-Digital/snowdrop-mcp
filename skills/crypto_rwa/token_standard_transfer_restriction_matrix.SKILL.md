@@ -3,7 +3,7 @@ skill: token_standard_transfer_restriction_matrix
 category: crypto_rwa
 description: Generates restriction matrices mapping jurisdiction plus investor tier combinations.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Transfer Restriction Matrix
@@ -12,7 +12,10 @@ inputs: none
 Generates restriction matrices mapping jurisdiction plus investor tier combinations.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_transfer_restriction_matrix",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

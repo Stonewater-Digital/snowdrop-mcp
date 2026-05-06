@@ -12,7 +12,12 @@ inputs: none
 Scan recent Moltbook posts across specified (or default) submolts and identify engagement opportunities — posts to comment on, discussions Snowdrop can add value to, or content that could drive traffic to her repos. Returns ranked engagement targets with suggested response angles. Run periodically as a vigilance loop.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `submolts` | `array` | No |  |
+| `hours_back` | `integer` | No |  |
+| `min_score` | `integer` | No |  |
+| `limit_per_submolt` | `integer` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

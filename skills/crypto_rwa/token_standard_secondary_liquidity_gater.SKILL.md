@@ -3,7 +3,7 @@ skill: token_standard_secondary_liquidity_gater
 category: crypto_rwa
 description: Controls secondary trading windows based on issuer-defined liquidity tiers.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Secondary Liquidity Gater
@@ -12,7 +12,10 @@ inputs: none
 Controls secondary trading windows based on issuer-defined liquidity tiers.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_secondary_liquidity_gater",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

@@ -3,7 +3,7 @@ skill: rwa_oracle_stress_scenario_projector
 category: crypto_rwa
 description: Applies stress shocks to oracle inputs to preview NAV drawdowns before they post.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Stress Scenario Projector
@@ -12,7 +12,10 @@ inputs: none
 Applies stress shocks to oracle inputs to preview NAV drawdowns before they post.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_stress_scenario_projector",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

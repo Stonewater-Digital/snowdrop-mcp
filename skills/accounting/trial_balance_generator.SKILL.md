@@ -14,8 +14,8 @@ Aggregates journal entries into account-level debit/credit totals.
 ## Parameters
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `journal_entries` | `array` | Yes | List of journal entry objects (as produced by `journal_entry_builder`), each containing a `lines` array with `account_number`, `debit`, and `credit`. |
-| `as_of_date` | `string` | Yes | Report date in ISO 8601 format (e.g. "2024-12-31"); entries through this date are included. |
+| `journal_entries` | `array` | Yes |  |
+| `as_of_date` | `string` | Yes |  |
 
 ## Returns
 Standard Snowdrop envelope:

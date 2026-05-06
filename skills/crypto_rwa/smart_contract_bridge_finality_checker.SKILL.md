@@ -3,7 +3,7 @@ skill: smart_contract_bridge_finality_checker
 category: crypto_rwa
 description: Verifies bridge contracts enforce finality depth before crediting funds.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Bridge Finality Checker
@@ -12,7 +12,10 @@ inputs: none
 Verifies bridge contracts enforce finality depth before crediting funds.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_bridge_finality_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

@@ -3,7 +3,7 @@ skill: rwa_oracle_performance_fee_shadow_calc
 category: crypto_rwa
 description: Runs independent performance-fee calculations to cross-check oracle output.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Performance Fee Shadow Calc
@@ -12,7 +12,10 @@ inputs: none
 Runs independent performance-fee calculations to cross-check oracle output.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_performance_fee_shadow_calc",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

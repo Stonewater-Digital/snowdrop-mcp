@@ -3,7 +3,7 @@ skill: smart_contract_vault_share_dilution_checker
 category: crypto_rwa
 description: Models share issuance math to catch dilution vectors for vault depositors.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Vault Share Dilution Checker
@@ -12,7 +12,10 @@ inputs: none
 Models share issuance math to catch dilution vectors for vault depositors.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_vault_share_dilution_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

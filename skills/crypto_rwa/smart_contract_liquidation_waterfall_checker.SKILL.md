@@ -3,7 +3,7 @@ skill: smart_contract_liquidation_waterfall_checker
 category: crypto_rwa
 description: Validates liquidation waterfalls respect seniority rules across tranches.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Liquidation Waterfall Checker
@@ -12,7 +12,10 @@ inputs: none
 Validates liquidation waterfalls respect seniority rules across tranches.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_liquidation_waterfall_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

@@ -3,7 +3,7 @@ skill: smart_contract_native_asset_sweep_detector
 category: crypto_rwa
 description: Ensures no function can sweep native chain assets without quorum approval.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Native Asset Sweep Detector
@@ -12,7 +12,10 @@ inputs: none
 Ensures no function can sweep native chain assets without quorum approval.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_native_asset_sweep_detector",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

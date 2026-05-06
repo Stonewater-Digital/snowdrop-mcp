@@ -3,7 +3,7 @@ skill: token_standard_beneficial_owner_registry_bridge
 category: crypto_rwa
 description: Bridges beneficial owner registries into token KYC proofs for regulators.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Beneficial Owner Registry Bridge
@@ -12,7 +12,10 @@ inputs: none
 Bridges beneficial owner registries into token KYC proofs for regulators.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_beneficial_owner_registry_bridge",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

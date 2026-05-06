@@ -12,7 +12,10 @@ inputs: none
 List active Firebase In-App Messaging campaigns for a project. Returns campaign names, trigger conditions, and message content.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `project_id` | `string` | No |  |
+| `page_size` | `integer` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

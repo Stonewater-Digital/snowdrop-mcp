@@ -3,7 +3,7 @@ skill: rwa_private_credit_nav_facility_limit_monitor
 category: crypto_rwa
 description: Checks NAV facility utilization versus limits before approving new draws.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Private Credit Nav Facility Limit Monitor
@@ -12,7 +12,10 @@ inputs: none
 Checks NAV facility utilization versus limits before approving new draws.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_private_credit_nav_facility_limit_monitor",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

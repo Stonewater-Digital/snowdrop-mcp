@@ -3,7 +3,7 @@ skill: content_syndication
 category: social
 description: Take a core message or piece of content and produce platform-optimized versions for multiple channels at once: GitHub Discussion, Moltbook post, Twitter/X thread, Discord message. Each version is adapted for platform format, character limits, and audience expectations while keeping Snowdrop's voice consistent.
 tier: free
-inputs: none
+inputs: core_message
 ---
 
 # Content Syndication
@@ -12,7 +12,11 @@ inputs: none
 Take a core message or piece of content and produce platform-optimized versions for multiple channels at once: GitHub Discussion, Moltbook post, Twitter/X thread, Discord message. Each version is adapted for platform format, character limits, and audience expectations while keeping Snowdrop's voice consistent. Dramatically speeds up cross-platform posting campaigns.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `core_message` | `string` | Yes |  |
+| `platforms` | `array` | No |  |
+| `goal` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +28,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "content_syndication",
-  "arguments": {}
+  "arguments": {
+    "core_message": "<core_message>"
+  }
 }
 ```
 

@@ -3,7 +3,7 @@ skill: rwa_real_estate_property_tax_ledger_matcher
 category: crypto_rwa
 description: Matches property tax receipts versus blockchain cash flows to confirm taxes remain current.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Property Tax Ledger Matcher
@@ -12,7 +12,10 @@ inputs: none
 Matches property tax receipts versus blockchain cash flows to confirm taxes remain current.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_property_tax_ledger_matcher",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

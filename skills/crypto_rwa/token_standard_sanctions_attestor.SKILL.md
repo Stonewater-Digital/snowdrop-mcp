@@ -3,7 +3,7 @@ skill: token_standard_sanctions_attestor
 category: crypto_rwa
 description: Confirms sanctions screening proofs are attached to each restricted transfer.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Sanctions Attestor
@@ -12,7 +12,10 @@ inputs: none
 Confirms sanctions screening proofs are attached to each restricted transfer.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_sanctions_attestor",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

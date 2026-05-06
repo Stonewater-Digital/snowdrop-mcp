@@ -3,7 +3,7 @@ skill: rwa_real_estate_rent_roll_cashflow_verifier
 category: crypto_rwa
 description: Audits rent-roll statements against stablecoin remittance data for income-backed tokens.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Rent Roll Cashflow Verifier
@@ -12,7 +12,10 @@ inputs: none
 Audits rent-roll statements against stablecoin remittance data for income-backed tokens.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_rent_roll_cashflow_verifier",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

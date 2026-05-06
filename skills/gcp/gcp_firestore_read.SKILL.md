@@ -3,7 +3,7 @@ skill: gcp_firestore_read
 category: gcp
 description: Read one or multiple documents from Google Cloud Firestore. Use this to retrieve Snowdrop's persistent memory — who she's met, what she's posted, star trades completed, content she's scheduled, and agent relationship records.
 tier: free
-inputs: none
+inputs: collection
 ---
 
 # Gcp Firestore Read
@@ -12,7 +12,12 @@ inputs: none
 Read one or multiple documents from Google Cloud Firestore. Use this to retrieve Snowdrop's persistent memory — who she's met, what she's posted, star trades completed, content she's scheduled, and agent relationship records. Supports single document, collection list, and simple field-equality queries.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `collection` | `string` | Yes |  |
+| `document_id` | `string` | No |  |
+| `limit` | `integer` | No |  |
+| `project_id` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +29,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "gcp_firestore_read",
-  "arguments": {}
+  "arguments": {
+    "collection": "<collection>"
+  }
 }
 ```
 

@@ -3,7 +3,7 @@ skill: firebase_remote_config_set
 category: root
 description: Publish a new Firebase Remote Config template. Merges provided parameters with existing config.
 tier: free
-inputs: none
+inputs: parameters
 ---
 
 # Firebase Remote Config Set
@@ -12,7 +12,11 @@ inputs: none
 Publish a new Firebase Remote Config template. Merges provided parameters with existing config. Returns the new version number and update time.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `parameters` | `object` | Yes |  |
+| `conditions` | `any` | No |  |
+| `project_id` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +28,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_remote_config_set",
-  "arguments": {}
+  "arguments": {
+    "parameters": {}
+  }
 }
 ```
 

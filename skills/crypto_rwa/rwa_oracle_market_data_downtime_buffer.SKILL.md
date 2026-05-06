@@ -3,7 +3,7 @@ skill: rwa_oracle_market_data_downtime_buffer
 category: crypto_rwa
 description: Projects NAV impact when core venues go dark and oracles rely on stale buffers.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Market Data Downtime Buffer
@@ -12,7 +12,10 @@ inputs: none
 Projects NAV impact when core venues go dark and oracles rely on stale buffers.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_market_data_downtime_buffer",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

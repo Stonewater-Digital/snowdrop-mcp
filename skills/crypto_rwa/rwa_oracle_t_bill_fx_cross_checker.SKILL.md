@@ -3,7 +3,7 @@ skill: rwa_oracle_t_bill_fx_cross_checker
 category: crypto_rwa
 description: Ensures T-bill tokens priced in non-USD denominations reflect live FX crosses.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle T Bill Fx Cross Checker
@@ -12,7 +12,10 @@ inputs: none
 Ensures T-bill tokens priced in non-USD denominations reflect live FX crosses.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_t_bill_fx_cross_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

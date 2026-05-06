@@ -12,7 +12,9 @@ inputs: none
 Get the current Firebase Remote Config template, including all parameters, parameter groups, and conditions.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `project_id` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

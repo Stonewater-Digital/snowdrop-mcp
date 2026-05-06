@@ -3,7 +3,7 @@ skill: rwa_treasury_safekeeping_receipt_checker
 category: crypto_rwa
 description: Validates safekeeping receipts and custodial chain-of-control for token wrappers.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Treasury Safekeeping Receipt Checker
@@ -12,7 +12,10 @@ inputs: none
 Validates safekeeping receipts and custodial chain-of-control for token wrappers.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_treasury_safekeeping_receipt_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

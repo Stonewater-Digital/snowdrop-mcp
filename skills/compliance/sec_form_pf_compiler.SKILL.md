@@ -3,7 +3,7 @@ skill: sec_form_pf_compiler
 category: compliance
 description: Compiles SEC Form PF data for private fund advisers under Dodd-Frank Act Section 404 and SEC Rule 204(b)-1. Determines Large Adviser classification, filing frequency, and generates the structured Form PF JSON payload for PFRD submission.
 tier: premium
-inputs: fund_data
+inputs: none
 ---
 
 # Sec Form Pf Compiler
@@ -12,9 +12,7 @@ inputs: fund_data
 Compiles SEC Form PF data for private fund advisers under Dodd-Frank Act Section 404 and SEC Rule 204(b)-1. Determines Large Adviser classification, filing frequency, and generates the structured Form PF JSON payload for PFRD submission. (Premium — subscribe at https://snowdrop.ai)
 
 ## Parameters
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| `fund_data` | `object` | Yes | Private fund adviser data including AUM, fund type (hedge/PE/liquidity), investor count, leverage ratios, and filing period for Form PF PFRD submission |
+_No parameters defined._
 
 ## Returns
 Standard Snowdrop envelope:
@@ -26,15 +24,7 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "sec_form_pf_compiler",
-  "arguments": {
-    "fund_data": {
-      "adviser_name": "Stonewater Capital LP",
-      "total_aum_usd": 2500000000,
-      "fund_type": "hedge_fund",
-      "reporting_period": "2026-Q1",
-      "investor_count": 145
-    }
-  }
+  "arguments": {}
 }
 ```
 

@@ -3,7 +3,7 @@ skill: smart_contract_precision_loss_guard
 category: crypto_rwa
 description: Checks decimal math routines to prevent precision loss on rebasing assets.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Precision Loss Guard
@@ -12,7 +12,10 @@ inputs: none
 Checks decimal math routines to prevent precision loss on rebasing assets.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_precision_loss_guard",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

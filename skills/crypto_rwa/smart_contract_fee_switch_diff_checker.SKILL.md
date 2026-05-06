@@ -3,7 +3,7 @@ skill: smart_contract_fee_switch_diff_checker
 category: crypto_rwa
 description: Compares fee switch states across deployments to expose unnoticed toggles.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Fee Switch Diff Checker
@@ -12,7 +12,10 @@ inputs: none
 Compares fee switch states across deployments to expose unnoticed toggles.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_fee_switch_diff_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

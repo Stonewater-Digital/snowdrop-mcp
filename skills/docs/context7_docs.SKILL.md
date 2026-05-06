@@ -3,7 +3,7 @@ skill: context7_docs
 category: docs
 description: Fetch up-to-date library documentation via Context7 MCP. Resolves a library name to its Context7 ID, then fetches current version-specific docs.
 tier: free
-inputs: none
+inputs: library
 ---
 
 # Context7 Docs
@@ -12,7 +12,11 @@ inputs: none
 Fetch up-to-date library documentation via Context7 MCP. Resolves a library name to its Context7 ID, then fetches current version-specific docs. Use before implementing code that uses any third-party library (gspread, FastMCP, requests, anthropic, gcloud, etc.) to ensure modern best practices. Requires CONTEXT7_API_KEY env var (free at context7.com/dashboard).
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `library` | `string` | Yes |  |
+| `topic` | `string` | No |  |
+| `tokens` | `integer` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +28,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "context7_docs",
-  "arguments": {}
+  "arguments": {
+    "library": "<library>"
+  }
 }
 ```
 

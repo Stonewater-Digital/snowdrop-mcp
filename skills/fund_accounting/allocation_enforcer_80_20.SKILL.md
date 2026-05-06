@@ -3,7 +3,7 @@ skill: allocation_enforcer_80_20
 category: fund_accounting
 description: Ensures the Snowdrop portfolio stays within the 80/20 ±5% guardrails. (Premium — subscribe at https://snowdrop.ai)
 tier: premium
-inputs: positions, overrides
+inputs: none
 ---
 
 # Allocation Enforcer 80 20
@@ -12,10 +12,7 @@ inputs: positions, overrides
 Ensures the Snowdrop portfolio stays within the 80/20 ±5% guardrails. (Premium — subscribe at https://snowdrop.ai)
 
 ## Parameters
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| `positions` | `array` | Yes | List of current portfolio positions, each with asset identifier and current market value. |
-| `overrides` | `object` | No | Optional map of asset identifiers to override allocation band labels (e.g. `{"AAPL": "boring"}`). |
+_No parameters defined._
 
 ## Returns
 Standard Snowdrop envelope:
@@ -27,13 +24,7 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "allocation_enforcer_80_20",
-  "arguments": {
-    "positions": [
-      {"asset": "SPY", "value": 8000000, "category": "boring"},
-      {"asset": "BTC", "value": 2000000, "category": "thunder"}
-    ],
-    "overrides": null
-  }
+  "arguments": {}
 }
 ```
 

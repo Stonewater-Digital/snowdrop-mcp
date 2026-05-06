@@ -3,7 +3,7 @@ skill: firebase_fcm_send_multicast
 category: root
 description: Send FCM push notification to up to 500 device tokens simultaneously. Returns success_count, failure_count, and per-token results.
 tier: free
-inputs: none
+inputs: tokens, title, body
 ---
 
 # Firebase Fcm Send Multicast
@@ -12,7 +12,12 @@ inputs: none
 Send FCM push notification to up to 500 device tokens simultaneously. Returns success_count, failure_count, and per-token results.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `tokens` | `any` | Yes |  |
+| `title` | `string` | Yes |  |
+| `body` | `string` | Yes |  |
+| `data` | `object` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +29,11 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_fcm_send_multicast",
-  "arguments": {}
+  "arguments": {
+    "tokens": "<tokens>",
+    "title": "<title>",
+    "body": "<body>"
+  }
 }
 ```
 

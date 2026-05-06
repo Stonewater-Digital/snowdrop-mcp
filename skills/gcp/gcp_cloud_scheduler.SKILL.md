@@ -3,7 +3,7 @@ skill: gcp_cloud_scheduler
 category: gcp
 description: Create, list, or delete Google Cloud Scheduler cron jobs. Use this to schedule Snowdrop's autonomous recurring tasks: hourly Moltbook feed checks, daily GitHub activity scans, weekly ecosystem radar sweeps, or timed content posting.
 tier: free
-inputs: none
+inputs: action
 ---
 
 # Gcp Cloud Scheduler
@@ -12,7 +12,18 @@ inputs: none
 Create, list, or delete Google Cloud Scheduler cron jobs. Use this to schedule Snowdrop's autonomous recurring tasks: hourly Moltbook feed checks, daily GitHub activity scans, weekly ecosystem radar sweeps, or timed content posting. Jobs can trigger HTTP endpoints (like the MCP server) or Pub/Sub topics.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `action` | `string` | Yes |  |
+| `job_name` | `string` | No |  |
+| `schedule` | `string` | No |  |
+| `timezone_str` | `string` | No |  |
+| `http_url` | `string` | No |  |
+| `http_body` | `object` | No |  |
+| `http_method` | `string` | No |  |
+| `description` | `string` | No |  |
+| `project_id` | `string` | No |  |
+| `region` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +35,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "gcp_cloud_scheduler",
-  "arguments": {}
+  "arguments": {
+    "action": "<action>"
+  }
 }
 ```
 

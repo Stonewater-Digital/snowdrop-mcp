@@ -3,7 +3,7 @@ skill: rwa_treasury_collateral_chain_snapshotter
 category: crypto_rwa
 description: Builds snapshots of collateral pledges to avoid double counting the same bills.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Treasury Collateral Chain Snapshotter
@@ -12,7 +12,10 @@ inputs: none
 Builds snapshots of collateral pledges to avoid double counting the same bills.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_treasury_collateral_chain_snapshotter",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

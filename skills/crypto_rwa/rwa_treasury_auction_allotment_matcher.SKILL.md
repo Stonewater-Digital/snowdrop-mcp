@@ -3,7 +3,7 @@ skill: rwa_treasury_auction_allotment_matcher
 category: crypto_rwa
 description: Matches primary auction allotments to token mint quantities to prevent synthetic supply.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Treasury Auction Allotment Matcher
@@ -12,7 +12,10 @@ inputs: none
 Matches primary auction allotments to token mint quantities to prevent synthetic supply.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_treasury_auction_allotment_matcher",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 
