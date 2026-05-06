@@ -2,6 +2,7 @@ name: Gemini Code Review
 on:
   pull_request:
     types: [opened, synchronize]
+
 jobs:
   review:
     runs-on: ubuntu-latest
@@ -9,13 +10,87 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-      
-      - name: Gemini AI PR Reviewer
-        uses: google-github-actions/gemini-code-review@v1
-        continue-on-error: true
+      - uses: actions/checkout@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
-          model: "gemini-2.5-flash-lite"
+          fetch-depth: 0
+
+      - name: Gemini AI PR Review
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          # If GEMINI_API_KEY is not configured, skip gracefully
+          if [ -z "${GEMINI_API_KEY:-}" ]; then
+            echo "GEMINI_API_KEY not set — skipping Gemini review"
+            exit 0
+          fi
+
+          # Fetch the PR diff (cap at 8000 chars to stay within Gemini context)
+          DIFF_FILE=$(mktemp)
+          gh pr diff "${PR_NUMBER}" --repo "${REPO}" 2>/dev/null \
+            | head -c 8000 > "${DIFF_FILE}" \
+            || echo "no diff available" > "${DIFF_FILE}"
+
+          DIFF_CONTENT=$(cat "${DIFF_FILE}")
+          if [ -z "${DIFF_CONTENT}" ]; then
+            DIFF_CONTENT="(empty diff)"
+          fi
+
+          # Build JSON payload via Python to avoid shell escaping issues
+          PAYLOAD_FILE=$(mktemp)
+          python3 - <<PYEOF
+          import json, os
+
+          diff = open("${DIFF_FILE}").read()
+          prompt = (
+            "You are a senior software engineer reviewing a pull request for Snowdrop MCP, "
+            "a Python FastMCP server that exposes financial and data skills via the MCP protocol.\n\n"
+            "Review the following PR diff for:\n"
+            "1. Bugs or logic errors\n"
+            "2. Security issues (secrets exposure, injection, etc.)\n"
+            "3. Code quality and consistency with existing patterns\n"
+            "4. Missing edge-case handling\n\n"
+            "Be concise. Use bullet points. If the diff looks good, say so briefly.\n\n"
+            "Diff:\n" + diff
+          )
+          payload = {"contents": [{"parts": [{"text": prompt}]}]}
+          with open("${PAYLOAD_FILE}", "w") as f:
+            json.dump(payload, f)
+          PYEOF
+
+          # Call Gemini 2.5 Flash API
+          RESPONSE_FILE=$(mktemp)
+          HTTP_CODE=$(curl -s -w "%{http_code}" -o "${RESPONSE_FILE}" -X POST \
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}" \
+            -H "Content-Type: application/json" \
+            --data-binary "@${PAYLOAD_FILE}" \
+            2>/dev/null) || HTTP_CODE="000"
+
+          # Extract review text
+          REVIEW=$(python3 - <<PYEOF
+          import json, sys
+          try:
+            with open("${RESPONSE_FILE}") as f:
+              d = json.load(f)
+            text = d["candidates"][0]["content"]["parts"][0]["text"]
+            print(text)
+          except Exception as e:
+            print(f"Gemini review unavailable (HTTP ${HTTP_CODE}): {e}")
+          PYEOF
+          )
+
+          # Post comment on PR
+          gh pr comment "${PR_NUMBER}" --repo "${REPO}" \
+            --body "## Gemini Code Review
+
+          ${REVIEW}
+
+          ---
+          *Reviewed by Gemini 2.5 Flash via Snowdrop CI*"
+
+          # Clean up temp files
+          rm -f "${DIFF_FILE}" "${PAYLOAD_FILE}" "${RESPONSE_FILE}"
