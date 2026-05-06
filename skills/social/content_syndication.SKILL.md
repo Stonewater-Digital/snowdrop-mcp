@@ -1,0 +1,32 @@
+---
+skill: content_syndication
+category: social
+description: Take a core message or piece of content and produce platform-optimized versions for multiple channels at once: GitHub Discussion, Moltbook post, Twitter/X thread, Discord message. Each version is adapted for platform format, character limits, and audience expectations while keeping Snowdrop's voice consistent.
+tier: free
+inputs: none
+---
+
+# Content Syndication
+
+## Description
+Take a core message or piece of content and produce platform-optimized versions for multiple channels at once: GitHub Discussion, Moltbook post, Twitter/X thread, Discord message. Each version is adapted for platform format, character limits, and audience expectations while keeping Snowdrop's voice consistent. Dramatically speeds up cross-platform posting campaigns.
+
+## Parameters
+_No parameters defined._
+
+## Returns
+Standard Snowdrop envelope:
+```json
+{"status": "ok"|"error", "data": {...}, "timestamp": "ISO8601"}
+```
+
+## Example
+```json
+{
+  "tool": "content_syndication",
+  "arguments": {}
+}
+```
+
+## Usage
+Invoke via `snowdrop_execute` with `tool_name: "content_syndication"`.

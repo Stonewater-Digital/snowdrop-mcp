@@ -9,7 +9,7 @@ Table of Contents:
     3. Skill Discovery
     4. Skill Registration (direct mode, legacy)
     5. Meta-Tool Dispatcher (3 gateway tools)
-    6. Main — FastAPI wrapper with /health, /.well-known/agent.json
+    6. Main — FastAPI wrapper with /health, /.well-known/agent.json, /.well-known/skills.json
     7. Entrypoint
 """
 
@@ -384,7 +384,7 @@ def main() -> None:
     port_env = os.environ.get("PORT")
 
     if port_env:
-        # HTTP mode — FastAPI wrapper with /health and /.well-known/agent.json
+        # HTTP mode — FastAPI wrapper with /health, /.well-known/agent.json, /.well-known/skills.json
         import uvicorn
         from fastapi import FastAPI, Response
 
@@ -427,6 +427,54 @@ def main() -> None:
                     "error": "agent.json not found",
                 })
             return Response(content=content, media_type="application/json")
+
+        @_app.get("/.well-known/skills.json", tags=["a2a"])
+        async def well_known_skills() -> dict:
+            """Discovery endpoint: lists all available skills with metadata."""
+            skills_list = []
+            for name, record in _SKILL_CATALOG.items():
+                # _SKILL_CATALOG entries store TOOL_META under key "meta"
+                tool_meta = record.get("meta", {})
+                description = tool_meta.get("description", "")
+                parameters = (
+                    tool_meta.get("inputSchema")
+                    or tool_meta.get("parameters")
+                    or {}
+                )
+                # category is stored directly in the record by _discover_skills()
+                category = record.get("category", "general")
+
+                # Tier: explicit field in TOOL_META, fallback to "free"
+                tier = tool_meta.get("tier", "free")
+                # Secondary check: "premium" keyword in description
+                if tier == "free" and "premium" in description.lower():
+                    tier = "premium"
+
+                skills_list.append({
+                    "name": name,
+                    "description": description,
+                    "category": category,
+                    "tier": tier,
+                    "uri": f"skill://{name}",
+                    "parameters": parameters,
+                })
+
+            free_count = sum(1 for s in skills_list if s["tier"] == "free")
+            premium_count = sum(1 for s in skills_list if s["tier"] == "premium")
+
+            return {
+                "schema_version": "1.0",
+                "generated_at": datetime.now(timezone.utc).isoformat(),
+                "server": {
+                    "name": "Snowdrop",
+                    "version": "2.0.0",
+                    "url": "https://snowdrop-mcp-43795844349.us-central1.run.app",
+                },
+                "skills": skills_list,
+                "total": len(skills_list),
+                "free_count": free_count,
+                "premium_count": premium_count,
+            }
 
         _app.mount("", _mcp_http_app)
 

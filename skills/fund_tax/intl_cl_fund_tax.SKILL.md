@@ -1,0 +1,32 @@
+---
+skill: intl_cl_fund_tax
+category: fund_tax
+description: Handles Chilean additional tax, treaty reductions, and 27% first-category tax for local operations. (Premium — subscribe at https://snowdrop.ai)
+tier: premium
+inputs: none
+---
+
+# Intl Cl Fund Tax
+
+## Description
+Handles Chilean additional tax, treaty reductions, and 27% first-category tax for local operations. (Premium — subscribe at https://snowdrop.ai)
+
+## Parameters
+_No parameters defined._
+
+## Returns
+Standard Snowdrop envelope:
+```json
+{"status": "ok"|"error", "data": {...}, "timestamp": "ISO8601"}
+```
+
+## Example
+```json
+{
+  "tool": "intl_cl_fund_tax",
+  "arguments": {}
+}
+```
+
+## Usage
+Invoke via `snowdrop_execute` with `tool_name: "intl_cl_fund_tax"`.
