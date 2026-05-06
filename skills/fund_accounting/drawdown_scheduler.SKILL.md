@@ -3,7 +3,7 @@ skill: drawdown_scheduler
 category: fund_accounting
 description: Schedules capital call drawdowns based on unfunded commitment and upcoming investment pipeline. (Premium — subscribe at https://snowdrop.ai)
 tier: premium
-inputs: none
+inputs: total_commitment, called_to_date, upcoming_investments
 ---
 
 # Drawdown Scheduler
@@ -12,7 +12,11 @@ inputs: none
 Schedules capital call drawdowns based on unfunded commitment and upcoming investment pipeline. (Premium — subscribe at https://snowdrop.ai)
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `total_commitment` | `number` | Yes | Total LP commitment to the fund in dollars. |
+| `called_to_date` | `number` | Yes | Capital already called from LPs to date in dollars. |
+| `upcoming_investments` | `array` | Yes | List of planned investment objects, each with `deal_name`, `expected_close_date`, and `capital_required`. |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +28,14 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "drawdown_scheduler",
-  "arguments": {}
+  "arguments": {
+    "total_commitment": 50000000,
+    "called_to_date": 20000000,
+    "upcoming_investments": [
+      {"deal_name": "Portfolio Co Alpha", "expected_close_date": "2026-07-15", "capital_required": 8000000},
+      {"deal_name": "Portfolio Co Beta", "expected_close_date": "2026-10-01", "capital_required": 12000000}
+    ]
+  }
 }
 ```
 

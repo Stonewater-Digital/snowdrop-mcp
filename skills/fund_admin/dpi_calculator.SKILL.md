@@ -3,7 +3,7 @@ skill: dpi_calculator
 category: fund_admin
 description: Calculates DPI (Distributions to Paid-In) = cumulative_distributions / paid_in_capital. DPI is the realized component of fund performance — cash actually returned to LPs.
 tier: premium
-inputs: none
+inputs: cumulative_distributions, paid_in_capital
 ---
 
 # Dpi Calculator
@@ -12,7 +12,11 @@ inputs: none
 Calculates DPI (Distributions to Paid-In) = cumulative_distributions / paid_in_capital. DPI is the realized component of fund performance — cash actually returned to LPs. (Premium — subscribe at https://snowdrop.ai)
 
 ## Parameters
-_No parameters defined._
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| cumulative_distributions | number | Yes | Total cash distributions returned to LPs since fund inception (USD) |
+| paid_in_capital | number | Yes | Total LP capital called and contributed to the fund (USD) |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +28,10 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "dpi_calculator",
-  "arguments": {}
+  "arguments": {
+    "cumulative_distributions": 42000000,
+    "paid_in_capital": 60000000
+  }
 }
 ```
 

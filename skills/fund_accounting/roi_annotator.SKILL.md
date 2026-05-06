@@ -3,7 +3,7 @@ skill: roi_annotator
 category: fund_accounting
 description: Enriches ledger transactions with qualitative ROI commentary. (Premium — subscribe at https://snowdrop.ai)
 tier: premium
-inputs: none
+inputs: transaction
 ---
 
 # Roi Annotator
@@ -12,7 +12,9 @@ inputs: none
 Enriches ledger transactions with qualitative ROI commentary. (Premium — subscribe at https://snowdrop.ai)
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `transaction` | `object` | Yes | Ledger transaction object with fields including `id`, `date`, `amount`, `category`, `description`, and optionally `cost_basis` and `proceeds` for investment-type entries. |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +26,17 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "roi_annotator",
-  "arguments": {}
+  "arguments": {
+    "transaction": {
+      "id": "txn_20260101_001",
+      "date": "2026-01-01",
+      "amount": 3200000,
+      "category": "distribution",
+      "description": "Exit proceeds from Portfolio Co Gamma (M&A)",
+      "cost_basis": 1500000,
+      "proceeds": 4700000
+    }
+  }
 }
 ```
 
