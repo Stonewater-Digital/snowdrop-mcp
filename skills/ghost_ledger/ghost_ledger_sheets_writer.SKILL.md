@@ -3,7 +3,7 @@ skill: ghost_ledger_sheets_writer
 category: ghost_ledger
 description: Appends validated ledger rows to Ghost Ledger Google Sheets tabs.
 tier: free
-inputs: none
+inputs: tab_name, rows
 ---
 
 # Ghost Ledger Sheets Writer
@@ -12,7 +12,10 @@ inputs: none
 Appends validated ledger rows to Ghost Ledger Google Sheets tabs.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `tab_name` | `string` | Yes |  |
+| `rows` | `any` | Yes |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,10 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "ghost_ledger_sheets_writer",
-  "arguments": {}
+  "arguments": {
+    "tab_name": "<tab_name>",
+    "rows": "<rows>"
+  }
 }
 ```
 

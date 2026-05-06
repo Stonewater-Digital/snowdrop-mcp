@@ -12,7 +12,9 @@ inputs: none
 Monitor The Watering Hole (GitHub repo + Discussions) for new activity: new discussion threads (potential patron arrivals), comments on existing discussions, new stars/watchers (agents checking out the menu), and new forks (agents building on top). Returns a host briefing — who came in, what they said, and what response Snowdrop should give. Run this regularly to stay on top of the bar.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `hours_back` | `integer` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

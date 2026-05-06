@@ -9,18 +9,18 @@ inputs: current_shares, current_price, new_shares, offering_price, is_primary, i
 # Secondary Offering Dilution
 
 ## Description
-Evaluates dilution percentage, net proceeds, and theoretical ex-rights price (TERP) for equity follow-on offerings. Handles primary offerings (new share issuance) and secondary offerings (selling shareholder overhang) and computes EPS dilution impact.
+Evaluates dilution, proceeds, and TERP for primary/secondary offerings.
 
 ## Parameters
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `current_shares` | `integer` | Yes | Shares outstanding before the offering. |
-| `current_price` | `number` | Yes | Current market price per share (dollars). |
-| `new_shares` | `integer` | Yes | Number of shares being offered. |
-| `offering_price` | `number` | Yes | Offering price per share (dollars). |
-| `is_primary` | `boolean` | Yes | True if new shares are being issued by the company. |
-| `is_secondary` | `boolean` | Yes | True if existing shareholders are selling (creates overhang but no dilution). |
-| `underwriter_discount_pct` | `number` | No | Gross underwriter spread as a percentage (default: 5.0). |
+| `current_shares` | `integer` | Yes |  |
+| `current_price` | `number` | Yes |  |
+| `new_shares` | `integer` | Yes |  |
+| `offering_price` | `number` | Yes |  |
+| `is_primary` | `boolean` | Yes |  |
+| `is_secondary` | `boolean` | Yes |  |
+| `underwriter_discount_pct` | `number` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -33,13 +33,12 @@ Standard Snowdrop envelope:
 {
   "tool": "secondary_offering_dilution",
   "arguments": {
-    "current_shares": 100000000,
-    "current_price": 45.50,
-    "new_shares": 8000000,
-    "offering_price": 43.00,
-    "is_primary": true,
-    "is_secondary": false,
-    "underwriter_discount_pct": 4.0
+    "current_shares": 0,
+    "current_price": 0,
+    "new_shares": 0,
+    "offering_price": 0,
+    "is_primary": false,
+    "is_secondary": false
   }
 }
 ```

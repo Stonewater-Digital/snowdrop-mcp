@@ -3,7 +3,7 @@ skill: smart_contract_reward_emission_checker
 category: crypto_rwa
 description: Compares scheduled reward emissions to live supply to catch runaway inflation.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Reward Emission Checker
@@ -12,7 +12,10 @@ inputs: none
 Compares scheduled reward emissions to live supply to catch runaway inflation.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_reward_emission_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

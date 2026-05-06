@@ -3,7 +3,7 @@ skill: smart_contract_access_control_diff_checker
 category: crypto_rwa
 description: Diffs access-control lists between versions to highlight missing roles.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Access Control Diff Checker
@@ -12,7 +12,10 @@ inputs: none
 Diffs access-control lists between versions to highlight missing roles.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_access_control_diff_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

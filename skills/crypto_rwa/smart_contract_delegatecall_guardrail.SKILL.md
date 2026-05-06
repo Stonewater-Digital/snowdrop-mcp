@@ -3,7 +3,7 @@ skill: smart_contract_delegatecall_guardrail
 category: crypto_rwa
 description: Inspects delegatecall targets to ensure they respect access control and immutability assumptions.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Delegatecall Guardrail
@@ -12,7 +12,10 @@ inputs: none
 Inspects delegatecall targets to ensure they respect access control and immutability assumptions.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_delegatecall_guardrail",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

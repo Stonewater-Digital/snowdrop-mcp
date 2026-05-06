@@ -3,7 +3,7 @@ skill: firebase_auth_revoke_tokens
 category: root
 description: Revoke all refresh tokens for a Firebase Auth user, forcing them to re-authenticate. Returns the user UID and revocation timestamp.
 tier: free
-inputs: none
+inputs: uid
 ---
 
 # Firebase Auth Revoke Tokens
@@ -12,7 +12,9 @@ inputs: none
 Revoke all refresh tokens for a Firebase Auth user, forcing them to re-authenticate. Returns the user UID and revocation timestamp.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `uid` | `string` | Yes |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +26,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_auth_revoke_tokens",
-  "arguments": {}
+  "arguments": {
+    "uid": "<uid>"
+  }
 }
 ```
 

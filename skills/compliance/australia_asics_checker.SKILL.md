@@ -3,7 +3,7 @@ skill: australia_asics_checker
 category: compliance
 description: Determines Australian Financial Services Licence (AFSL) requirements under the Corporations Act 2001 (Cth) Part 7.6. Evaluates service type, client classification (retail vs wholesale), product categories, and foreign provider relief under ASIC Class Orders and legislative instruments.
 tier: premium
-inputs: entity_data
+inputs: none
 ---
 
 # Australia Asics Checker
@@ -12,9 +12,7 @@ inputs: entity_data
 Determines Australian Financial Services Licence (AFSL) requirements under the Corporations Act 2001 (Cth) Part 7.6. Evaluates service type, client classification (retail vs wholesale), product categories, and foreign provider relief under ASIC Class Orders and legislative instruments. (Premium — subscribe at https://snowdrop.ai)
 
 ## Parameters
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| `entity_data` | `object` | Yes | Entity details including service type, client classification (retail vs wholesale), and product categories for AFSL assessment |
+_No parameters defined._
 
 ## Returns
 Standard Snowdrop envelope:
@@ -26,13 +24,7 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "australia_asics_checker",
-  "arguments": {
-    "entity_data": {
-      "service_type": "managed_discretionary_account",
-      "client_type": "retail",
-      "product_categories": ["equities", "derivatives"]
-    }
-  }
+  "arguments": {}
 }
 ```
 

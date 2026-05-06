@@ -3,7 +3,7 @@ skill: token_standard_mica_utility_token_guardrail
 category: crypto_rwa
 description: Checks MiCA utility token criteria to ensure consumer disclosures are adequate.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Mica Utility Token Guardrail
@@ -12,7 +12,10 @@ inputs: none
 Checks MiCA utility token criteria to ensure consumer disclosures are adequate.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_mica_utility_token_guardrail",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

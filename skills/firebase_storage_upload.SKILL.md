@@ -3,7 +3,7 @@ skill: firebase_storage_upload
 category: root
 description: Upload a base64-encoded file to Firebase Cloud Storage. Returns the storage path and a signed download URL valid for 7 days.
 tier: free
-inputs: none
+inputs: destination_path, content_base64
 ---
 
 # Firebase Storage Upload
@@ -12,7 +12,12 @@ inputs: none
 Upload a base64-encoded file to Firebase Cloud Storage. Returns the storage path and a signed download URL valid for 7 days.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `destination_path` | `string` | Yes |  |
+| `content_base64` | `string` | Yes |  |
+| `content_type` | `string` | No |  |
+| `bucket_name` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +29,10 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_storage_upload",
-  "arguments": {}
+  "arguments": {
+    "destination_path": "<destination_path>",
+    "content_base64": "<content_base64>"
+  }
 }
 ```
 

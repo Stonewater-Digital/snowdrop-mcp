@@ -3,7 +3,7 @@ skill: smart_contract_oracle_sandwich_risk_scanner
 category: crypto_rwa
 description: Identifies oracle updates that traders can sandwich before settlement.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Oracle Sandwich Risk Scanner
@@ -12,7 +12,10 @@ inputs: none
 Identifies oracle updates that traders can sandwich before settlement.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_oracle_sandwich_risk_scanner",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

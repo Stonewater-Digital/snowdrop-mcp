@@ -3,7 +3,7 @@ skill: smart_contract_state_desync_simulator
 category: crypto_rwa
 description: Simulates sequencer delays to predict when L2 states diverge from L1 finality.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract State Desync Simulator
@@ -12,7 +12,10 @@ inputs: none
 Simulates sequencer delays to predict when L2 states diverge from L1 finality.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_state_desync_simulator",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

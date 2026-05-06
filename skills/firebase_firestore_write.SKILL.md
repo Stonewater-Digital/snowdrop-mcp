@@ -3,7 +3,7 @@ skill: firebase_firestore_write
 category: root
 description: Set, update, or delete a Firestore document. Use operation='set' to replace, 'update' to merge fields, 'delete' to remove document.
 tier: free
-inputs: none
+inputs: collection, document_id
 ---
 
 # Firebase Firestore Write
@@ -12,7 +12,13 @@ inputs: none
 Set, update, or delete a Firestore document. Use operation='set' to replace, 'update' to merge fields, 'delete' to remove document.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `collection` | `string` | Yes |  |
+| `document_id` | `string` | Yes |  |
+| `data` | `object` | No |  |
+| `operation` | `string` | No |  |
+| `merge` | `boolean` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +30,10 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_firestore_write",
-  "arguments": {}
+  "arguments": {
+    "collection": "<collection>",
+    "document_id": "<document_id>"
+  }
 }
 ```
 

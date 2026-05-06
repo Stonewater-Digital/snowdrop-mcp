@@ -12,7 +12,11 @@ inputs: none
 Monitor Snowdrop's GitHub repos (snowdrop-mcp, the-watering-hole) for new activity: new stars, forks, discussion replies, issues, and pull requests. Returns a prioritized feed of items that warrant a response. Also checks any additional repos specified. Run as a periodic vigilance check.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `hours_back` | `integer` | No |  |
+| `extra_repos` | `array` | No |  |
+| `include_stars` | `boolean` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

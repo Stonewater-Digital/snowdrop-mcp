@@ -3,7 +3,7 @@ skill: token_standard_erc1400_issuance_policy_checker
 category: crypto_rwa
 description: Confirms ERC-1400 issuance hooks adhere to disclosure-driven policies.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Erc1400 Issuance Policy Checker
@@ -12,7 +12,10 @@ inputs: none
 Confirms ERC-1400 issuance hooks adhere to disclosure-driven policies.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_erc1400_issuance_policy_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

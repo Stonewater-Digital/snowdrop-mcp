@@ -3,7 +3,7 @@ skill: smart_contract_validator_slash_risk_checker
 category: crypto_rwa
 description: Estimates slash exposure by simulating validator misbehavior scenarios.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Validator Slash Risk Checker
@@ -12,7 +12,10 @@ inputs: none
 Estimates slash exposure by simulating validator misbehavior scenarios.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_validator_slash_risk_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

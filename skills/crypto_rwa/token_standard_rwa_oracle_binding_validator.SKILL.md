@@ -3,7 +3,7 @@ skill: token_standard_rwa_oracle_binding_validator
 category: crypto_rwa
 description: Verifies tokens consume signed oracle data per governance charter.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Rwa Oracle Binding Validator
@@ -12,7 +12,10 @@ inputs: none
 Verifies tokens consume signed oracle data per governance charter.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_rwa_oracle_binding_validator",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

@@ -3,7 +3,7 @@ skill: token_standard_corporate_actions_allocator
 category: crypto_rwa
 description: Automates corporate action allocation tables for partitioned cap tables.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Corporate Actions Allocator
@@ -12,7 +12,10 @@ inputs: none
 Automates corporate action allocation tables for partitioned cap tables.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_corporate_actions_allocator",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

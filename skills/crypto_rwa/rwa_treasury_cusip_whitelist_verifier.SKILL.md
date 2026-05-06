@@ -3,7 +3,7 @@ skill: rwa_treasury_cusip_whitelist_verifier
 category: crypto_rwa
 description: Ensures only approved CUSIPs appear in wrapped Treasury vaults by reconciling mint payloads with issuance calendars.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Treasury Cusip Whitelist Verifier
@@ -12,7 +12,10 @@ inputs: none
 Ensures only approved CUSIPs appear in wrapped Treasury vaults by reconciling mint payloads with issuance calendars.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_treasury_cusip_whitelist_verifier",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

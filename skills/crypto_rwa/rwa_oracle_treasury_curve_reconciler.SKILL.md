@@ -3,7 +3,7 @@ skill: rwa_oracle_treasury_curve_reconciler
 category: crypto_rwa
 description: Compares oracle Treasury curves with FRED benchmarks to ensure discount factors match.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Treasury Curve Reconciler
@@ -12,7 +12,10 @@ inputs: none
 Compares oracle Treasury curves with FRED benchmarks to ensure discount factors match.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_treasury_curve_reconciler",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

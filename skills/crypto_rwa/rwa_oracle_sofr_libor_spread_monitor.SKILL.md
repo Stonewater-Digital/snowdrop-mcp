@@ -3,7 +3,7 @@ skill: rwa_oracle_sofr_libor_spread_monitor
 category: crypto_rwa
 description: Tracks SOFR-LIBOR spreads embedded in oracle discount factors for loans.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Sofr Libor Spread Monitor
@@ -12,7 +12,10 @@ inputs: none
 Tracks SOFR-LIBOR spreads embedded in oracle discount factors for loans.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_sofr_libor_spread_monitor",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

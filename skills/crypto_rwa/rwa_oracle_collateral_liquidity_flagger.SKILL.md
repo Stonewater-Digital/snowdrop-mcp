@@ -3,7 +3,7 @@ skill: rwa_oracle_collateral_liquidity_flagger
 category: crypto_rwa
 description: Flags collateral where oracle liquidity inputs diverge from on-chain trades.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Collateral Liquidity Flagger
@@ -12,7 +12,10 @@ inputs: none
 Flags collateral where oracle liquidity inputs diverge from on-chain trades.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_collateral_liquidity_flagger",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

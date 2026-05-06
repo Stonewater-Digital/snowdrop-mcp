@@ -3,7 +3,7 @@ skill: rwa_real_estate_property_liens_status_monitor
 category: crypto_rwa
 description: Pulls lien registries to detect new encumbrances on token collateral.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Property Liens Status Monitor
@@ -12,7 +12,10 @@ inputs: none
 Pulls lien registries to detect new encumbrances on token collateral.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_property_liens_status_monitor",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

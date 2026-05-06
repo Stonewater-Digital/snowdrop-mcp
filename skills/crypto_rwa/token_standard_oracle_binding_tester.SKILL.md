@@ -3,7 +3,7 @@ skill: token_standard_oracle_binding_tester
 category: crypto_rwa
 description: Tests failover paths for oracle binding functions within compliance wrappers.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Oracle Binding Tester
@@ -12,7 +12,10 @@ inputs: none
 Tests failover paths for oracle binding functions within compliance wrappers.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_oracle_binding_tester",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

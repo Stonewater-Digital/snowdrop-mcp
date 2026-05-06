@@ -3,7 +3,7 @@ skill: firebase_fcm_send
 category: root
 description: Send a single FCM push notification to a device registration token, topic, or condition. Returns message_id on success.
 tier: free
-inputs: none
+inputs: title, body
 ---
 
 # Firebase Fcm Send
@@ -12,7 +12,15 @@ inputs: none
 Send a single FCM push notification to a device registration token, topic, or condition. Returns message_id on success.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `title` | `string` | Yes |  |
+| `body` | `string` | Yes |  |
+| `token` | `string` | No |  |
+| `topic` | `string` | No |  |
+| `condition` | `string` | No |  |
+| `data` | `object` | No |  |
+| `image_url` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +32,10 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_fcm_send",
-  "arguments": {}
+  "arguments": {
+    "title": "<title>",
+    "body": "<body>"
+  }
 }
 ```
 

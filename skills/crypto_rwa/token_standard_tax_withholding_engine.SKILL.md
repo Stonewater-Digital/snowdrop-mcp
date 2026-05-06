@@ -3,7 +3,7 @@ skill: token_standard_tax_withholding_engine
 category: crypto_rwa
 description: Calculates withholding schedules per jurisdiction before stablecoin payouts.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Tax Withholding Engine
@@ -12,7 +12,10 @@ inputs: none
 Calculates withholding schedules per jurisdiction before stablecoin payouts.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_tax_withholding_engine",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

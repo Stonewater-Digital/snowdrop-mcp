@@ -3,7 +3,7 @@ skill: rwa_private_credit_payment_default_signal_router
 category: crypto_rwa
 description: Routes delinquency signals to holders and pauses distributions until resolved.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Private Credit Payment Default Signal Router
@@ -12,7 +12,10 @@ inputs: none
 Routes delinquency signals to holders and pauses distributions until resolved.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_private_credit_payment_default_signal_router",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

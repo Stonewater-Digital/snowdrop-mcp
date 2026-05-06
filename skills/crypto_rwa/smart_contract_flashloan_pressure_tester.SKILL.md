@@ -3,7 +3,7 @@ skill: smart_contract_flashloan_pressure_tester
 category: crypto_rwa
 description: Runs deterministic flash-loan scenarios to measure collateral buffers and slippage thresholds.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Flashloan Pressure Tester
@@ -12,7 +12,10 @@ inputs: none
 Runs deterministic flash-loan scenarios to measure collateral buffers and slippage thresholds.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_flashloan_pressure_tester",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

@@ -3,7 +3,7 @@ skill: rwa_oracle_primary_secondary_spread_checker
 category: crypto_rwa
 description: Compares primary issuance prices with secondary token trading to spot gaps.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Primary Secondary Spread Checker
@@ -12,7 +12,10 @@ inputs: none
 Compares primary issuance prices with secondary token trading to spot gaps.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_primary_secondary_spread_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

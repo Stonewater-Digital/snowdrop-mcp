@@ -3,7 +3,7 @@ skill: smart_contract_reentrancy_surface_mapper
 category: crypto_rwa
 description: Simulates nested calls and flags storage slots lacking reentrancy guards.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Reentrancy Surface Mapper
@@ -12,7 +12,10 @@ inputs: none
 Simulates nested calls and flags storage slots lacking reentrancy guards.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_reentrancy_surface_mapper",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

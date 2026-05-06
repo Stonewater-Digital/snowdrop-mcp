@@ -3,7 +3,7 @@ skill: smart_contract_cross_chain_message_profiler
 category: crypto_rwa
 description: Profiles bridge message flow for ack failures or stalled packets.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Cross Chain Message Profiler
@@ -12,7 +12,10 @@ inputs: none
 Profiles bridge message flow for ack failures or stalled packets.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_cross_chain_message_profiler",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

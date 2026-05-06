@@ -3,7 +3,7 @@ skill: firebase_realtime_db_delete
 category: root
 description: Delete a node from Firebase Realtime Database at the given path.
 tier: free
-inputs: none
+inputs: path
 ---
 
 # Firebase Realtime Db Delete
@@ -12,7 +12,10 @@ inputs: none
 Delete a node from Firebase Realtime Database at the given path.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `path` | `string` | Yes |  |
+| `database_url` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_realtime_db_delete",
-  "arguments": {}
+  "arguments": {
+    "path": "<path>"
+  }
 }
 ```
 

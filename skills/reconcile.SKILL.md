@@ -27,7 +27,7 @@ Standard Snowdrop envelope:
 {
   "tool": "reconcile",
   "arguments": {
-    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/SHEET_ID/edit"
+    "spreadsheet_url": "<spreadsheet_url>"
   }
 }
 ```

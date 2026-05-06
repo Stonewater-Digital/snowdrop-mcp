@@ -3,7 +3,7 @@ skill: token_standard_aml_risk_timer
 category: crypto_rwa
 description: Applies dynamic AML cooldown timers when risk scores breach thresholds.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Aml Risk Timer
@@ -12,7 +12,10 @@ inputs: none
 Applies dynamic AML cooldown timers when risk scores breach thresholds.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_aml_risk_timer",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

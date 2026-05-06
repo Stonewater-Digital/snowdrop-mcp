@@ -3,7 +3,7 @@ skill: firebase_realtime_db_write
 category: root
 description: Write or update a value in Firebase Realtime Database at the given path. Use method='set' to replace, 'update' to merge, 'push' to append.
 tier: free
-inputs: none
+inputs: path, data
 ---
 
 # Firebase Realtime Db Write
@@ -12,7 +12,12 @@ inputs: none
 Write or update a value in Firebase Realtime Database at the given path. Use method='set' to replace, 'update' to merge, 'push' to append.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `path` | `string` | Yes |  |
+| `data` | `object` | Yes |  |
+| `method` | `string` | No |  |
+| `database_url` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +29,10 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_realtime_db_write",
-  "arguments": {}
+  "arguments": {
+    "path": "<path>",
+    "data": {}
+  }
 }
 ```
 

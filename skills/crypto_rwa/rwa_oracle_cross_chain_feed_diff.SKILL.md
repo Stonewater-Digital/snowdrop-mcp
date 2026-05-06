@@ -3,7 +3,7 @@ skill: rwa_oracle_cross_chain_feed_diff
 category: crypto_rwa
 description: Diffs oracle values across chains to detect delayed relays or bridge drifts.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Cross Chain Feed Diff
@@ -12,7 +12,10 @@ inputs: none
 Diffs oracle values across chains to detect delayed relays or bridge drifts.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_cross_chain_feed_diff",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

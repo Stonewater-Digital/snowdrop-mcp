@@ -30,8 +30,8 @@ Standard Snowdrop envelope:
 {
   "tool": "employer_tax_calculator",
   "arguments": {
-    "gross_payroll": 48000.00,
-    "num_employees": 4
+    "gross_payroll": 0,
+    "num_employees": 0
   }
 }
 ```

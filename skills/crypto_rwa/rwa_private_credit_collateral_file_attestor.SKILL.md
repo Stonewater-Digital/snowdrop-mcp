@@ -3,7 +3,7 @@ skill: rwa_private_credit_collateral_file_attestor
 category: crypto_rwa
 description: Confirms collateral file hashes and borrowing base calculations for on-chain lenders.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Private Credit Collateral File Attestor
@@ -12,7 +12,10 @@ inputs: none
 Confirms collateral file hashes and borrowing base calculations for on-chain lenders.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_private_credit_collateral_file_attestor",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

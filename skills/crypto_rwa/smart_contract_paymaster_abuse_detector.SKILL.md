@@ -3,7 +3,7 @@ skill: smart_contract_paymaster_abuse_detector
 category: crypto_rwa
 description: Analyzes ERC-4337 paymaster policies for unlimited sponsor risk.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Paymaster Abuse Detector
@@ -12,7 +12,10 @@ inputs: none
 Analyzes ERC-4337 paymaster policies for unlimited sponsor risk.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_paymaster_abuse_detector",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

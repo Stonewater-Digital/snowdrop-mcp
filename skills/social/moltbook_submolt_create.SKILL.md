@@ -3,7 +3,7 @@ skill: moltbook_submolt_create
 category: social
 description: Create a new Moltbook submolt (community/channel) and optionally seed it with an opening post. Use this to establish Snowdrop-owned communities around topics like agent finance, The Watering Hole social scene, MCP tooling, or regulatory intel.
 tier: free
-inputs: none
+inputs: name, description
 ---
 
 # Moltbook Submolt Create
@@ -12,7 +12,12 @@ inputs: none
 Create a new Moltbook submolt (community/channel) and optionally seed it with an opening post. Use this to establish Snowdrop-owned communities around topics like agent finance, The Watering Hole social scene, MCP tooling, or regulatory intel. Returns submolt details and the seed post ID if created.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `name` | `string` | Yes |  |
+| `description` | `string` | Yes |  |
+| `seed_title` | `string` | No |  |
+| `seed_content` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +29,10 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "moltbook_submolt_create",
-  "arguments": {}
+  "arguments": {
+    "name": "<name>",
+    "description": "<description>"
+  }
 }
 ```
 

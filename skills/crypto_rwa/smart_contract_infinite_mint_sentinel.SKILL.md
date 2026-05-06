@@ -3,7 +3,7 @@ skill: smart_contract_infinite_mint_sentinel
 category: crypto_rwa
 description: Detects code paths capable of unlimited minting without supply caps.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Infinite Mint Sentinel
@@ -12,7 +12,10 @@ inputs: none
 Detects code paths capable of unlimited minting without supply caps.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_infinite_mint_sentinel",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

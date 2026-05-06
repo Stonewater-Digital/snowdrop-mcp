@@ -3,7 +3,7 @@ skill: rwa_real_estate_insurance_binder_attestor
 category: crypto_rwa
 description: Validates property insurance binders, coverage limits, and renewal dates pre-transfer.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Insurance Binder Attestor
@@ -12,7 +12,10 @@ inputs: none
 Validates property insurance binders, coverage limits, and renewal dates pre-transfer.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_insurance_binder_attestor",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

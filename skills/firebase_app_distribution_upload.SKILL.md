@@ -3,7 +3,7 @@ skill: firebase_app_distribution_upload
 category: root
 description: Upload a build artifact to Firebase App Distribution and notify testers. Returns the release name and download URL.
 tier: free
-inputs: none
+inputs: app_id, binary_base64
 ---
 
 # Firebase App Distribution Upload
@@ -12,7 +12,13 @@ inputs: none
 Upload a build artifact to Firebase App Distribution and notify testers. Returns the release name and download URL.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `app_id` | `string` | Yes |  |
+| `binary_base64` | `string` | Yes |  |
+| `release_notes` | `string` | No |  |
+| `tester_emails` | `any` | No |  |
+| `group_aliases` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +30,10 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_app_distribution_upload",
-  "arguments": {}
+  "arguments": {
+    "app_id": "<app_id>",
+    "binary_base64": "<binary_base64>"
+  }
 }
 ```
 

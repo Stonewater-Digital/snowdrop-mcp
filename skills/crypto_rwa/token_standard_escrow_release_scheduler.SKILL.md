@@ -3,7 +3,7 @@ skill: token_standard_escrow_release_scheduler
 category: crypto_rwa
 description: Schedules escrow release events based on oracle-verified milestones.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Escrow Release Scheduler
@@ -12,7 +12,10 @@ inputs: none
 Schedules escrow release events based on oracle-verified milestones.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_escrow_release_scheduler",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

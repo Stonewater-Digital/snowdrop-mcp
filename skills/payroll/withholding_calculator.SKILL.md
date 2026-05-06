@@ -30,7 +30,7 @@ Standard Snowdrop envelope:
 {
   "tool": "withholding_calculator",
   "arguments": {
-    "gross_pay": 3846.15
+    "gross_pay": 0
   }
 }
 ```

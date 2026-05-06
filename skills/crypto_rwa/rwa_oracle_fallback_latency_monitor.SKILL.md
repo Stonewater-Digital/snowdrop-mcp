@@ -3,7 +3,7 @@ skill: rwa_oracle_fallback_latency_monitor
 category: crypto_rwa
 description: Measures latency when feeds fall back to secondary providers during outages.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Fallback Latency Monitor
@@ -12,7 +12,10 @@ inputs: none
 Measures latency when feeds fall back to secondary providers during outages.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_fallback_latency_monitor",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

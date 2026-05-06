@@ -30,8 +30,8 @@ Standard Snowdrop envelope:
 {
   "tool": "overtime_threshold_calculator",
   "arguments": {
-    "hourly_rate": 22.50,
-    "hours_worked": 46
+    "hourly_rate": 0,
+    "hours_worked": 0
   }
 }
 ```

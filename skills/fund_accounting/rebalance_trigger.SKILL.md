@@ -3,19 +3,16 @@ skill: rebalance_trigger
 category: fund_accounting
 description: Checks portfolio split vs. target bands and surfaces recommended skims or reviews.
 tier: premium
-inputs: boring_value, thunder_value
+inputs: none
 ---
 
 # Rebalance Trigger
 
 ## Description
-Checks portfolio split vs. target bands and surfaces recommended skims or reviews. Premium skill — subscribe at https://snowdrop.ai.
+Checks portfolio split vs. target bands and surfaces recommended skims or reviews. (Premium — subscribe at https://snowdrop.ai)
 
 ## Parameters
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| `boring_value` | `number` | Yes | Current market value of the "boring" (low-risk, income) sleeve of the portfolio in dollars. |
-| `thunder_value` | `number` | Yes | Current market value of the "thunder" (high-conviction, growth) sleeve of the portfolio in dollars. |
+_No parameters defined._
 
 ## Returns
 Standard Snowdrop envelope:
@@ -27,10 +24,7 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rebalance_trigger",
-  "arguments": {
-    "boring_value": 8200000,
-    "thunder_value": 2100000
-  }
+  "arguments": {}
 }
 ```
 

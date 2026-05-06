@@ -14,9 +14,9 @@ Adds or searches accounts across the Stonewater standard chart.
 ## Parameters
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `operation` | `string` | Yes | Action to perform: `"add"` to create a new account, `"search"` to find existing accounts. |
-| `account` | `object` | No | Account payload for `add` operations; requires `account_number`, `name`, and `type` (asset/liability/equity/revenue/expense). |
-| `query` | `string` | No | Search text matched against account number, name, or type for `search` operations. |
+| `operation` | `string` | Yes |  |
+| `account` | `['object', 'null']` | No |  |
+| `query` | `['string', 'null']` | No | Search text |
 
 ## Returns
 Standard Snowdrop envelope:

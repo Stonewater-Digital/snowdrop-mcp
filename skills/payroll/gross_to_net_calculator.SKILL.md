@@ -31,7 +31,7 @@ Standard Snowdrop envelope:
 {
   "tool": "gross_to_net_calculator",
   "arguments": {
-    "gross_pay": 5000.00
+    "gross_pay": 0
   }
 }
 ```

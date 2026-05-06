@@ -12,7 +12,10 @@ inputs: none
 Look up a Firebase Auth user by UID or email address. Returns user profile data.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `uid` | `string` | No |  |
+| `email` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

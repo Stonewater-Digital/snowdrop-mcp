@@ -3,7 +3,7 @@ skill: firebase_auth_create_user
 category: root
 description: Create a new Firebase Auth user account. Returns the user's UID, email, and creation time.
 tier: free
-inputs: none
+inputs: email, password
 ---
 
 # Firebase Auth Create User
@@ -12,7 +12,13 @@ inputs: none
 Create a new Firebase Auth user account. Returns the user's UID, email, and creation time.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `email` | `string` | Yes |  |
+| `password` | `string` | Yes |  |
+| `display_name` | `string` | No |  |
+| `phone_number` | `string` | No |  |
+| `disabled` | `boolean` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +30,10 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_auth_create_user",
-  "arguments": {}
+  "arguments": {
+    "email": "<email>",
+    "password": "<password>"
+  }
 }
 ```
 

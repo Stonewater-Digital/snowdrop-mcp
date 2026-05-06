@@ -14,9 +14,9 @@ Identifies idle cash available for sweeps and proposes destinations (pending Thu
 ## Parameters
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `account_balances` | `object` | Yes | Dictionary mapping account name/ID (string) to current balance in USD (number). |
-| `operating_buffer_months` | `integer` | No | Number of months of burn to reserve before sweeping idle cash (default: 3). |
-| `monthly_burn` | `number` | Yes | Monthly operating expenses in USD. Must be > 0. |
+| `account_balances` | `object` | Yes |  |
+| `operating_buffer_months` | `integer` | No |  |
+| `monthly_burn` | `number` | Yes |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -29,9 +29,8 @@ Standard Snowdrop envelope:
 {
   "tool": "treasury_sweep_recommender",
   "arguments": {
-    "account_balances": {"mercury_checking": 350000, "mercury_savings": 180000},
-    "monthly_burn": 42000,
-    "operating_buffer_months": 3
+    "account_balances": {},
+    "monthly_burn": 0
   }
 }
 ```

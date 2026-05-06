@@ -3,7 +3,7 @@ skill: rwa_private_credit_loan_servicer_cashflow_validator
 category: crypto_rwa
 description: Reconciles servicer remittance files against token payout streams for private credit pools.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Private Credit Loan Servicer Cashflow Validator
@@ -12,7 +12,10 @@ inputs: none
 Reconciles servicer remittance files against token payout streams for private credit pools.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_private_credit_loan_servicer_cashflow_validator",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

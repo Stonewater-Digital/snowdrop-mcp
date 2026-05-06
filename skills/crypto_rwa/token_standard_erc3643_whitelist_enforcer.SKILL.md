@@ -3,7 +3,7 @@ skill: token_standard_erc3643_whitelist_enforcer
 category: crypto_rwa
 description: Validates ERC-3643 allowlists against investor registries before transfers.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Erc3643 Whitelist Enforcer
@@ -12,7 +12,10 @@ inputs: none
 Validates ERC-3643 allowlists against investor registries before transfers.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_erc3643_whitelist_enforcer",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

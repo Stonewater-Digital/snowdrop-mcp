@@ -3,7 +3,7 @@ skill: token_standard_erc3643_hook_validator
 category: crypto_rwa
 description: Checks ERC-3643 validation hooks execute within gas and return proper codes.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Erc3643 Hook Validator
@@ -12,7 +12,10 @@ inputs: none
 Checks ERC-3643 validation hooks execute within gas and return proper codes.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_erc3643_hook_validator",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

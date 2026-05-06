@@ -3,7 +3,7 @@ skill: rwa_treasury_fedwire_settlement_audit
 category: crypto_rwa
 description: Maps Fedwire settlement receipts to blockchain proofs for custody assurance.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Treasury Fedwire Settlement Audit
@@ -12,7 +12,10 @@ inputs: none
 Maps Fedwire settlement receipts to blockchain proofs for custody assurance.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_treasury_fedwire_settlement_audit",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

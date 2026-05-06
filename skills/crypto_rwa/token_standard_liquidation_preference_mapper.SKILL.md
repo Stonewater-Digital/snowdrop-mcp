@@ -3,7 +3,7 @@ skill: token_standard_liquidation_preference_mapper
 category: crypto_rwa
 description: Maps liquidation preference stacks to ensure payouts follow documentation.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Liquidation Preference Mapper
@@ -12,7 +12,10 @@ inputs: none
 Maps liquidation preference stacks to ensure payouts follow documentation.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_liquidation_preference_mapper",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

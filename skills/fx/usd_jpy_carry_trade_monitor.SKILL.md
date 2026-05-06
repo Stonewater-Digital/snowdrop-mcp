@@ -12,7 +12,10 @@ inputs: none
 Analyzes USD/JPY carry trade profitability using US vs Japan yield differentials and synthetic FX volatility.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `us_10y_yield` | `number` | No |  |
+| `jp_10y_yield` | `number` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

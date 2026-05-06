@@ -3,7 +3,7 @@ skill: smart_contract_unbounded_loop_detector
 category: crypto_rwa
 description: Scans bytecode for unbounded loops that can be griefed via block gas limits.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Unbounded Loop Detector
@@ -12,7 +12,10 @@ inputs: none
 Scans bytecode for unbounded loops that can be griefed via block gas limits.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_unbounded_loop_detector",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

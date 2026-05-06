@@ -3,7 +3,7 @@ skill: rwa_oracle_shipping_rate_feed_watcher
 category: crypto_rwa
 description: Checks Baltic Dry and Freightos prints versus oracle shipping feeds for divergence.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Shipping Rate Feed Watcher
@@ -12,7 +12,10 @@ inputs: none
 Checks Baltic Dry and Freightos prints versus oracle shipping feeds for divergence.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_shipping_rate_feed_watcher",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

@@ -3,7 +3,7 @@ skill: smart_contract_governance_quorum_analyzer
 category: crypto_rwa
 description: Evaluates historical quorum attainment to estimate hostile takeover risk.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Governance Quorum Analyzer
@@ -12,7 +12,10 @@ inputs: none
 Evaluates historical quorum attainment to estimate hostile takeover risk.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_governance_quorum_analyzer",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

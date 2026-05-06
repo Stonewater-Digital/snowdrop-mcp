@@ -3,7 +3,7 @@ skill: firebase_hosting_list_releases
 category: root
 description: List release history for a Firebase Hosting site or channel. Returns list of releases with version, create_time, and status.
 tier: free
-inputs: none
+inputs: site_id
 ---
 
 # Firebase Hosting List Releases
@@ -12,7 +12,11 @@ inputs: none
 List release history for a Firebase Hosting site or channel. Returns list of releases with version, create_time, and status.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `site_id` | `string` | Yes |  |
+| `channel_id` | `string` | No |  |
+| `page_size` | `integer` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +28,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_hosting_list_releases",
-  "arguments": {}
+  "arguments": {
+    "site_id": "<site_id>"
+  }
 }
 ```
 

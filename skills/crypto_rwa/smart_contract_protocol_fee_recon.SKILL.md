@@ -3,7 +3,7 @@ skill: smart_contract_protocol_fee_recon
 category: crypto_rwa
 description: Reconciles protocol fee accounting with actual treasury balances.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Protocol Fee Recon
@@ -12,7 +12,10 @@ inputs: none
 Reconciles protocol fee accounting with actual treasury balances.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_protocol_fee_recon",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

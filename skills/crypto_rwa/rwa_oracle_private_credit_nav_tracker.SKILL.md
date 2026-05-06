@@ -3,7 +3,7 @@ skill: rwa_oracle_private_credit_nav_tracker
 category: crypto_rwa
 description: Aggregates private credit NAV statements and reconciles them with streaming oracle NAVs.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Private Credit Nav Tracker
@@ -12,7 +12,10 @@ inputs: none
 Aggregates private credit NAV statements and reconciles them with streaming oracle NAVs.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_private_credit_nav_tracker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

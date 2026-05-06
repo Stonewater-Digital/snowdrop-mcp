@@ -14,7 +14,7 @@ Maps expense strings to IRS categories using heuristics.
 ## Parameters
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `expenses` | `array` | Yes | List of expense objects, each with keys: `vendor` (string), `description` (string), `amount` (number). |
+| `expenses` | `array` | Yes |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -27,10 +27,7 @@ Standard Snowdrop envelope:
 {
   "tool": "expense_categorizer",
   "arguments": {
-    "expenses": [
-      {"vendor": "OpenAI", "description": "API usage May 2024", "amount": 120.00},
-      {"vendor": "Fly.io", "description": "Hosting - snowdrop-mcp", "amount": 45.00}
-    ]
+    "expenses": []
   }
 }
 ```

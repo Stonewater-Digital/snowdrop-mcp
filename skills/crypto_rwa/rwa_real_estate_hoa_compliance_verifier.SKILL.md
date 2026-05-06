@@ -3,7 +3,7 @@ skill: rwa_real_estate_hoa_compliance_verifier
 category: crypto_rwa
 description: Checks HOA dues payments and covenant compliance before distributions are released.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Real Estate Hoa Compliance Verifier
@@ -12,7 +12,10 @@ inputs: none
 Checks HOA dues payments and covenant compliance before distributions are released.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_real_estate_hoa_compliance_verifier",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

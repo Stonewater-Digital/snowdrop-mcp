@@ -14,8 +14,8 @@ Summarizes token usage, costs, and trends across providers/models/purposes.
 ## Parameters
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `usage_logs` | `array` | Yes | List of usage log objects, each with `provider` (string), `model` (string), `tokens` (int), `cost_usd` (float), `purpose` (string), and `timestamp` (ISO8601 string). |
-| `budget_limit` | `number` | No | Optional monthly budget cap in USD. If provided, the dashboard flags providers exceeding their share of the limit. |
+| `usage_logs` | `array` | Yes |  |
+| `budget_limit` | `number` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -28,17 +28,7 @@ Standard Snowdrop envelope:
 {
   "tool": "api_usage_dashboard",
   "arguments": {
-    "usage_logs": [
-      {
-        "provider": "OpenRouter",
-        "model": "claude-3-haiku",
-        "tokens": 15000,
-        "cost_usd": 0.075,
-        "purpose": "reconciliation",
-        "timestamp": "2026-05-06T00:00:00Z"
-      }
-    ],
-    "budget_limit": 20.0
+    "usage_logs": []
   }
 }
 ```

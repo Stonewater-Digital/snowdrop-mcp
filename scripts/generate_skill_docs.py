@@ -189,6 +189,108 @@ def _detect_tier(tool_meta: dict[str, Any], py_file: Path) -> str:
     return "free"
 
 
+def _extract_params_from_function_ast(py_file: Path, func_name: str) -> list[dict[str, Any]]:
+    """Extract parameters from a Python function's AST signature.
+
+    Used as a fallback when TOOL_META lacks inputSchema/parameters. Reads the
+    function's type annotations and default values to produce a param list.
+
+    Args:
+        py_file: Path to the skill .py file.
+        func_name: Name of the public skill function (matches TOOL_META["name"]).
+
+    Returns:
+        List of param dicts with keys: name, type, required, description.
+        Returns empty list if the function cannot be found or parsed.
+    """
+    # Map common Python type annotation strings to JSON Schema-like types
+    _TYPE_MAP: dict[str, str] = {
+        "str": "string",
+        "int": "integer",
+        "float": "number",
+        "bool": "boolean",
+        "list": "array",
+        "dict": "object",
+        "List": "array",
+        "Dict": "object",
+        "Optional[str]": "string",
+        "Optional[int]": "integer",
+        "Optional[float]": "number",
+        "Optional[bool]": "boolean",
+        "Optional[list]": "array",
+        "Optional[dict]": "object",
+    }
+
+    try:
+        source = py_file.read_text(encoding="utf-8")
+        tree = ast.parse(source, filename=str(py_file))
+    except (OSError, SyntaxError):
+        return []
+
+    # Find the function definition matching func_name
+    func_node: ast.FunctionDef | None = None
+    for node in ast.walk(tree):
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            if node.name == func_name:
+                func_node = node  # type: ignore[assignment]
+                break
+
+    if func_node is None:
+        return []
+
+    params: list[dict[str, Any]] = []
+    args = func_node.args
+
+    # Align defaults: defaults only covers the *last* N args
+    all_args = args.args  # positional args (excludes *args, **kwargs)
+    num_args = len(all_args)
+    num_defaults = len(args.defaults)
+    # Index of first arg that has a default
+    first_default_idx = num_args - num_defaults
+
+    for i, arg in enumerate(all_args):
+        name = arg.arg
+        if name in ("self", "cls"):
+            continue
+
+        # Resolve annotation to a friendly type string
+        ann_str = ""
+        if arg.annotation is not None:
+            try:
+                ann_str = ast.unparse(arg.annotation)
+            except Exception:  # noqa: BLE001
+                ann_str = ""
+
+        # Normalize Union[X, None] / X | None → treat as Optional[X]
+        # and strip to the inner type
+        clean_ann = ann_str
+        for prefix in ("Optional[", "Union["):
+            if clean_ann.startswith(prefix):
+                inner = clean_ann[len(prefix):-1]  # strip prefix + trailing ]
+                # Take first type before comma
+                clean_ann = inner.split(",")[0].strip()
+                break
+        # Handle X | None pattern (Python 3.10+)
+        if " | None" in clean_ann:
+            clean_ann = clean_ann.replace(" | None", "").strip()
+        if "None | " in clean_ann:
+            clean_ann = clean_ann.replace("None | ", "").strip()
+
+        json_type = _TYPE_MAP.get(clean_ann, _TYPE_MAP.get(ann_str, "any"))
+
+        has_default = i >= first_default_idx
+        required = not has_default
+
+        params.append({
+            "name": name,
+            "type": json_type,
+            "required": required,
+            "description": "",
+        })
+
+    return params
+
+
 def _extract_params_from_schema(schema: Any) -> list[dict[str, Any]]:
     """Normalise inputSchema or parameters into a flat list of param dicts.
 
@@ -297,6 +399,16 @@ def generate_skill_md(
     # Resolve parameter schema — support both key names
     raw_schema = tool_meta.get("inputSchema") or tool_meta.get("parameters") or {}
     params = _extract_params_from_schema(raw_schema)
+
+    # Fallback: if TOOL_META has no schema, extract params from function signature via AST
+    # Skip premium/paywall stubs — they legitimately have no public params
+    if not params and not re.search(r"\bpremium\b|\bpaywall\b", _detect_tier(tool_meta, py_file)):
+        try:
+            source = py_file.read_text(encoding="utf-8")
+            if not re.search(r"\bpaywall_response\b|\bPREMIUM\b", source):
+                params = _extract_params_from_function_ast(py_file, name)
+        except OSError:
+            pass
 
     # Frontmatter
     required_inputs = [p["name"] for p in params if p["required"]]

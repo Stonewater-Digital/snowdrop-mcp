@@ -3,7 +3,7 @@ skill: smart_contract_emergency_pause_validator
 category: crypto_rwa
 description: Validates pause pathways ensure multi-sig approvals and enforce cooldowns.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Emergency Pause Validator
@@ -12,7 +12,10 @@ inputs: none
 Validates pause pathways ensure multi-sig approvals and enforce cooldowns.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_emergency_pause_validator",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

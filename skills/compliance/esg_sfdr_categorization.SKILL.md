@@ -3,7 +3,7 @@ skill: esg_sfdr_categorization
 category: compliance
 description: Classifies EU investment funds under SFDR (EU) 2019/2088 as Article 6 (no ESG), Article 8 (promotes ESG characteristics), or Article 9 (sustainable investment objective). Applies ESA Joint Supervisory Authority guidance, ESMA Q&A, and EU Taxonomy Regulation (EU) 2020/852 disclosure requirements.
 tier: premium
-inputs: fund_data
+inputs: none
 ---
 
 # Esg Sfdr Categorization
@@ -12,9 +12,7 @@ inputs: fund_data
 Classifies EU investment funds under SFDR (EU) 2019/2088 as Article 6 (no ESG), Article 8 (promotes ESG characteristics), or Article 9 (sustainable investment objective). Applies ESA Joint Supervisory Authority guidance, ESMA Q&A, and EU Taxonomy Regulation (EU) 2020/852 disclosure requirements. (Premium — subscribe at https://snowdrop.ai)
 
 ## Parameters
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| `fund_data` | `object` | Yes | Fund details including investment strategy, ESG characteristics, taxonomy alignment percentage, and principal adverse impact indicators |
+_No parameters defined._
 
 ## Returns
 Standard Snowdrop envelope:
@@ -26,14 +24,7 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "esg_sfdr_categorization",
-  "arguments": {
-    "fund_data": {
-      "fund_name": "Green Growth UCITS",
-      "promotes_esg_characteristics": true,
-      "sustainable_investment_objective": false,
-      "taxonomy_alignment_pct": 35.0
-    }
-  }
+  "arguments": {}
 }
 ```
 

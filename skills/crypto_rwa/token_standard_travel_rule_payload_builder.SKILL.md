@@ -3,7 +3,7 @@ skill: token_standard_travel_rule_payload_builder
 category: crypto_rwa
 description: Builds Travel Rule payloads for off-ramp transactions initiated by RWA tokens.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Travel Rule Payload Builder
@@ -12,7 +12,10 @@ inputs: none
 Builds Travel Rule payloads for off-ramp transactions initiated by RWA tokens.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_travel_rule_payload_builder",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

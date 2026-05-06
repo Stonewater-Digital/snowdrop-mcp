@@ -12,7 +12,9 @@ inputs: none
 List all installed Firebase Extensions in a project. Returns extension instance ID, state, extension reference, and configuration.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `project_id` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

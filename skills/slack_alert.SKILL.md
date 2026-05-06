@@ -29,8 +29,7 @@ Standard Snowdrop envelope:
 {
   "tool": "slack_alert",
   "arguments": {
-    "action": "send",
-    "message": "Reconciliation complete — no discrepancies detected."
+    "action": "<action>"
   }
 }
 ```

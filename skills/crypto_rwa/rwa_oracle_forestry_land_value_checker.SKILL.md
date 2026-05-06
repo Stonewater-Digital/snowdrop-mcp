@@ -3,7 +3,7 @@ skill: rwa_oracle_forestry_land_value_checker
 category: crypto_rwa
 description: Compares forestry land appraisal indexes with oracle quotes backing timber tokens.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Forestry Land Value Checker
@@ -12,7 +12,10 @@ inputs: none
 Compares forestry land appraisal indexes with oracle quotes backing timber tokens.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_forestry_land_value_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

@@ -3,7 +3,7 @@ skill: rwa_oracle_inflation_swap_bridge
 category: crypto_rwa
 description: Maps inflation swap fixings to CPI-linked RWA oracle inputs.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Inflation Swap Bridge
@@ -12,7 +12,10 @@ inputs: none
 Maps inflation swap fixings to CPI-linked RWA oracle inputs.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_inflation_swap_bridge",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

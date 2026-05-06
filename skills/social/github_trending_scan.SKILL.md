@@ -12,7 +12,12 @@ inputs: none
 Search GitHub for recently active repos in Snowdrop's ecosystem — MCP servers, AI agents, financial tooling, DeFi infrastructure, compliance automation. Returns repos worth watching, potentially starring, or reaching out to. Use for ecosystem intelligence and star-for-star trade candidates.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `topics` | `array` | No |  |
+| `min_stars` | `integer` | No |  |
+| `days_back` | `integer` | No |  |
+| `per_query` | `integer` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

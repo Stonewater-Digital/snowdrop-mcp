@@ -3,7 +3,7 @@ skill: performance_poller_control
 category: social
 description: Observe, trigger, or read the status of the Snowdrop Performance Poller subagent (A2A protocol). Actions: 'status' (last run time, posts polled, errors), 'trigger' (run poller immediately via subprocess), 'read_card' (return the A2A agent card JSON), 'read_log' (last N lines of poller log).
 tier: free
-inputs: none
+inputs: action
 ---
 
 # Performance Poller Control
@@ -12,7 +12,10 @@ inputs: none
 Observe, trigger, or read the status of the Snowdrop Performance Poller subagent (A2A protocol). Actions: 'status' (last run time, posts polled, errors), 'trigger' (run poller immediately via subprocess), 'read_card' (return the A2A agent card JSON), 'read_log' (last N lines of poller log). The poller normally runs every 2h via cron but can be triggered on-demand.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `action` | `string` | Yes |  |
+| `limit` | `integer` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "performance_poller_control",
-  "arguments": {}
+  "arguments": {
+    "action": "<action>"
+  }
 }
 ```
 

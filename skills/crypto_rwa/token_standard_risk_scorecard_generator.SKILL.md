@@ -3,7 +3,7 @@ skill: token_standard_risk_scorecard_generator
 category: crypto_rwa
 description: Generates composite risk scorecards per investor wallet for compliance teams.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Risk Scorecard Generator
@@ -12,7 +12,10 @@ inputs: none
 Generates composite risk scorecards per investor wallet for compliance teams.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_risk_scorecard_generator",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

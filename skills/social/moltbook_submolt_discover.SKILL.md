@@ -12,7 +12,11 @@ inputs: none
 Fetch all Moltbook submolts and score them for engagement fit with Snowdrop's content areas: finance, agents, crypto, MCP/tooling, compliance, community/social. Returns ranked list with member counts and posting recommendations. Use this to find where to post next and which communities to cultivate.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `min_members` | `integer` | No |  |
+| `filter_posted` | `boolean` | No |  |
+| `top_n` | `integer` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

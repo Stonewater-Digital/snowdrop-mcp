@@ -1,0 +1,33 @@
+name: Validate Skill Docs
+
+on:
+  push:
+    branches: ["main", "feature/**"]
+    paths:
+      - "skills/**"
+      - "scripts/generate_skill_docs.py"
+      - "scripts/validate_skill_docs.py"
+  pull_request:
+    paths:
+      - "skills/**"
+      - "scripts/generate_skill_docs.py"
+      - "scripts/validate_skill_docs.py"
+
+jobs:
+  validate:
+    name: Validate SKILL.md coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate skill documentation
+        run: |
+          echo "Checking that all skills with TOOL_META have a corresponding SKILL.md..."
+          python3 scripts/validate_skill_docs.py
+        # If validation fails, suggest running the generator
+        # Exit code 1 from validate_skill_docs.py will fail this step

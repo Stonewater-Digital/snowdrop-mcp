@@ -3,7 +3,7 @@ skill: smart_contract_authority_matrix_auditor
 category: crypto_rwa
 description: Builds a permission matrix for each method to catch privilege creep.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Authority Matrix Auditor
@@ -12,7 +12,10 @@ inputs: none
 Builds a permission matrix for each method to catch privilege creep.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_authority_matrix_auditor",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

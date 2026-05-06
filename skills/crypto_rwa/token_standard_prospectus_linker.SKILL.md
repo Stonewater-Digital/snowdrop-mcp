@@ -3,7 +3,7 @@ skill: token_standard_prospectus_linker
 category: crypto_rwa
 description: Ensures wallets receive the latest prospectus hash before participating in offerings.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Token Standard Prospectus Linker
@@ -12,7 +12,10 @@ inputs: none
 Ensures wallets receive the latest prospectus hash before participating in offerings.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "token_standard_prospectus_linker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

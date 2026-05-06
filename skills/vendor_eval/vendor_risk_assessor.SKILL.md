@@ -14,7 +14,7 @@ Evaluates concentration risk, SPOFs, and diversification across vendors.
 ## Parameters
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `vendors` | `array` | Yes | List of vendor objects, each with `name` (string), `spend_pct` (float, 0–100 share of total spend), `is_sole_provider` (bool), and `redundancy_level` (string: "none", "partial", "full"). |
+| `vendors` | `array` | Yes |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -27,10 +27,7 @@ Standard Snowdrop envelope:
 {
   "tool": "vendor_risk_assessor",
   "arguments": {
-    "vendors": [
-      {"name": "OpenRouter", "spend_pct": 65, "is_sole_provider": false, "redundancy_level": "partial"},
-      {"name": "Anthropic", "spend_pct": 35, "is_sole_provider": false, "redundancy_level": "full"}
-    ]
+    "vendors": []
   }
 }
 ```

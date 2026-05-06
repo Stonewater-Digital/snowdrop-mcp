@@ -3,7 +3,7 @@ skill: smart_contract_storage_collision_detector
 category: crypto_rwa
 description: Analyzes proxy storage layouts for slot collisions across upgrades.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Smart Contract Storage Collision Detector
@@ -12,7 +12,10 @@ inputs: none
 Analyzes proxy storage layouts for slot collisions across upgrades.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "smart_contract_storage_collision_detector",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

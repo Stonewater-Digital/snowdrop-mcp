@@ -12,7 +12,12 @@ inputs: none
 Get Firebase Cloud Messaging delivery analytics data — send counts, delivery rates, and open rates for a date range.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `project_id` | `string` | No |  |
+| `start_date` | `string` | No |  |
+| `end_date` | `string` | No |  |
+| `app_id` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:

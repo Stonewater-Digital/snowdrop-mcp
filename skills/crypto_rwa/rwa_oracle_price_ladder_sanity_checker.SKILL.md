@@ -3,7 +3,7 @@ skill: rwa_oracle_price_ladder_sanity_checker
 category: crypto_rwa
 description: Validates laddered price levels for order-book fed RWAs remain monotonic.
 tier: free
-inputs: none
+inputs: payload
 ---
 
 # Rwa Oracle Price Ladder Sanity Checker
@@ -12,7 +12,10 @@ inputs: none
 Validates laddered price levels for order-book fed RWAs remain monotonic.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `payload` | `any` | Yes |  |
+| `context` | `any` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +27,9 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "rwa_oracle_price_ladder_sanity_checker",
-  "arguments": {}
+  "arguments": {
+    "payload": "<payload>"
+  }
 }
 ```
 

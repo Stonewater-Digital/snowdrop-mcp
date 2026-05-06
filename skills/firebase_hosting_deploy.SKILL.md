@@ -3,7 +3,7 @@ skill: firebase_hosting_deploy
 category: root
 description: Deploy files to a Firebase Hosting site or channel via the Firebase Hosting REST API. Returns the channel URL and release version.
 tier: free
-inputs: none
+inputs: site_id, files
 ---
 
 # Firebase Hosting Deploy
@@ -12,7 +12,11 @@ inputs: none
 Deploy files to a Firebase Hosting site or channel via the Firebase Hosting REST API. Returns the channel URL and release version.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `site_id` | `string` | Yes |  |
+| `files` | `any` | Yes |  |
+| `channel_id` | `string` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
@@ -24,7 +28,10 @@ Standard Snowdrop envelope:
 ```json
 {
   "tool": "firebase_hosting_deploy",
-  "arguments": {}
+  "arguments": {
+    "site_id": "<site_id>",
+    "files": "<files>"
+  }
 }
 ```
 

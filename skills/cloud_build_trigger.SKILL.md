@@ -12,7 +12,13 @@ inputs: none
 Manually trigger a Google Cloud Build build from a trigger ID or repo/branch. Returns the build ID and log URL for monitoring.
 
 ## Parameters
-_No parameters defined._
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `trigger_id` | `string` | No |  |
+| `project_id` | `string` | No |  |
+| `region` | `string` | No |  |
+| `branch` | `string` | No |  |
+| `substitutions` | `object` | No |  |
 
 ## Returns
 Standard Snowdrop envelope:
